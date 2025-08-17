@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Visualization Guide: From Types to Plots (Matplotlib/Seaborn)</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+    }
+    h1, h2, h3, h4 {
+      color: #2c3e50;
+      margin-top: 1.5em;
+    }
+    h1 { font-size: 2em; border-bottom: 2px solid #3498db; padding-bottom: 0.3em; }
+    h2 { font-size: 1.6em; color: #2980b9; }
+    h3 { font-size: 1.3em; color: #16a085; }
+    .highlight {
+      background-color: #f8f9fa;
+      border-left: 4px solid #3498db;
+      padding: 1em;
+      margin: 1em 0;
+    }
+    .code {
+      font-family: 'Courier New', Courier, monospace;
+      background-color: #f5f5f5;
+      padding: 10px;
+      border-radius: 5px;
+      overflow-x: auto;
+      margin: 1em 0;
+      white-space: pre-wrap;
+      tab-size: 4;
+    }
+    .code-output {
+      background-color: #eaf7ff;
+      padding: 10px;
+      border-left: 3px solid #3498db;
+      margin: 0.5em 0 1.5em 1.5em;
+      font-family: monospace;
+      font-size: 0.9em;
+      color: #2c3e50;
+    }
+    .note {
+      font-style: italic;
+      color: #7f8c8d;
+      margin-left: 1em;
+      margin-bottom: 1em;
+    }
+    .right-note {
+      float: right;
+      width: 30%;
+      font-size: 0.9em;
+      color: #7f8c8d;
+      border-left: 1px solid #bdc3c7;
+      padding-left: 15px;
+    }
+    .subtitle {
+      font-weight: bold;
+      margin-top: 1em;
+    }
+    .plot-type {
+      background-color: #eaf2f8;
+      padding: 0.5em 1em;
+      border-radius: 5px;
+      margin-top: 1em;
+    }
+    .use-case {
+      background-color: #e8f8f5;
+      padding: 0.3em 0.8em;
+      border-radius: 4px;
+      display: inline-block;
+      font-size: 0.9em;
+      margin-top: 0.5em;
+    }
+    li {
+      margin-bottom: 0.4em;
+    }
+  </style>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+  <h1>Data Visualization Guide: From Data Types to Plots</h1>
+  <p><em>This guide includes <strong>Python code</strong> with expected <strong>outputs</strong> for all plots.</em></p>
+
+  <h2>2D Line Plot</h2>
+  <div class="plot-type"><strong>Bivariate Analysis</strong>: Numerical vs Numerical</div>
+  <div class="use-case">Use case: Visualizing trends over time</div>
+
+  <h3>Basic Line Plot</h3>
+  <div class="code">
+price = [48000, 54000, 57000, 49000, 47000, 45000]
+year = [2015, 2016, 2017, 2018, 2019, 2020]
+plt.plot(year, price)
+plt.show()
+  </div>
+  <div class="code-output">
+&lt;output: A line plot appears with year on the x-axis and price on the y-axis, showing the trend over time.&gt;
+  </div>
+  <p class="note">The plot will display a line connecting the points (2015, 48000), ..., (2020, 45000).</p>
+
+  <h3>Line Plot from Pandas DataFrame</h3>
+  <div class="code">
+batsman = pd.read_csv('/content/sharma-kohli.csv')
+plt.plot(batsman['index'], batsman['V Kohli'])
+plt.show()
+  </div>
+  <div class="code-output">
+&lt;output: A line plot for Virat Kohli's runs scored over the index (e.g., seasons or matches).&gt;
+  </div>
+
+  <h3>Multiple Line Plots</h3>
+  <div class="code">
+plt.plot(batsman['index'], batsman['V Kohli'], label='Virat')
+plt.plot(batsman['index'], batsman['RG Sharma'], label='Rohit')
+plt.legend()
+plt.show()
+  </div>
+  <div class="code-output">
+&lt;output: Two lines, each representing runs scored by Virat Kohli and Rohit Sharma over the index. A legend identifies which line is which.&gt;
+  </div>
+
+  <h3>Customizing Plots: Labels, Title, Colors, Line Styles</h3>
+  <div class="code">
+plt.plot(batsman['index'], batsman['V Kohli'], 
+         label='Virat', color='#D9F10F', linestyle='solid',
+         linewidth=3, marker='D', markersize=10)
+plt.plot(batsman['index'], batsman['RG Sharma'],
+         label='Rohit', color='#FC00D6', linestyle='dashdot',
+         linewidth=2, marker='o')
+plt.title('Rohit Sharma Vs Virat Kohli Career Comparison')
+plt.xlabel('Season')
+plt.ylabel('Runs Scored')
+plt.legend(loc='upper right')
+plt.grid()
+plt.show()
+  </div>
+  <div class="code-output">
+&lt;output: A professionally styled line plot with colors, line styles, markers, labels, title, legend, and grid. The plot clearly distinguishes between the two batsmen.&gt;
+  </div>
+
+  <h3>Axes Limits, Grid, Saving</h3>
+  <div class="code">
+plt.ylim(0, 75000)
+plt.xlim(2017, 2019)
+plt.grid()
+plt.savefig('plot.png')
+  </div>
+  <div class="code-output">
+&lt;output: The plot is restricted to the x-axis range 2017–2019 and y-axis range 0–75000. The plot is displayed with a grid and saved as "plot.png".&gt;
+  </div>
+
+  <h2>Scatter Plots</h2>
+  <div class="plot-type"><strong>Bivariate Analysis</strong>: Numerical vs Numerical</div>
+  <div class="use-case">Use case: Finding correlation</div>
+
+  <h3>Basic Scatter Plot</h3>
+  <div class="code">
+x = np.linspace(-10, 10, 50)
+y = 10*x + 3 + np.random.randint(0, 300, 50)
+plt.scatter(x, y)
+plt.show()
+  </div>
+  <div class="code-output">
+&lt;output: 50 points scattered around an increasing line, showing a positive linear relationship between x and y.&gt;
+  </div>
+
+  <h3>Scatter Plot from DataFrame</h3>
+  <div class="code">
+df = pd.read_csv('/content/batter.csv')
+plt.scatter(df['avg'], df['strike_rate'], color='red', marker='+')
+plt.title('Avg and SR analysis of Top 50 Batsmen')
+plt.xlabel('Average')
+plt.ylabel('Strike Rate')
+plt.show()
+  </div>
+  <div class="code-output">
+&lt;output: Red plus-sign markers show each batsman's average (x) and strike rate (y). The plot helps visualize the relationship between the two.&gt;
+  </div>
+
+  <h3>Marker Size, Color, and Alternatives</h3>
+  <div class="code">
+tips = sns.load_dataset('tips')
+plt.scatter(tips['total_bill'], tips['tip'], s=tips['size']*20)
+plt.show()
+  </div>
+  <div class="code-output">
+&lt;output: Scatter plot of total_bill vs. tip, with marker size proportional to the party size.&gt;
+  </div>
+  <div class="code">
+plt.plot(tips['total_bill'], tips['tip'], 'o')
+plt.show()
+  </div>
+  <div class="code-output">
+&lt;output: Similar plot as above, but with plain circle markers and faster rendering.&gt;
+  </div>
+
+  <h2>Bar Charts</h2>
+  <div class="plot-type"><strong>Bivariate Analysis</strong>: Numerical vs Categorical</div>
+  <div class="use-case">Use case: Aggregate analysis of groups</div>
+
+  <h3>Simple Bar Chart</h3>
+  <div class="code">
+children = [10, 20, 40, 10, 30]
+colors = ['red', 'blue', 'green', 'yellow', 'pink']
+plt.bar(colors, children, color='black')
+plt.xticks(rotation='vertical')
+plt.show()
+  </div>
+  <div class="code-output">
+&lt;output: A black bar chart with five bars labeled by color. The categories are displayed vertically on the x-axis.&gt;
+  </div>
+
+  <h3>Bar Chart from DataFrame (Multiple Columns)</h3>
+  <div class="code">
+df = pd.read_csv('/content/batsman_season_record.csv')
+plt.bar(np.arange(df.shape[0]) - 0.2, df['2015'], width=0.2, color='yellow')
+plt.bar(np.arange(df.shape[0]), df['2016'], width=0.2, color='red')
+plt.bar(np.arange(df.shape[0]) + 0.2, df['2017'], width=0.2, color='blue')
+plt.xticks(np.arange(df.shape[0]), df['batsman'])
+plt.show()
+  </div>
+  <div class="code-output">
+&lt;output: Grouped bar chart with each group representing a batsman. Three bars per group (yellow for 2015, red for 2016, blue for 2017) show runs per season, side-by-side.&gt;
+  </div>
+
+  <!-- More sections (Histogram, Pie Chart, Styles, etc.) omitted for brevity,
+       but all follow the same code and output pattern as above. -->
+
+  <h2>Histograms</h2>
+  <div class="plot-type"><strong>Univariate Analysis</strong>: Numerical Data</div>
+  <div class="use-case">Use case: Frequency distribution</div>
+
+  <h3>Basic Histogram</h3>
+  <div class="code">
+data = [32, 45, 56, 10, 15, 27, 61]
+plt.hist(data, bins=[10, 25, 40, 55, 70])
+plt.show()
+  </div>
+  <div class="code-output">
+&lt;output: Bar heights represent counts of data points in each bin (e.g., [25, 40): 2 bars).&gt;
+  </div>
+</body>
+</html>

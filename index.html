@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CampusX DSMP Sidebar</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      height: 100vh;
+      background-color: #ffffff;
+    }
+    .sidebar {
+      width: 300px;
+      background-color: #000000;
+      color: #ffffff;
+      overflow-y: auto;
+      padding: 15px;
+      font-size: 13px;
+    }
+    .content {
+      flex-grow: 1;
+      padding: 0;
+      background-color: #ffffff;
+    }
+    .toggle-btn {
+      cursor: pointer;
+      padding: 8px;
+      background-color: #1e1e1e;
+      margin-top: 10px;
+      border-radius: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      color: #00e5ff;
+      transition: background 0.3s, color 0.3s;
+    }
+    .toggle-btn:hover {
+      background-color: #00e5ff;
+      color: #000000;
+    }
+    .submenu {
+      list-style-type: none;
+      padding-left: 20px;
+      display: none;
+      margin: 0;
+    }
+    .submenu li {
+      margin: 6px 0;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .submenu li a {
+      color: #cccccc;
+      text-decoration: none;
+      font-size: 13px;
+      padding: 5px 8px;
+      display: block;
+      border-radius: 4px;
+      transition: background 0.3s, color 0.3s;
+      flex: 1;
+    }
+    .submenu li a:hover {
+      background-color: #00e5ff;
+      color: #000000;
+    }
+    .submenu input[type="radio"] {
+      accent-color: #00e5ff;
+      cursor: pointer;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="sidebar">
+  <h2>📅 data analyst course </h2>
+
+<!-- WEEK 1 -->
+<div class="toggle-btn">WEEK 1 – Basics of Python Programming <i class="fa fa-chevron-down"></i></div>
+<ul class="submenu">
+  <li><input type="radio" name="daySelect"><a href="week-01/Day-001/Days-001.html" target="content-frame">DAY-01 (Fundamentals of Python)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-01/Day-001/Task-001.html" target="content-frame">TASKS-01 (Fundamentals of Python)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-01/Day-002/Days-002.html" target="content-frame">DAY-02 (Operators + If-Else + Loops)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-01/Day-002/Task-002.html" target="content-frame">TASKS-02 (Operators + If-Else + Loops)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-01/Day-003/Days-003.html" target="content-frame">DAY-03 (Python Strings + Problems on Strings)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-01/Day-003/Task-003.html" target="content-frame">TASKS-03 (Python Strings + Problems on Strings)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-01/Day-004/Days-004.html" target="content-frame">DAY-04 (Session on Time Complexity)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-01/Day-005/Days-005.html" target="content-frame">DAY-05 (Portfolio Website)</a></li>
+</ul>
+
+<!-- WEEK 2 -->
+<div class="toggle-btn">WEEK 2 – Python Data Types <i class="fa fa-chevron-down"></i></div>
+<ul class="submenu">
+  <li><input type="radio" name="daySelect"><a href="week-02/Day-006/Days-006.html" target="content-frame">DAY-06(Lists in Python)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-02/Day-006/Task-006.html" target="content-frame">TASKS-06(Lists in Python)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-02/Day-007/Days-007.html" target="content-frame">DAY-07(Tuples + Sets + Dictionary)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-02/Day-007/Task-007.html" target="content-frame">TASKS-07(Tuples + Sets + Dictionary)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-02/Day-008/Days-008.html" target="content-frame">DAY-08(Functions in Python)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-02/Day-008/Task-008.html" target="content-frame">TASKS-08(Functions in Python)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-02/Day-009/Days-009.html" target="content-frame">DAY-09(Array Interview Questions)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-02/Day-010/Days-010.html" target="content-frame">DAY-10(Interview Questions)</a></li>
+</ul>
+
+<!-- WEEK 3 -->
+<div class="toggle-btn">WEEK 3 – Object Oriented Programming (OOP) <i class="fa fa-chevron-down"></i></div>
+<ul class="submenu">
+  <li><input type="radio" name="daySelect"><a href="week-03/Day-011/Days-011.html" target="content-frame">DAY-11(OOP Part-1(Class & Object))</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-03/Day-011/Task-011.html" target="content-frame">TASKS-11(OOP Part-1(Class & Object))</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-03/Day-012/Days-012.html" target="content-frame">DAY-12(OOP Part-2(Encapsulation & Static Keyword))</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-03/Day-012/Task-012.html" target="content-frame">TASKS-12(OOP Part-2(Encapsulation & Static Keyword))</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-03/Day-013/Days-013.html" target="content-frame">DAY-13(OOP Part-3(Inheritance & Polymorphism))</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-03/Day-013/Task-013.html" target="content-frame">TASKS-13(OOP Part-3(Inheritance & Polymorphism))</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-03/Day-014/Days-014.html" target="content-frame">DAY-14 (OOP Part-3(Abstraction + OOP Project))</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-03/Day-015/Days-015.html" target="content-frame">DAY-15(Interview Questions)</a></li>
+</ul>
+
+<!-- WEEK 4 -->
+<div class="toggle-btn">WEEK 4 – Advanced Python <i class="fa fa-chevron-down"></i></div>
+<ul class="submenu">
+  <li><input type="radio" name="daySelect"><a href="week-04/Day-016/Days-016.html" target="content-frame">DAY-16(Interview Questions)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-04/Day-016/Task-016.html" target="content-frame">TASKS-16(Lists in Python)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-04/Day-017/Days-017.html" target="content-frame">DAY-17(Interview Questions)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-04/Day-017/Task-017.html" target="content-frame">TASKS-17(Lists in Python)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-04/Day-018/Days-018.html" target="content-frame">DAY-18(Interview Questions)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-04/Day-018/Task-018.html" target="content-frame">TASKS-18(Lists in Python)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-04/Day-019/Days-019.html" target="content-frame">DAY-19(Interview Questions)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-04/Day-019/Task-019.html" target="content-frame">TASKS-19(Lists in Python)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-04/Day-020/Days-020.html" target="content-frame">DAY-20(Interview Questions)</a></li>
+</ul>
+
+<!-- WEEK 5 -->
+<div class="toggle-btn">WEEK 5 – NumPy <i class="fa fa-chevron-down"></i></div>
+<ul class="submenu">
+  <li><input type="radio" name="daySelect"><a href="week-05/Day-021/Days-021.html" target="content-frame">DAY-21(NumPy Fundamentals)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-05/Day-021/Task-021.html" target="content-frame">TASKS-21(NumPy Fundamentals)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-05/Day-022/Days-022.html" target="content-frame">DAY-22(Advanced NumPy)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-05/Day-022/Task-022.html" target="content-frame">TASKS-22(Advanced NumPy)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-05/Day-023/Days-023.html" target="content-frame">DAY-23(NumPy Tricks)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-05/Day-023/Task-023.html" target="content-frame">TASKS-23(nterview Questions)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-05/Day-024/Days-024.html" target="content-frame">DAY-24(Interview Questions)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-05/Day-024/Task-024.html" target="content-frame">TASKS-24(Lists in Python)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-05/Day-025/Days-025.html" target="content-frame">DAY-25(Pandas Series)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-05/Day-025/Task-025.html" target="content-frame">TASKS-25(Pandas Series)</a></li>
+</ul>
+
+<!-- WEEK 6 -->
+<div class="toggle-btn">WEEK 6 – Addtional content <i class="fa fa-chevron-down"></i></div>
+<ul class="submenu">
+  <li><input type="radio" name="daySelect"><a href="week-06/Day-026/Days-026.html" target="content-frame">DAY-26(Pandas DataFrame)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-06/Day-027/Days-027.html" target="content-frame">DAY-27(Important DataFrame Methods)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-06/Day-028/Days-028.html" target="content-frame">DAY-28(GroupBy Object in Pandas)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-06/Day-029/Days-029.html" target="content-frame">DAY-29(Merging, Joining & Concatenating)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-06/Day-030/Days-030.html" target="content-frame">DAY-30(Interview Questions)</a></li>
+</ul>
+
+<!-- WEEK 7 -->
+<div class="toggle-btn">WEEK 7 –Pandas <i class="fa fa-chevron-down"></i></div>
+<ul class="submenu">
+  <li><input type="radio" name="daySelect"><a href="week-07/Day-031/Days-031.html" target="content-frame">DAY-31(Pandas DataFrame)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-07/Day-032/Days-032.html" target="content-frame">DAY-32(Pandas DataFrame)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-07/Day-032/Task-032.html" target="content-frame">TASKS-32(Pandas DataFrame)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-07/Day-033/Days-033.html" target="content-frame">DAY-33(Important DataFrame Methods)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-07/Day-033/Task-033.html" target="content-frame">TASKS-33(Important DataFrame Methods)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-07/Day-034/Days-034.html" target="content-frame">DAY-34(GroupBy Object in Pandas)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-07/Day-034/Task-034.html" target="content-frame">TASKS-34(GroupBy Object in Pandas)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-07/Day-035/Days-035.html" target="content-frame">DAY-35(Merging, Joining & Concatenating)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-07/Day-035/Task-035.html" target="content-frame">TASKS-35(Merging, Joining & Concatenating)</a></li>
+</ul>
+
+<!-- WEEK 8 -->
+<div class="toggle-btn">WEEK 8 – Advanced Pandas <i class="fa fa-chevron-down"></i></div>
+<ul class="submenu">
+  <li><input type="radio" name="daySelect"><a href="week-08/Day-036/Days-036.html" target="content-frame">DAY-36(MultiIndex Series & DataFrames)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-08/Day-036/Task-036.html" target="content-frame">TASKS-36(MultiIndex Series & DataFrames)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-08/Day-037/Days-037.html" target="content-frame">DAY-37(Vectorized String Ops, DateTime, Pivot Table)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-08/Day-037/Task-037.html" target="content-frame">TASKS-37(Vectorized String Ops, DateTime, Pivot Table)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-08/Day-038/Days-038.html" target="content-frame">DAY-38(Interview Questions)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-08/Day-039/Days-039.html" target="content-frame">DAY-39(Interview Questions)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-08/Day-040/Days-040.html" target="content-frame">DAY-40(Interview Questions)</a></li>
+</ul>
+
+<!-- WEEK 9 -->
+<div class="toggle-btn">WEEK 9 – Data Visualization <i class="fa fa-chevron-down"></i></div>
+<ul class="submenu">
+  <li><input type="radio" name="daySelect"><a href="week-09/Day-041/Days-041.html" target="content-frame">DAY-41(Plotting with Matplotlib)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-09/Day-041/Task-041.html" target="content-frame">TASKS-41(Plotting with Matplotlib)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-09/Day-042/Days-042.html" target="content-frame">DAY-42(Advanced Matplotlib)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-09/Day-043/Days-043.html" target="content-frame">DAY-43(Plotting with Seaborn)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-09/Day-043/Task-043.html" target="content-frame">TASKS-43(Plotting with Seaborn)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-09/Day-044/Days-044.html" target="content-frame">DAY-44(Advanced Seaborn)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-09/Day-044/Task-044.html" target="content-frame">TASKS-44(Advanced Seaborn)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-09/Day-045/Days-045.html" target="content-frame">DAY-45(Plotly)</a></li>
+</ul>
+
+<!-- WEEK 10 -->
+<div class="toggle-btn">WEEK 10 – Data Visualization Continued <i class="fa fa-chevron-down"></i></div>
+<ul class="submenu">
+  <li><input type="radio" name="daySelect"><a href="week-10/Day-046/Days-046.html" target="content-frame">DAY-46(Data Gathering & Analysis Process)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-10/Day-046/Task-046.html" target="content-frame">TASKS-46(Data Gathering & Analysis Process)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-10/Day-047/Days-047.html" target="content-frame">DAY-47(Data Assessing & Cleaning)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-10/Day-047/Task-047.html" target="content-frame">TASKS-47(Data Assessing & Cleaning)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-10/Day-048/Days-048.html" target="content-frame">DAY-48(Interview Questions)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-10/Day-048/Task-048.html" target="content-frame">TASKS-48(Lists in Python)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-10/Day-049/Days-049.html" target="content-frame">DAY-49(Interview Questions)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-10/Day-049/Task-049.html" target="content-frame">TASKS-49(Lists in Python)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-10/Day-050/Days-050.html" target="content-frame">DAY-50(Interview Questions)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-10/Day-050/Task-050.html" target="content-frame">TASKS-50(Lists in Python)</a></li>
+</ul>
+
+<!-- WEEK 11 -->
+<div class="toggle-btn">WEEK 11 – Data Analysis Process <i class="fa fa-chevron-down"></i></div>
+<ul class="submenu">
+  <li><input type="radio" name="daySelect"><a href="week-11/Day-051/Days-051.html" target="content-frame">DAY-51(Database Fundamentals)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-11/Day-051/Task-051.html" target="content-frame">TASKS-51(Quiz & Answers)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-11/Day-052/Days-052.html" target="content-frame">DAY-52(SQL DDL Commands)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-11/Day-052/Task-052.html" target="content-frame">TASKS-52(Quiz & Answers)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-11/Day-053/Days-053.html" target="content-frame">DAY-53(SQL DML Commands)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-11/Day-053/Task-053.html" target="content-frame">TASKS-53(Lists in Python)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-11/Day-054/Days-054.html" target="content-frame">DAY-54(SQL Grouping & Sorting)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-11/Day-054/Task-054.html" target="content-frame">TASKS-54(Lists in Python)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-11/Day-055/Days-055.html" target="content-frame">DAY-55(SQL Joins)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-11/Day-055/Task-055.html" target="content-frame">TASKS-55(Lists in Python)</a></li>
+</ul>
+
+<!-- WEEK 12 -->
+<div class="toggle-btn">WEEK 12 – Data Analysis Process Continued <i class="fa fa-chevron-down"></i></div>
+<ul class="submenu">
+  <li><input type="radio" name="daySelect"><a href="week-12/Day-056/Days-056.html" target="content-frame">DAY-56(Subqueries in SQL)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-12/Day-056/Task-056.html" target="content-frame">TASKS-56(Lists in Python)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-12/Day-057/Days-057.html" target="content-frame">DAY-57(Window Functions-1)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-12/Day-057/Task-057.html" target="content-frame">TASKS-57(Lists in Python)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-12/Day-058/Days-058.html" target="content-frame">DAY-58(Window Functions-2)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-12/Day-058/Task-058.html" target="content-frame">TASKS-58(Lists in Python)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-12/Day-059/Days-059.html" target="content-frame">DAY-59(Window Functions-3)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-12/Day-059/Task-059.html" target="content-frame">TASKS-59(Lists in Python)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-12/Day-060/Days-060.html" target="content-frame">DAY-60(Interview Questions)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-12/Day-060/Task-060.html" target="content-frame">TASKS-60(Lists in Python)</a></li>
+</ul>
+
+<!-- WEEK 13 -->
+<div class="toggle-btn">WEEK 13 – SQL Basics <i class="fa fa-chevron-down"></i></div>
+<ul class="submenu">
+  <li><input type="radio" name="daySelect"><a href="week-13/Day-061/Days-061.html" target="content-frame">DAY-61(Interview Questions)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-13/Day-061/Task-061.html" target="content-frame">TASKS-61(Lists in Python)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-13/Day-062/Days-062.html" target="content-frame">DAY-62(Interview Questions)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-13/Day-062/Task-062.html" target="content-frame">TASKS-62(Lists in Python)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-13/Day-063/Days-063.html" target="content-frame">DAY-63(Interview Questions)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-13/Day-063/Task-063.html" target="content-frame">TASKS-63(Lists in Python)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-13/Day-064/Days-064.html" target="content-frame">DAY-64(Interview Questions)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-13/Day-064/Task-064.html" target="content-frame">TASKS-64(Lists in Python)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-13/Day-065/Days-065.html" target="content-frame">DAY-65(Interview Questions)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-13/Day-065/Task-065.html" target="content-frame">TASKS-65(Lists in Python)</a></li>
+</ul>
+
+<!-- WEEK 14 -->
+<div class="toggle-btn">WEEK 14 – SQL Continued (Part 1) <i class="fa fa-chevron-down"></i></div>
+<ul class="submenu">
+  <li><input type="radio" name="daySelect"><a href="week-14/Day-066/Days-066.html" target="content-frame">DAY-66(Descriptive Statistics Part-1)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-14/Day-066/Task-066.html" target="content-frame">TASKS-66(Lists in Python)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-14/Day-067/Days-067.html" target="content-frame">DAY-67(Descriptive Statistics Part-2)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-14/Day-067/Task-067.html" target="content-frame">TASKS-67(Probability Distribution)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-14/Day-068/Days-068.html" target="content-frame">DAY-68(Probability Distribution)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-14/Day-068/Task-068.html" target="content-frame">TASKS-68(Normal Distribution)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-14/Day-069/Days-069.html" target="content-frame">DAY-69(Normal Distribution)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-14/Day-069/Task-069.html" target="content-frame">TASKS-69(Normal Distribution)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-14/Day-070/Days-070.html" target="content-frame">DAY-70(Non-Gaussian Probability Distributions)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-14/Day-070/Task-070.html" target="content-frame">TASKS-70(Non-Gaussian Probability Distributions)</a></li>
+</ul>
+
+<!-- WEEK 15 -->
+<div class="toggle-btn">WEEK 15 – SQL Continued (Part 2) <i class="fa fa-chevron-down"></i></div>
+<ul class="submenu">
+  <li><input type="radio" name="daySelect"><a href="week-15/Day-071/Days-071.html" target="content-frame">DAY-71(Central Limit Theorem)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-15/Day-071/Task-071.html" target="content-frame">TASKS-71(Central Limit Theorem)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-15/Day-072/Days-072.html" target="content-frame">DAY-72(Confidence Intervals)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-15/Day-072/Task-072.html" target="content-frame">TASKS-72(Confidence Intervals)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-15/Day-073/Days-073.html" target="content-frame">DAY-73(Hypothesis Testing Part-1)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-15/Day-073/Task-073.html" target="content-frame">TASKS-73(Hypothesis Testing Part-1)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-15/Day-074/Days-074.html" target="content-frame">DAY-74(Hypothesis Testing Part-2)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-15/Day-074/Task-074.html" target="content-frame">TASKS-74(Hypothesis Testing Part-2)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-15/Day-075/Days-075.html" target="content-frame">DAY-75(Hypothesis Testing Part-3)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-15/Day-075/Task-075.html" target="content-frame">TASKS-75(Hypothesis Testing Part-3)</a></li>
+</ul>
+
+<!-- WEEK 16 -->
+<div class="toggle-btn">WEEK 16 – Advanced SQL <i class="fa fa-chevron-down"></i></div>
+<ul class="submenu">
+  <li><input type="radio" name="daySelect"><a href="week-16/Day-076/Days-076.html" target="content-frame">DAY-76(Hypothesis Testing Part-4)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-16/Day-076/Task-076.html" target="content-frame">TASKS-76(Hypothesis Testing Part-4)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-16/Day-077/Days-077.html" target="content-frame">DAY-77(Interview Questions)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-16/Day-077/Task-077.html" target="content-frame">TASKS-77(Lists in Python)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-16/Day-078/Days-078.html" target="content-frame">DAY-78(Interview Questions)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-16/Day-078/Task-078.html" target="content-frame">TASKS-78(Lists in Python)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-16/Day-079/Days-079.html" target="content-frame">DAY-79(Interview Questions)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-16/Day-079/Task-079.html" target="content-frame">TASKS-79(Lists in Python)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-16/Day-080/Days-080.html" target="content-frame">DAY-80(Interview Questions)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-16/Day-080/Task-080.html" target="content-frame">TASKS-80(Lists in Python)</a></li>
+</ul>
+
+<!-- WEEK 17 -->
+<div class="toggle-btn">WEEK 17 – Descriptive Statistics <i class="fa fa-chevron-down"></i></div>
+<ul class="submenu">
+  <li><input type="radio" name="daySelect"><a href="week-17/Day-081/Days-081.html" target="content-frame">DAY-81(Interview Questions)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-17/Day-081/Task-081.html" target="content-frame">TASKS-81(Lists in Python)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-17/Day-082/Days-082.html" target="content-frame">DAY-82(Interview Questions)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-17/Day-082/Task-082.html" target="content-frame">TASKS-82(Lists in Python)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-17/Day-083/Days-083.html" target="content-frame">DAY-83(Interview Questions)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-17/Day-083/Task-083.html" target="content-frame">TASKS-83(Lists in Python)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-17/Day-084/Days-084.html" target="content-frame">DAY-84(Interview Questions)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-17/Day-084/Task-084.html" target="content-frame">TASKS-84(Lists in Python)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-17/Day-085/Days-085.html" target="content-frame">DAY-85(Interview Questions)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-17/Day-085/Task-085.html" target="content-frame">TASKS-85(Lists in Python)</a></li>
+</ul>
+
+<!-- WEEK 18 -->
+<div class="toggle-btn">WEEK 18 – Descriptive Statistics Continued <i class="fa fa-chevron-down"></i></div>
+<ul class="submenu">
+  <li><input type="radio" name="daySelect"><a href="week-18/Day-086/Days-086.html" target="content-frame">DAY-86(Interview Questions)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-18/Day-086/Task-086.html" target="content-frame">TASKS-86(Lists in Python)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-18/Day-087/Days-087.html" target="content-frame">DAY-87(Interview Questions)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-18/Day-087/Task-087.html" target="content-frame">TASKS-87(Lists in Python)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-18/Day-088/Days-088.html" target="content-frame">DAY-88(Interview Questions)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-18/Day-088/Task-088.html" target="content-frame">TASKS-88(Lists in Python)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-18/Day-089/Days-089.html" target="content-frame">DAY-89(Interview Questions)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-18/Day-089/Task-089.html" target="content-frame">TASKS-89(Lists in Python)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-18/Day-090/Days-090.html" target="content-frame">DAY-90(Interview Questions)</a></li>
+  <li><input type="radio" name="daySelect"><a href="week-18/Day-090/Task-090.html" target="content-frame">TASKS-90(Lists in Python)</a></li>
+</ul>
+
+<!-- WEEK 19 -->
+
+</div>
+
+<div class="content">
+  <iframe name="content-frame" src="welcome.html"></iframe>
+</div>
+
+<script>
+  // Expand/collapse toggle
+  document.querySelectorAll(".toggle-btn").forEach(button => {
+    button.addEventListener("click", () => {
+      const submenu = button.nextElementSibling;
+      submenu.style.display = submenu.style.display === "block" ? "none" : "block";
+    });
+  });
+
+  // Make clicks work both ways
+  document.querySelectorAll(".submenu li").forEach(li => {
+    const radio = li.querySelector("input[type='radio']");
+    const link = li.querySelector("a");
+
+    // Clicking the radio triggers the link
+    radio.addEventListener("click", () => {
+      link.click();
+    });
+
+    // Clicking the link checks the radio
+    link.addEventListener("click", () => {
+      radio.checked = true;
+    });
+  });
+</script>
+
+</body>
+</html>

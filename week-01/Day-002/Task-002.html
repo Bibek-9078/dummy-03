@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Python Tasks — Questions & Solutions (2)</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --card: #f8f9fa;
+      --muted: #555;
+      --accent: #007bff;
+      --glass: rgba(0, 0, 0, 0.03);
+    }
+    body {
+      margin: 0;
+      padding: 30px;
+      background-color: var(--bg);
+      font-family: Inter, ui-sans-serif, system-ui, Arial;
+      color: #000;
+    }
+    .wrap {
+      max-width: 980px;
+      margin: auto;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    header h1 {
+      font-size: 28px;
+      margin-bottom: 5px;
+    }
+    .task {
+      background: var(--card);
+      border-radius: 14px;
+      padding: 18px;
+      margin-bottom: 14px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.1);
+    }
+    .task h2 {
+      color: var(--accent);
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+    pre {
+      background: var(--glass);
+      padding: 12px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+    code {
+      font-family: ui-monospace, monospace;
+      font-size: 13px;
+    }
+    .output {
+      background: #f1f3f5;
+      border-radius: 8px;
+      padding: 10px;
+      margin-top: 8px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 6px;
+      color: white;
+      font-size: 16px;
+      text-decoration: none;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .prev { background-color: #2196F3; }
+    .prev:hover { background-color: #1976D2; }
+    .next { background-color: #4CAF50; }
+    .next:hover { background-color: #388E3C; }
+    .nav-buttons {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>Tasks — 02</h1>
+</header>
+
+<!-- 1 -->
+<div class="task">
+<h2>1. Monthly Salary Calculation after Deductions</h2>
+<pre><code>ctc = int(input('Enter your annual CTC: '))
+if ctc < 500000:
+    salary = ctc * 0.82
+elif ctc < 1000000:
+    salary = ctc * 0.72
+elif ctc < 2000000:
+    salary = ctc * 0.62
+else:
+    salary = ctc * 0.52
+print("You in hand monthly salary will be:", round(salary/12, 2))</code></pre>
+<div class="output">Enter: 1200000 → You in hand monthly salary will be: 82000.0</div>
+</div>
+
+<!-- 2 -->
+<div class="task">
+<h2>2. Check if Three Angles Form a Triangle</h2>
+<pre><code>first = int(input('Enter the 1st angle: '))
+second = int(input('Enter the 2nd angle: '))
+third = int(input('Enter the 3rd angle: '))
+
+if (first + second + third) == 180 and first > 0 and second > 0 and third > 0:
+    print('Forms a triangle')
+else:
+    print('Does not form a triangle')</code></pre>
+<div class="output">30, 180, 30 → Does not form a triangle</div>
+</div>
+
+<!-- 3 -->
+<div class="task">
+<h2>3. Profit or Loss Calculation</h2>
+<pre><code>cost_price = int(input('Enter cost price: '))
+selling_price = int(input('Enter selling price: '))
+
+if cost_price < selling_price:
+    print('Profit')
+elif cost_price > selling_price:
+    print('Loss')
+else:
+    print('No Loss No Gain')</code></pre>
+<div class="output">Cost: 6000, Selling: 12000 → Profit</div>
+</div>
+
+<!-- 4 -->
+<div class="task">
+<h2>4. Menu-driven Unit Converter</h2>
+<pre><code>menu = input("""
+Hi select an option
+1. cms to ft
+2. km to miles
+3. USD to INR
+4. Exit
+""")
+if menu == '1':
+    cm = float(input('Enter the cm value: '))
+    print('ft value is', 0.032 * cm)
+elif menu == '2':
+    km = float(input('Enter the km value: '))
+    print('miles value is', km * 0.62)
+elif menu == '3':
+    usd = float(input('Enter USD: '))
+    print('INR', usd * 80)
+else:
+    exit()</code></pre>
+</div>
+
+<!-- 5 -->
+<div class="task">
+<h2>5. Fibonacci Series (10 Terms)</h2>
+<pre><code>num1, num2 = 0, 1
+for i in range(10):
+    print(num1)
+    nxt = num1 + num2
+    num1, num2 = num2, nxt</code></pre>
+</div>
+
+<!-- 6 -->
+<div class="task">
+<h2>6. Factorial of a Number</h2>
+<pre><code>num = int(input('Enter the number: '))
+fact = 1
+for i in range(1, num + 1):
+    fact *= i
+print(fact)</code></pre>
+<div class="output">Enter: 5 → 120</div>
+</div>
+
+<!-- 7 -->
+<div class="task">
+<h2>7. Reverse a Given Number</h2>
+<pre><code>number = int(input('Enter the number: '))
+rev = 0
+while number > 0:
+    last = number % 10
+    rev = rev * 10 + last
+    number //= 10
+print(rev)</code></pre>
+</div>
+
+<!-- 8 -->
+<div class="task">
+<h2>8. Sum from 1 to N (skip multiples of 5, stop if sum ≥ 300)</h2>
+<pre><code>N = int(input('Enter the number: '))
+total = 0
+i = 1
+while i <= N:
+    if i % 5 == 0:
+        i += 1
+        continue
+    total += i
+    if total > 300:
+        total -= i
+        break
+    i += 1
+print(total)</code></pre>
+</div>
+
+<!-- 9 -->
+<div class="task">
+<h2>9. Accept Numbers Until Zero, Show Sum and Average</h2>
+<pre><code>total = 0
+count = 0
+while True:
+    num = int(input('Enter number: '))
+    if num == 0:
+        break
+    total += num
+    count += 1
+print('Sum:', total)
+print('Average:', total/count)</code></pre>
+</div>
+
+<!-- 10 -->
+<div class="task">
+<h2>10. Numbers Divisible by 7 but Not Multiple of 5 (2000-3200)</h2>
+<pre><code>L = []
+for i in range(2000, 3201):
+    if i % 7 == 0 and i % 5 != 0:
+        L.append(str(i))
+print(",".join(L))</code></pre>
+</div>
+
+<!-- 11 -->
+<div class="task">
+<h2>11. Numbers (1000–3000) All Digits Even</h2>
+<pre><code>L = []
+for i in range(1000, 3001):
+    flag = True
+    curr = i
+    while curr > 0:
+        if (curr % 10) % 2 != 0:
+            flag = False
+            break
+        curr //= 10
+    if flag:
+        L.append(str(i))
+print(",".join(L))</code></pre>
+</div>
+
+<!-- 12 -->
+<div class="task">
+<h2>12. Robot Movement from Origin</h2>
+<pre><code>pos = [0, 0]
+while True:
+    s = input('Enter the robot path: ')
+    if s == '!':
+        break
+    direction, steps = s.split()[0], int(s.split()[1])
+    if direction == 'UP':
+        pos[1] += steps
+    elif direction == 'DOWN':
+        pos[1] -= steps
+    elif direction == 'LEFT':
+        pos[0] -= steps
+    elif direction == 'RIGHT':
+        pos[0] += steps
+print('New Position:', pos)
+print((pos[0]**2 + pos[1]**2)**0.5)</code></pre>
+</div>
+
+<!-- 13 -->
+<div class="task">
+<h2>13. Prime Number Check</h2>
+<pre><code>num = int(input('Enter a number: '))
+if num <= 1:
+    print(num, "is not a prime number.")
+else:
+    is_prime = True
+    for i in range(2, int(num ** 0.5) + 1):
+        if num % i == 0:
+            is_prime = False
+            break
+    if is_prime:
+        print(num, "is a prime number.")
+    else:
+        print(num, "is not a prime number.")</code></pre>
+</div>
+
+<!-- 14 -->
+<div class="task">
+<h2>14. Armstrong Numbers in a Range</h2>
+<pre><code>start = int(input("Enter start: "))
+end = int(input("Enter end: "))
+for num in range(start, end + 1):
+    temp = num
+    s = 0
+    order = len(str(num))
+    while temp > 0:
+        digit = temp % 10
+        s += digit ** order
+        temp //= 10
+    if num == s:
+        print(num)</code></pre>
+</div>
+
+<!-- 15 -->
+<div class="task">
+<h2>15. Angle Between Hour and Minute Hands</h2>
+<pre><code>h = int(input('Enter hours hand: '))
+m = int(input('Enter minute hand: '))
+if (h < 0 or m < 0 or h > 12 or m > 60):
+    print('Wrong input')
+else:
+    m_angle = m * 6
+    h_angle = h * 30 + m * 0.5
+    angle = abs(h_angle - m_angle)
+    if angle > 180:
+        angle = 360 - angle
+    print(int(angle))</code></pre>
+</div>
+
+<!-- 16 -->
+<div class="task">
+<h2>16. Check if Two Rectangles Overlap</h2>
+<pre><code>l1_x, l1_y = map(int, input('Enter L1 coords: ').split())
+r1_x, r1_y = map(int, input('Enter R1 coords: ').split())
+l2_x, l2_y = map(int, input('Enter L2 coords: ').split())
+r2_x, r2_y = map(int, input('Enter R2 coords: ').split())
+
+if l1_x == r1_x or l1_y == r1_y or r2_x == l2_x or l2_y == r2_y:
+    print("Don't Overlap")
+elif l1_x > r2_x or l2_x > r1_x:
+    print("Don't Overlap")
+elif r1_y > l2_y or r2_y > l1_y:
+    print("Don't Overlap")
+else:
+    print("Overlap")</code></pre>
+<div class="output">Example: L1 1 1, R1 4 4, L2 2 2, R2 5 5 → Overlap</div>
+</div>
+
+</div>
+
+<div class="nav-buttons">
+  <a href="../Day-004/Tasks-01.html" class="btn prev">← Previous</a>
+  <a href="../Day-006/Tasks-03.html" class="btn next">Next →</a>
+</div>
+</body>
+</html>

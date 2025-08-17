@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Python Tasks — Questions & Solutions</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --card: #f8f9fa;
+      --muted: #555;
+      --accent: #007bff;
+      --glass: rgba(0, 0, 0, 0.03);
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background-color: var(--bg);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color: #000;
+      padding: 30px;
+    }
+
+    .wrap {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    header {
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 28px;
+      margin-bottom: 5px;
+    }
+
+    header p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .task {
+      background: var(--card);
+      border-radius: 14px;
+      padding: 18px;
+      margin-bottom: 14px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.1);
+    }
+
+    .task h2 {
+      color: var(--accent);
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    pre {
+      background: var(--glass);
+      padding: 12px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+
+    code {
+      font-family: ui-monospace, monospace;
+      font-size: 13px;
+    }
+
+    .output {
+      background: #f1f3f5;
+      border-radius: 8px;
+      padding: 10px;
+      margin-top: 8px;
+    }
+
+    /* Navigation Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 6px;
+      color: white;
+      font-size: 16px;
+      text-decoration: none;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .prev {
+      background-color: #2196F3;
+    }
+
+    .prev:hover {
+      background-color: #1976D2;
+    }
+
+    .next {
+      background-color: #4CAF50;
+    }
+
+    .next:hover {
+      background-color: #388E3C;
+    }
+
+    .nav-buttons {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Tasks-01</h1>
+    </header>
+
+    <div class="task">
+      <h2>1. Print formatted strings</h2>
+      <pre><code>print("Data", "Science", "Mentorship", "Program", sep='-', end='-started-')
+print("By", "CampusX", sep='-')</code></pre>
+      <div class="output">Data-Science-Mentorship-Program-started-By-CampusX</div>
+    </div>
+
+    <div class="task">
+      <h2>2. Celsius to Fahrenheit Conversion</h2>
+      <pre><code>celcius = float(input('Enter the temp in Celsius: '))
+faren = celcius * (9/5) + 32
+print(faren, 'F')</code></pre>
+      <div class="output">Enter the temp in Celsius: 43 → 109.4 F</div>
+    </div>
+
+    <div class="task">
+      <h2>3. Swap two numbers (without Python tricks)</h2>
+      <pre><code>a = int(input("Enter first number: "))
+b = int(input("Enter second number: "))
+temp = a
+a = b
+b = temp
+print('value of a:', a)
+print('value of b:', b)</code></pre>
+      <div class="output">Enter first: 5, second: 7 → value of a: 7, value of b: 5</div>
+    </div>
+
+    <div class="task">
+      <h2>4. Euclidean Distance between two points</h2>
+      <pre><code>p1x = int(input('Enter x coord of 1st point: '))
+p1y = int(input('Enter y coord of 1st point: '))
+p2x = int(input('Enter x coord of 2nd point: '))
+p2y = int(input('Enter y coord of 2nd point: '))
+distance = ((p2x - p1x)**2 + (p2y - p1y)**2)**0.5
+print('The distance between the points is:', round(distance, 2))</code></pre>
+      <div class="output">Points: (1,2), (4,6) → 5.0</div>
+    </div>
+
+    <div class="task">
+      <h2>5. Simple Interest Calculation</h2>
+      <pre><code>p = int(input('Enter amount: '))
+t = int(input('Enter time period: '))
+r = float(input('Enter rate: '))
+interest = (p * t * r) / 100
+print('The interest is:', interest)</code></pre>
+      <div class="output">Amount: 1000, Time: 2, Rate: 5 → The interest is: 100.0</div>
+    </div>
+
+    <div class="task">
+      <h2>6. Heads and Legs Problem</h2>
+      <pre><code>total_heads = int(input("Enter the number of heads: "))
+total_legs = int(input("Enter the number of legs: "))
+if total_legs < total_heads:
+    print("Invalid input!")
+else:
+    dogs = (total_legs - (2 * total_heads)) / 2
+    chickens = total_heads - dogs
+    print("Number of dogs in farm are:", dogs)
+    print("Number of chickens in farm are:", chickens)</code></pre>
+      <div class="output">Heads: 10, Legs: 28 → Dogs: 4.0, Chickens: 6.0</div>
+    </div>
+
+    <div class="task">
+      <h2>7. Sum of Squares of first n numbers</h2>
+      <pre><code>n = int(input("Enter the number: "))
+result = (n * (n+1) * (2*n+1)) / 6
+print(result)</code></pre>
+      <div class="output">Enter: 5 → 55.0</div>
+    </div>
+
+    <div class="task">
+      <h2>8. Find Nth term of Arithmetic Series</h2>
+      <pre><code>first_term = int(input('Enter 1st term: '))
+second_term = int(input('Enter 2nd term: '))
+n = int(input('Enter the value of n: '))
+d = second_term - first_term
+an = first_term + (n - 1) * d
+print(an)</code></pre>
+      <div class="output">First: 3, Second: 6, n: 5 → 15</div>
+    </div>
+
+    <div class="task">
+      <h2>9. Sum of Two Fractions</h2>
+      <pre><code>n1 = int(input('Enter the Num1: '))
+d1 = int(input('Enter the Den1: '))
+n2 = int(input('Enter the Num2: '))
+d2 = int(input('Enter the Den2: '))
+rn = n1 * d2 + n2 * d1
+rd = d1 * d2
+print(f'{rn}/{rd}')</code></pre>
+      <div class="output">13/17 + 22/211 → 47/77</div>
+    </div>
+
+    <div class="task">
+      <h2>10. Milk Tank to Glass Calculation</h2>
+      <pre><code>import math
+h_t = float(input('Enter the Height: '))
+b_t = float(input('Enter the Breadth: '))
+l_t = float(input('Enter the Length: '))
+h_g = float(input('The Height of glass: '))
+r_g = float(input('Radius of the glass: '))
+vol_tank = h_t * b_t * l_t
+vol_glass = 3.14 * r_g * r_g * h_g
+print('No of glasses:', math.floor(vol_tank / vol_glass))</code></pre>
+      <div class="output">Tank: 10x19x10, Glass: height 5, radius 2 → no of glasses: 30</div>
+    </div>
+  </div>
+
+  <div class="nav-buttons">
+    <a href="../Day-003/Days-003.html" class="btn prev">← Previous</a>
+    <a href="../Day-002/Days-002.html" class="btn next">Next →</a>
+  </div>
+</body>
+</html>

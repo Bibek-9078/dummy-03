@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Python Tutorial - Tuples, Sets, Dictionaries</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f4f6f8;
+        margin: 0;
+        padding: 20px;
+    }
+    h1, h2, h3 {
+        color: #333;
+    }
+    .section {
+        background: white;
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 25px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    pre {
+        background: #272822;
+        color: #f8f8f2;
+        padding: 10px;
+        border-radius: 5px;
+        overflow-x: auto;
+        font-size: 14px;
+    }
+    .output {
+        background: #e3f2fd;
+        padding: 10px;
+        border-left: 4px solid #2196F3;
+        margin-top: 10px;
+        white-space: pre-wrap;
+    }
+    ul {
+        margin-top: 0;
+    }
+</style>
+</head>
+<body>
+
+<h1>Python Tutorial - Tuples, Sets, and Dictionaries</h1>
+
+<!-- Tuples Section -->
+<div class="section">
+    <h2>Tuples in Python</h2>
+    <p>
+        A tuple is similar to a list, but it is immutable (unchangeable). Once created, you cannot modify its elements.
+    </p>
+    <h3>Characteristics:</h3>
+    <ul>
+        <li>Ordered</li>
+        <li>Unchangeable (immutable)</li>
+        <li>Allows duplicate elements</li>
+    </ul>
+
+    <h3>Creating Tuples</h3>
+<pre>
+# Empty tuple
+t1 = ()
+print(t1)  # Output: ()
+
+# Single-item tuple
+t2 = ('hello',)
+print(t2)  
+print(type(t2))  # &lt;class 'tuple'&gt;
+
+# Homogeneous tuple
+t3 = (1, 2, 3, 4)
+
+# Heterogeneous tuple
+t4 = (1, 2.5, True, [1,2,3])
+
+# Tuple with another tuple
+t5 = (1, 2, 3, (4, 5))
+
+# Tuple from a string
+t6 = tuple('hello')
+</pre>
+<div class="output">
+Output:<br>
+()<br>
+('hello',)<br>
+&lt;class 'tuple'&gt;<br>
+(1, 2, 3, 4)<br>
+(1, 2.5, True, [1, 2, 3])<br>
+(1, 2, 3, (4, 5))<br>
+('h', 'e', 'l', 'l', 'o')
+</div>
+
+    <h3>Accessing Items</h3>
+<pre>
+print(t3[0])      # 1
+print(t3[-1])     # 4
+print(t5[-1])  # 4
+</pre>
+
+    <h3>Editing Items</h3>
+<pre>
+t3 = 100  # Raises TypeError
+</pre>
+
+    <h3>Operations</h3>
+<pre>
+t1 = (1, 2, 3, 4)
+t2 = (5, 6, 7, 8)
+
+print(t1 + t2)  # Concatenation
+print(t1 * 3)   # Repetition
+print(1 in t1)  # Membership
+</pre>
+
+    <h3>Functions</h3>
+<pre>
+t = (1, 2, 3, 4)
+len(t)        # 4
+sum(t)        # 10
+min(t)        # 1
+max(t)        # 4
+sorted(t)     # [1, 2, 3, 4]
+</pre>
+
+    <h3>Difference between Lists & Tuples</h3>
+    <ul>
+        <li>Lists are mutable, tuples are immutable</li>
+        <li>Tuples are faster</li>
+        <li>Tuples use less memory</li>
+        <li>Lists have more built-in methods</li>
+    </ul>
+</div>
+
+<!-- Sets Section -->
+<div class="section">
+    <h2>Sets in Python</h2>
+    <p>
+        A set is an unordered collection of unique, immutable elements. The set itself is mutable.
+    </p>
+    <h3>Characteristics:</h3>
+    <ul>
+        <li>Unordered</li>
+        <li>Mutable</li>
+        <li>No duplicates allowed</li>
+    </ul>
+
+<h3>Creating Sets</h3>
+<pre>
+s = set()
+s1 = {1, 2, 3}
+s3 = {1, 'hello', 4.5, (1,2,3)} # Mixed data types
+s4 = set([1,2,3])                # From list
+s5 = {1,1,2,2,3,3}               # Duplicates removed
+</pre>
+
+    <h3>Set Operations</h3>
+<pre>
+s1 = {1,2,3,4,5}
+s2 = {4,5,6,7,8}
+
+s1 | s2   # Union
+s1 & s2   # Intersection
+s1 - s2   # Difference
+s1 ^ s2   # Symmetric difference
+</pre>
+</div>
+
+<!-- Frozenset Section -->
+<div class="section">
+    <h2>Frozenset</h2>
+    <p>
+        A frozenset is an immutable version of a set. It supports all read-only operations but no addition/removal.
+    </p>
+<pre>
+fs1 = frozenset([1,2,3])
+fs2 = frozenset([3,4,5])
+fs1 | fs2  # Union
+</pre>
+</div>
+
+<!-- Dictionaries Section -->
+<div class="section">
+    <h2>Dictionaries in Python</h2>
+    <p>
+        A dictionary stores key-value pairs. Keys are unique and immutable.
+    </p>
+    <h3>Creating Dictionaries</h3>
+<pre>
+# Empty dictionary
+d = {}
+
+# 1D dictionary
+d1 = {'name':'nitish','gender':'male'}
+
+# Mixed keys
+d2 = {(1,2,3):1, 'hello':'world'}
+
+# Nested dictionary
+s = {
+  'name':'nitish',
+  'college':'bit',
+  'subjects':{
+     'dsa':50,
+     'maths':67
+  }
+}
+</pre>
+
+    <h3>Accessing Items</h3>
+<pre>
+my_dict = {'name': 'Jack', 'age': 26}
+my_dict['age']
+my_dict.get('age')
+s['subjects']['maths']
+</pre>
+
+    <h3>Adding & Updating</h3>
+<pre>
+d1['age'] = 30
+s['subjects']['ds'] = 75
+</pre>
+
+    <h3>Removing Items</h3>
+<pre>
+d1.pop('age')
+d1.clear()
+del s['subjects']['maths']
+</pre>
+
+    <h3>Dictionary Functions</h3>
+<pre>
+len(d1)
+sorted(d1)
+d1.items()
+d1.keys()
+d1.values()
+</pre>
+</div>
+
+</body>
+</html>

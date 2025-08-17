@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi-Square Distribution</title>
+    <style>
+        .hypothesis-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .main-title {
+            text-align: center;
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 30px;
+            color: #2c3e50;
+            border-bottom: 3px solid #e74c3c;
+            padding-bottom: 15px;
+        }
+        
+        .section-title {
+            font-size: 1.8em;
+            font-weight: bold;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: #c0392b;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .subsection-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: #e74c3c;
+        }
+        
+        .properties-section {
+            background-color: #fdf2e9;
+            padding: 20px;
+            margin: 25px 0;
+            border: 1px solid #f39c12;
+            border-radius: 8px;
+        }
+        
+        .properties-section h3 {
+            color: #d35400;
+            margin-top: 0;
+            font-size: 1.4em;
+        }
+        
+        .test-types {
+            background-color: #eaf2f8;
+            padding: 20px;
+            margin: 25px 0;
+            border: 1px solid #3498db;
+            border-radius: 8px;
+        }
+        
+        .test-types h3 {
+            color: #2980b9;
+            margin-top: 0;
+            font-size: 1.4em;
+        }
+        
+        .steps-section {
+            background-color: #f4f6f7;
+            padding: 20px;
+            margin: 25px 0;
+            border-left: 4px solid #34495e;
+            border-radius: 8px;
+        }
+        
+        .steps-section h3 {
+            color: #2c3e50;
+            margin-top: 0;
+            font-size: 1.4em;
+        }
+        
+        .assumptions-section {
+            background-color: #fff5f5;
+            padding: 20px;
+            margin: 25px 0;
+            border: 1px solid #e74c3c;
+            border-radius: 8px;
+        }
+        
+        .assumptions-section h3 {
+            color: #c0392b;
+            margin-top: 0;
+            font-size: 1.4em;
+        }
+        
+        .example-box {
+            background-color: #f0f8ff;
+            padding: 20px;
+            margin: 20px 0;
+            border: 2px solid #4169e1;
+            border-radius: 8px;
+        }
+        
+        .example-title {
+            font-weight: bold;
+            color: #4169e1;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+        }
+        
+        .solution-section {
+            background-color: #f9f9f9;
+            padding: 15px;
+            margin: 15px 0;
+            border-left: 4px solid #ff6b6b;
+            border-radius: 5px;
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background-color: #fff;
+        }
+        
+        .data-table th, .data-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+        
+        .data-table th {
+            background-color: #3498db;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .data-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .formula-calculation {
+            background-color: #f1f2f6;
+            padding: 15px;
+            margin: 15px 0;
+            text-align: center;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            border: 1px solid #ddd;
+        }
+        
+        .hypothesis-statement {
+            background-color: #e8f5e8;
+            padding: 15px;
+            margin: 15px 0;
+            border-left: 4px solid #27ae60;
+            border-radius: 5px;
+        }
+        
+        .ml-applications {
+            background-color: #e8f5e8;
+            padding: 20px;
+            margin: 25px 0;
+            border: 1px solid #27ae60;
+            border-radius: 8px;
+        }
+        
+        .ml-applications h3 {
+            color: #27ae60;
+            margin-top: 0;
+            font-size: 1.4em;
+        }
+        
+        .independence-section {
+            background-color: #faf5ff;
+            padding: 20px;
+            margin: 25px 0;
+            border: 1px solid #9b59b6;
+            border-radius: 8px;
+        }
+        
+        .independence-section h3 {
+            color: #8e44ad;
+            margin-top: 0;
+            font-size: 1.4em;
+        }
+        
+        ul, ol {
+            padding-left: 25px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .intro-text {
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            text-align: justify;
+        }
+        
+        .highlight-box {
+            background-color: #fff3cd;
+            padding: 15px;
+            margin: 15px 0;
+            border-left: 4px solid #ffc107;
+            border-radius: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            .hypothesis-content {
+                padding: 15px;
+            }
+            
+            .main-title {
+                font-size: 2em;
+            }
+            
+            .section-title {
+                font-size: 1.5em;
+            }
+            
+            .data-table {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hypothesis-content">
+        <h1 class="main-title">CHI-SQUARE DISTRIBUTION</h1>
+        
+        <p class="intro-text">The Chi-Square distribution, also written as χ² distribution, is a continuous probability distribution that is widely used in statistical hypothesis testing, particularly in the context of goodness-of-fit tests and tests for independence in contingency tables. It arises when the sum of the squares of independent standard normal random variables follows this distribution.</p>
+
+        <p>The Chi-Square distribution has a single parameter, the degrees of freedom (df), which influences the shape and spread of the distribution. The degrees of freedom are typically associated with the number of independent variables or constraints in a statistical problem.</p>
+            
+            <div class="formula-calculation">
+                X² = z² (the degree of freedom is 1)<br>
+                X² = z₁² + z₂² + z₃² + z₄² + z₅² + z₆² + ........... + zₙ²
+            </div>
+        
+        <div class="highlight-box">
+            <p><strong>Goodness of fit test →</strong> One categorical column is required</p>
+            <p><strong>Test for Independence →</strong> Two categorical column is required</p>
+        </div>
+        
+        <div class="properties-section">
+            <h3>Some key properties of the Chi-Square distribution are:</h3>
+            <ol type="a">
+                <li>It is a continuous distribution, defined for non-negative values.</li>
+                <li>It is positively skewed, with the degree of skewness decreasing as the degrees of freedom increase.</li>
+                <li>The mean of the Chi-Square distribution is equal to its degrees of freedom, and its variance is equal to twice the degrees of freedom.</li>
+                <li>As the degrees of freedom increase, the Chi-Square distribution approaches the normal distribution in shape.</li>
+            </ol>
+        </div>
+        
+        <p>The Chi-Square distribution is used in various statistical tests, such as the Chi-Square goodness-of-fit test, which evaluates whether an observed frequency distribution fits an expected theoretical distribution, and the Chi-Square test for independence, which checks the association between categorical variables in a contingency table.</p>
+        
+        <h2 class="section-title">Chi-Square test</h2>
+        
+        <p>The Chi-Square test is a statistical hypothesis test used to determine if there is a significant association between categorical variables or if an observed distribution of categorical data differs from an expected theoretical distribution. It is based on the Chi-Square (χ²) distribution, and it is commonly applied in two main scenarios:</p>
+        
+        <div class="test-types">
+            <h3>Main Applications:</h3>
+            <ol>
+                <li><strong>Chi-Square Goodness-of-Fit Test:</strong> This test is used to determine if the observed distribution of a single categorical variable matches an expected theoretical distribution. It is often applied to check if the data follows a specific probability distribution, such as the uniform or binomial distribution.</li>
+                <li><strong>Chi-Square Test for Independence (Chi-Square Test for Association):</strong> This test is used to determine whether there is a significant association between two categorical variables in a sample.</li>
+            </ol>
+        </div>
+        
+        <h2 class="section-title">GOODNESS-OF-FIT</h2>
+        
+        <p>The Chi-Square Goodness-of-Fit test is a statistical hypothesis test used to determine if the observed distribution of a single categorical variable matches an expected theoretical distribution. It helps to evaluate whether the data follows a specific probability distribution, such as uniform, binomial, or Poisson distribution, among others. This test is particularly useful when you want to assess if the sample data is consistent with an assumed distribution or if there are significant deviations from the expected pattern.</p>
+        
+        <div class="steps-section">
+            <h3>STEPS</h3>
+            <p>The Chi-Square Goodness-of-Fit test involves the following steps:</p>
+            <ol>
+                <li><strong>Define the null hypothesis (H₀) and the alternative hypothesis (H₁):</strong><br>
+                    H₀: The observed data follows the expected theoretical distribution.<br>
+                    Hₐ: The observed data does not follow the expected theoretical distribution.</li>
+                <li>Calculate the expected frequencies for each category based on the theoretical distribution and the sample size.</li>
+                <li>Compute the Chi-Square test statistic (χ²) by comparing the observed and expected frequencies.</li>
+                <li>Determine the degrees of freedom (df), which is typically the number of categories minus one (df = k - 1), where k is the number of categories.</li>
+                <li>Calculate the p-value for the test statistic using the Chi-Square distribution with the calculated degrees of freedom.</li>
+                <li>Compare the test statistic to the critical value or the p-value</li>
+            </ol>
+        </div>
+        
+        <div class="formula-calculation">
+            <p><strong>Test Statistic Formula:</strong></p>
+            <p>X² = Σ [(Oᵢ - Eᵢ)² / Eᵢ]</p>
+            <p>where Oᵢ is the observed frequency in category i, Eᵢ is the expected frequency in category i, and the summation is taken over all categories.</p>
+        </div>
+        
+        <div class="assumptions-section">
+            <h3>Assumptions</h3>
+            <ol>
+                <li><strong>Independence:</strong> The observations in the sample must be independent of each other. This means that the outcome of one observation should not influence the outcome of another observation.</li>
+                <li><strong>Categorical data:</strong> The variable being analyzed must be categorical, not continuous or ordinal. The data should be divided into mutually exclusive and exhaustive categories.</li>
+                <li><strong>Expected frequency:</strong> Each category should have an expected frequency of at least 5. This guideline helps ensure that the Chi-Square distribution is a reasonable approximation for the distribution of the test statistic. Having small expected frequencies can lead to an inaccurate estimation of the Chi-Square distribution, potentially increasing the likelihood of a Type I error (incorrectly rejecting the null hypothesis) or a Type II error (incorrectly failing to reject the null hypothesis).</li>
+                <li><strong>Fixed distribution:</strong> The theoretical distribution being compared to the observed data should be specified before the test is conducted. It is essential to avoid choosing a distribution based on the observed data, as doing so can lead to biased results.</li>
+            </ol>
+        </div>
+        
+        <div class="highlight-box">
+            <p>The Chi-Square Goodness-of-Fit test is a <strong>non-parametric test</strong>. Non-parametric tests do not assume that the data comes from a specific probability distribution or make any assumptions about population parameters like the mean or standard deviation.</p>
+            <p>In the Chi-Square Goodness-of-Fit test, we compare the observed frequencies of the categorical data to the expected frequencies based on a hypothesized distribution. The test doesn't rely on any assumptions about the underlying distribution's parameters. Instead, it focuses on comparing observed counts to expected counts, making it a non-parametric test.</p>
+        </div>
+        
+        <div class="example-box">
+            <div class="example-title">Example 1:</div>
+            <p>Suppose we have a six-sided fair die, and we want to test if the die is indeed fair. We roll the die 60 times and record the number of times each side comes up. We'll use the Chi-Square Goodness-of-Fit test to determine if the observed frequencies are consistent with a fair die (i.e., a uniform distribution of the sides).</p>
+            
+            <p><strong>Observed frequencies:</strong></p>
+            <table class="data-table">
+                <tr>
+                    <th>Side 1</th>
+                    <th>Side 2</th>
+                    <th>Side 3</th>
+                    <th>Side 4</th>
+                    <th>Side 5</th>
+                    <th>Side 6</th>
+                </tr>
+                <tr>
+                    <td>12 times</td>
+                    <td>8 times</td>
+                    <td>11 times</td>
+                    <td>9 times</td>
+                    <td>10 times</td>
+                    <td>10 times</td>
+                </tr>
+            </table>
+            
+            <div class="solution-section">
+                <strong>Solution</strong>
+                
+                <div class="hypothesis-statement">
+                    H₀: Dice is fair<br>
+                    Hₐ: Dice is not fair
+                </div>
+                
+                <table class="data-table">
+                    <tr>
+                        <th>DICE</th>
+                        <th>Side 1</th>
+                        <th>Side 2</th>
+                        <th>Side 3</th>
+                        <th>Side 4</th>
+                        <th>Side 5</th>
+                        <th>Side 6</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Observation</strong></td>
+                        <td>12</td>
+                        <td>8</td>
+                        <td>11</td>
+                        <td>9</td>
+                        <td>10</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Expected</strong></td>
+                        <td>10</td>
+                        <td>10</td>
+                        <td>10</td>
+                        <td>10</td>
+                        <td>10</td>
+                        <td>10</td>
+                    </tr>
+                </table>
+                
+                <div class="formula-calculation">
+                    <p>According to the chi-square test:</p>
+                    <p>X² = [(12-10)²/10] + [(8-10)²/10] + [(11-10)²/10] + [(9-10)²/10] + [(10-10)²/10] + [(10-10)²/10]</p>
+                    <p>X² = (4+4+1+1+0+0)/10 = 10/10 = 1</p>
+                    <p>Degree of freedom = n-1 = 6-1 = 5</p>
+                    <p><strong>Conclusion:</strong> The dice is fair</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="example-box">
+            <div class="example-title">Example 2:</div>
+            <p>Suppose a marketing team at a retail company wants to understand the distribution of visits to their website by day of the week. They have a hypothesis that visits are uniformly distributed across all days of the week, meaning they expect an equal number of visits on each day. They collected data on website visits for four weeks and wanted to test if the observed distribution matched the expected uniform distribution.</p>
+            
+            <p><strong>Observed frequencies (number of website visits per day of the week for four weeks):</strong></p>
+            <table class="data-table">
+                <tr>
+                    <th>DAYS</th>
+                    <th>Monday</th>
+                    <th>Tuesday</th>
+                    <th>Wednesday</th>
+                    <th>Thursday</th>
+                    <th>Friday</th>
+                    <th>Saturday</th>
+                    <th>Sunday</th>
+                </tr>
+                <tr>
+                    <td><strong>Observed</strong></td>
+                    <td>420</td>
+                    <td>380</td>
+                    <td>410</td>
+                    <td>400</td>
+                    <td>410</td>
+                    <td>430</td>
+                    <td>390</td>
+                </tr>
+            </table>
+            
+            <div class="solution-section">
+                <strong>Solution</strong>
+                
+                <table class="data-table">
+                    <tr>
+                        <th>DAYS</th>
+                        <th>Monday</th>
+                        <th>Tuesday</th>
+                        <th>Wednesday</th>
+                        <th>Thursday</th>
+                        <th>Friday</th>
+                        <th>Saturday</th>
+                        <th>Sunday</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Observed</strong></td>
+                        <td>420</td>
+                        <td>380</td>
+                        <td>410</td>
+                        <td>400</td>
+                        <td>410</td>
+                        <td>430</td>
+                        <td>390</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Expected</strong></td>
+                        <td>405</td>
+                        <td>405</td>
+                        <td>405</td>
+                        <td>405</td>
+                        <td>405</td>
+                        <td>405</td>
+                        <td>405</td>
+                    </tr>
+                </table>
+                
+                <div class="hypothesis-statement">
+                    H₀: Website visitor follows the uniform distribution<br>
+                    Hₐ: Website visitor does not follow the uniform distribution
+                </div>
+                
+                <div class="formula-calculation">
+                    <p>E = (420+380+410+400+410+430+390)/7 = 405</p>
+                    <p>According to chi-square test:</p>
+                    <p>X² = [(420-405)²/405] + [(380-405)²/405] + [(410-405)²/405] + [(400-405)²/405] + [(410-405)²/405] + [(430-405)²/405] + [(390-405)²/405]</p>
+                    <p>X² = 3425/405 = 8.45</p>
+                    <p>Degree of freedom = N-1 = 7-1 = 6</p>
+                    <p><strong>Conclusion:</strong> Reject the null hypothesis. Website visitor does not follow the uniform distribution</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="example-box">
+            <div class="example-title">Example 3:</div>
+            <p>A survey of 800 families in a village with 4 children each revealed the following distribution:</p>
+            <p><strong>Question:</strong> Is this data consistent with the result that male and female births are equally probable?</p>
+        </div>
+        
+        <h2 class="section-title">Test for Independence</h2>
+        
+        <div class="independence-section">
+            <p>The Chi-Square test for independence, also known as the Chi-Square test for association, is a statistical test used to determine whether there is a significant association between two categorical variables in a sample. It helps to identify if the occurrence of one variable is dependent on the occurrence of the other variable, or if they are independent of each other.</p>
+            <p>The test is based on comparing the observed frequencies in a contingency table (a table that displays the frequency distribution of the variables) with the frequencies that would be expected under the assumption of independence between the two variables.</p>
+        </div>
+        
+        <div class="steps-section">
+            <h3>Steps</h3>
+            <ol>
+                <li><strong>State the null hypothesis (H₀) and alternative hypothesis (H₁):</strong><br>
+                    H₀: There is no association between the two categorical variables (they are independent).<br>
+                    H₁: There is an association between the two categorical variables (they are dependent).</li>
+                <li>Create a contingency table with the observed frequencies for each combination of the categories of the two variables.</li>
+                <li>Calculate the expected frequencies for each cell in the contingency table assuming that the null hypothesis is true (i.e., the variables are independent).</li>
+                <li>Compute the Chi-Square test statistic: χ² = Σ [(Oᵢⱼ - Eᵢⱼ)² / Eᵢⱼ] where Oᵢⱼ is the observed frequency in each cell and Eᵢⱼ is the expected frequency.</li>
+                <li>Determine the degrees of freedom: df = (number of rows - 1) * (number of columns - 1)</li>
+                <li>Obtain the critical value or p-value using the Chi-Square distribution table or a statistical software/calculator with the given degrees of freedom and significance level (commonly α = 0.05).</li>
+                <li>Compare the test statistic to the critical value or the p-value to the significance level to decide whether to reject or fail to reject the null hypothesis. If the test statistic is greater than the critical value, or if the p-value is less than the significance level, we reject the null hypothesis and conclude that there is a significant association between the two variables.</li>
+            </ol>
+        </div>
+        
+        <div class="assumptions-section">
+            <h3>Assumptions</h3>
+            <ol>
+                <li><strong>Independence of observations:</strong> The observations in the sample should be independent of each other. This means that the occurrence of one observation should not affect the occurrence of another observation. In practice, this usually implies that the data should be collected using a simple random sampling method.</li>
+                <li><strong>Categorical variables:</strong> Both variables being tested must be categorical, either ordinal or nominal. The Chi-Square test for independence is not appropriate for continuous variables.</li>
+                <li><strong>Adequate sample size:</strong> The sample size should be large enough to ensure that the expected frequency for each cell in the contingency table is sufficient. A common rule of thumb is that the expected frequency for each cell should be at least 5. If some cells have expected frequencies less than 5, the test may not be valid, and other methods like Fisher's exact test may be more appropriate.</li>
+                <li><strong>Fixed marginal totals:</strong> The marginal totals (the row and column sums of the contingency table) should be fixed before the data is collected. This is because the Chi-Square test for independence assesses the association between the two variables under the assumption that the marginal totals are fixed and not influenced by the relationship between the variables.</li>
+            </ol>
+        </div>
+        
+        <div class="example-box">
+            <div class="example-title">Example 1:</div>
+            <p>A researcher wants to investigate if there is an association between the level of education (categorical variable) and the preference for a particular type of exercise (categorical variable) among a group of 150 individuals. The researcher collects data and creates the following contingency table:</p>
+            
+            <table class="data-table">
+                <tr>
+                    <th>EDUCATION</th>
+                    <th>YOGA</th>
+                    <th>RUNNING</th>
+                    <th>SWIMMING</th>
+                    <th>TOTAL</th>
+                </tr>
+                <tr>
+                    <td><strong>HIGH SCHOOL</strong></td>
+                    <td>15</td>
+                    <td>20</td>
+                    <td>10</td>
+                    <td>45</td>
+                </tr>
+                <tr>
+                    <td><strong>BACHELOR'S</strong></td>
+                    <td>20</td>
+                    <td>30</td>
+                    <td>15</td>
+                    <td>65</td>
+                </tr>
+                <tr>
+                    <td><strong>MASTER'S OR PHD</strong></td>
+                    <td>5</td>
+                    <td>15</td>
+                    <td>20</td>
+                    <td>40</td>
+                </tr>
+                <tr>
+                    <td><strong>TOTAL</strong></td>
+                    <td>40</td>
+                    <td>65</td>
+                    <td>45</td>
+                    <td>150</td>
+                </tr>
+            </table>
+            
+            <p><strong>Expected Frequencies:</strong></p>
+            <table class="data-table">
+                <tr>
+                    <th>EDUCATION</th>
+                    <th>YOGA</th>
+                    <th>RUNNING</th>
+                    <th>SWIMMING</th>
+                    <th>TOTAL</th>
+                </tr>
+                <tr>
+                    <td><strong>HIGH SCHOOL</strong></td>
+                    <td>(40*45)/150=12</td>
+                    <td>(65*45)/150=19.5</td>
+                    <td>(45*45)/150=13.5</td>
+                    <td>45</td>
+                </tr>
+                <tr>
+                    <td><strong>BACHELOR'S</strong></td>
+                    <td>(40*65)/150=17.33</td>
+                    <td>(65*65)/150=28.16</td>
+                    <td>(45*65)/150=19.5</td>
+                    <td>65</td>
+                </tr>
+                <tr>
+                    <td><strong>MASTER'S OR PHD</strong></td>
+                    <td>(40*40)/150=10.67</td>
+                    <td>(65*40)/150=17.33</td>
+                    <td>(45*40)/150=12</td>
+                    <td>40</td>
+                </tr>
+                <tr>
+                    <td><strong>TOTAL</strong></td>
+                    <td>40</td>
+                    <td>65</td>
+                    <td>45</td>
+                    <td>150</td>
+                </tr>
+            </table>
+        </div>
+        
+        <h2 class="section-title">APPLICATION IN MACHINE LEARNING</h2>
+        
+        <div class="ml-applications">
+            <ol>
+                <li><strong>Feature selection:</strong> The chi-square test can be used as a filter-based feature selection method to rank and select the most relevant categorical features in a dataset. By measuring the association between each categorical feature and the target variable, you can eliminate irrelevant or redundant features, which can help improve the performance and efficiency of machine learning models.</li>
+                
+                <li><strong>Evaluation of classification models:</strong> For multi-class classification problems, the Chi-Square test can be used to compare the observed and expected class frequencies in the confusion matrix. This can help assess the goodness of fit of the classification model, indicating how well the model's predictions align with the actual class distributions.</li>
+                
+                <li><strong>Analysing relationships between categorical features:</strong> In exploratory data analysis, the Chi-Square test for independence can be applied to identify relationships between pairs of categorical features. Understanding these relationships can help inform feature engineering and provide insights into the underlying structure of the data.</li>
+                
+                <li><strong>Discretization of continuous variables:</strong> When converting continuous variables into categorical variables (binning), the Chi-Square test can be used to determine the optimal number of bins or intervals that best represent the relationship between the continuous variable and the target variable.</li>
+                
+                <li><strong>Variable selection in decision trees:</strong> Some decision tree algorithms, such as the CHAID (Chi-squared Automatic Interaction Detection) algorithm, use the Chi-Square test to determine the most significant splitting variables at each node in the tree. This helps construct more effective and interpretable decision trees.</li>
+            </ol>
+        </div>
+    </div>
+</body>
+</html>

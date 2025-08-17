@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Time Complexity Notes</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background-color: #f4f7fa;
+        color: #333;
+        line-height: 1.6;
+    }
+    header {
+        background: #2b6cb0;
+        color: white;
+        padding: 20px;
+        text-align: center;
+    }
+    section {
+        background: white;
+        margin: 20px auto;
+        padding: 20px;
+        width: 90%;
+        max-width: 1000px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    h2 {
+        color: #2b6cb0;
+        border-left: 5px solid #3182ce;
+        padding-left: 10px;
+    }
+    ul, ol {
+        margin-left: 25px;
+    }
+    code {
+        background: #edf2f7;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-family: monospace;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+    }
+    th, td {
+        border: 1px solid #ccc;
+        padding: 8px;
+        text-align: center;
+    }
+    th {
+        background: #2b6cb0;
+        color: white;
+    }
+    tr:nth-child(even) {
+        background: #f8fafc;
+    }
+    .code-block {
+        background-color: #1e293b;
+        color: #f8fafc;
+        padding: 10px;
+        border-radius: 6px;
+        overflow-x: auto;
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Time Complexity & Order of Growth</h1>
+</header>
+
+<section>
+    <h2>Techniques to Measure Time Efficiency</h2>
+    <ol>
+        <li>Measuring time to execute</li>
+        <li>Counting operations involved</li>
+        <li>Abstract notation of order of growth</li>
+    </ol>
+</section>
+
+<section>
+    <h2>A. Measuring time to execute — Problems</h2>
+    <ul>
+        <li>✅ Different times for different algorithms</li>
+        <li>❌ Time varies if implementation changes</li>
+        <li>❌ Different machines, different time</li>
+        <li>❌ Not effective for very small inputs</li>
+        <li>❌ Time varies for different inputs & no clear relationship</li>
+    </ul>
+</section>
+
+<section>
+    <h2>B. Counting operations — Problems</h2>
+    <ul>
+        <li>✅ Different times for different algorithms</li>
+        <li>❌ Time varies if implementation changes</li>
+        <li>✅ Different machines, different time</li>
+        <li>❌ Not effective for very small inputs</li>
+        <li>✅ Time varies for different inputs without a clear relationship</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Goals of Orders of Growth</h2>
+    <ul>
+        <li>Evaluate efficiency for large inputs</li>
+        <li>Express run time growth as input size grows</li>
+        <li>Put a tight upper bound on growth</li>
+        <li>Focus on dominant factors</li>
+        <li>Usually worst-case analysis</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Example: Searching Function</h2>
+    <div class="code-block">
+        def search_for_elmt(L, e):<br>
+        &nbsp;&nbsp;for i in L:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;if i == e:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return True<br>
+        &nbsp;&nbsp;return False
+    </div>
+    <ul>
+        <li>Best case: element found first → O(1)</li>
+        <li>Worst case: element not in list → O(n)</li>
+        <li>Average case: very close to O(n/2) ≈ O(n)</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Exact Steps vs O()</h2>
+    <div class="code-block">
+        def fact_iter(n):<br>
+        &nbsp;&nbsp;answer = 1<br>
+        &nbsp;&nbsp;while n > 1:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;answer *= n<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;n -= 1<br>
+        &nbsp;&nbsp;return answer
+    </div>
+    <p>Number of steps: <code>1 + 5n + 1</code> → O(n)</p>
+    <p>Remove additive & multiplicative constants when calculating complexity.</p>
+</section>
+
+<section>
+    <h2>Simplifying Examples</h2>
+    <ul>
+        <li>n² + 2n + 2 → O(n²)</li>
+        <li>n² + 100000n + 31000 → O(n²)</li>
+        <li>log(n) + n + 4 → O(n)</li>
+        <li>0.001n log n + 300n → O(n log n)</li>
+        <li>2n³⁰ + 3n → O(n³⁰)</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Types of Order of Growth</h2>
+    <ul>
+        <li>O(1) — Constant</li>
+        <li>O(n) — Linear (Searching)</li>
+        <li>O(n²) — Quadratic (Nested loops)</li>
+        <li>O(log n) — Logarithmic (Binary search)</li>
+        <li>O(n log n) — Sorting algorithms</li>
+        <li>O(2ⁿ) — Exponential</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Law of Addition</h2>
+    <p>If we have sequential statements:</p>
+    <p>O(f(n)) + O(g(n)) = O(max(f(n), g(n)))</p>
+    <p>Example: O(n) + O(n²) = O(n²)</p>
+</section>
+
+<section>
+    <h2>Comparison Table</h2>
+    <table>
+        <tr>
+            <th>n</th>
+            <th>O(1)</th>
+            <th>O(log n)</th>
+            <th>O(n)</th>
+            <th>O(n log n)</th>
+            <th>O(n²)</th>
+        </tr>
+        <tr>
+            <td>10</td><td>1</td><td>1</td><td>10</td><td>10</td><td>100</td>
+        </tr>
+        <tr>
+            <td>100</td><td>1</td><td>2</td><td>100</td><td>200</td><td>10,000</td>
+        </tr>
+        <tr>
+            <td>1000</td><td>1</td><td>3</td><td>1000</td><td>3000</td><td>1,000,000</td>
+        </tr>
+        <tr>
+            <td>1,000,000</td><td>1</td><td>6</td><td>1,000,000</td><td>6,000,000</td><td>1,000,000,000,000</td>
+        </tr>
+    </table>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>DAY-03: Python Lists Fundamentals</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f5f6fa;
+    color: #222c39;
+    padding: 35px 5vw 40px 5vw;
+    line-height: 1.7;
+    max-width: 1000px;
+    margin: auto;
+  }
+  h1 {
+    color: #2155CD;
+    text-align: center;
+    letter-spacing: 1px;
+    margin-bottom: 42px;
+    font-size: 2.3em;
+  }
+  h2 {
+    color: #2c3e50;
+    margin-top: 36px;
+    font-size: 1.45em;
+    border-left: 5px solid #0AA1DD;
+    padding-left: 15px;
+    margin-bottom: 18px;
+  }
+  h3 {
+    color: #1256CC;
+    margin-top: 32px;
+    margin-bottom: 7px;
+    font-size: 1.15em;
+  }
+  ul {
+    margin-bottom: 16px;
+  }
+  li {
+    margin-bottom: 6px;
+  }
+  pre, code {
+    font-family: "Fira Mono", Consolas, monospace;
+    background: #eff4fb;
+    color: #24344D;
+    padding: 11px;
+    border-radius: 4px;
+    font-size: 1em;
+    line-height: 1.9;
+  }
+  pre {
+    border-left: 4px solid #0AA1DD;
+    margin-bottom: 14px;
+    margin-top: 0;
+    overflow-x: auto;
+    box-sizing: border-box;
+  }
+  .samp-box {
+    margin-bottom: 18px;
+    background: #e6ffe6;
+    color: #125E28;
+    font-family: "Fira Mono", Consolas, monospace;
+    padding: 11px;
+    border-left: 4px solid #38B000;
+    border-radius: 4px;
+    font-size: 1em;
+    white-space: pre-wrap;
+  }
+  table {
+    border-collapse: collapse;
+    margin-bottom: 28px;
+    width: 100%;
+    background: #f8fbff;
+    font-size: 1em;
+  }
+  th, td {
+    border: 1px solid #c0d3eb;
+    padding: 9px 11px;
+    text-align: left;
+  }
+  th {
+    background-color: #eaf3fb;
+    color: #2c3e50;
+    font-weight: bold;
+  }
+  tr:nth-child(even) td {
+    background: #f4f8fd;
+  }
+  .code-output {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-bottom: 27px;
+  }
+  .code-box, .output-box {
+    flex: 1 1 355px;
+    min-width: 280px;
+    box-sizing: border-box;
+    margin-bottom: 0;
+  }
+  .code-box pre, .output-box .samp-box {
+    margin-bottom: 0;
+  }
+  @media (max-width: 900px) {
+    .code-output {
+      flex-direction: column;
+      gap: 13px;
+    }
+  }
+  blockquote {
+    border-left: 4px solid #0AA1DD;
+    background: #f3fafc;
+    padding: 9px 18px;
+    color: #2d445d;
+    font-style: italic;
+    margin: 12px 0;
+  }
+  /* Bold style for output results inside code */
+  .output-bold {
+    font-weight: bold;
+    color: #125E28;
+  }
+</style>
+</head>
+<body>
+
+<h1>DAY-03: Python Lists Fundamentals</h1>
+
+<section>
+  <h2>What is a list?</h2>
+  <p>A <strong>list</strong> is a data type where you can store multiple items under one name. More technically, lists act like dynamic arrays, which means you can add more items on the fly.</p>
+</section>
+
+<section>
+  <h2>Difference Between Lists and Arrays</h2>
+  <table>
+    <tr><th>Arrays</th><th>Lists</th></tr>
+    <tr><td>Arrays have a fixed size set during creation.</td><td>Lists are dynamic and can change in size during runtime.</td></tr>
+    <tr><td>All elements in an array must be of the same data type.</td><td>Lists can accommodate elements of different data types.</td></tr>
+    <tr><td>Memory for the entire array is allocated at once during initialization.</td><td>Lists dynamically allocate memory as elements are added or removed.</td></tr>
+    <tr><td>Arrays provide constant-time access to elements through indexing.</td><td>Lists may have slightly variable access time due to dynamic resizing.</td></tr>
+    <tr><td>Arrays are less flexible as their size cannot be easily changed.</td><td>Lists are more flexible, allowing easy addition or removal of elements.</td></tr>
+    <tr><td>May lead to memory wastage if size is larger than necessary.</td><td>More memory-efficient due to dynamic allocation.</td></tr>
+    <tr><td>Common in languages like C/C++.</td><td>Native to Python and suited for most use-cases.</td></tr>
+  </table>
+</section>
+
+<section>
+  <h2>Array vs List (Memory Addresses)</h2>
+  <pre><code>L = [1, 2, 3]
+print(id(L))     # Memory address of the list object L
+print(id(L[0]))  # Memory address of integer 1 in the list
+print(id(L[1]))  # Memory address of integer 2 in the list
+print(id(L[2]))  # Memory address of integer 3 in the list
+print(id(1))     # Memory address of integer 1
+print(id(2))     # Memory address of integer 2
+print(id(3))     # Memory address of integer 3
+</code></pre>
+</section>
+
+<section>
+  <h2>How Lists Are Stored in Memory</h2>
+  <ul>
+    <li>Ordered</li>
+    <li>Changeable / Mutable</li>
+    <li>Heterogeneous</li>
+    <li>Can have duplicates</li>
+    <li>Are dynamic</li>
+    <li>Can be nested</li>
+    <li>Items can be accessed individually</li>
+    <li>Can contain any kind of Python object</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Creating a List</h2>
+  <pre><code>empty_list = []  # Empty List
+print(<span class="output-bold">empty_list</span>)  # Output: <span class="output-bold">[]</span>
+
+homogeneous_list = [1, 2, 3, 4, 5]  # 1D Homogeneous List
+print(<span class="output-bold">homogeneous_list</span>)  # Output: <span class="output-bold">[1, 2, 3, 4, 5]</span>
+
+nested_list = [1, 2, 3, [4, 5]]  # 2D List (Nested List)
+print(<span class="output-bold">nested_list</span>)  # Output: <span class="output-bold">[1, 2, 3, [4, 5]]</span>
+
+three_d_list = [[[1, 2], [3, 4]], [[5, 6], [7, 8]]]  # 3D List
+print(<span class="output-bold">three_d_list</span>)  # Output: <span class="output-bold">[[[1, 2], [3, 4]], [[5, 6], [7, 8]]]</span>
+
+heterogeneous_list = [1, True, 5.6, 5+6j, 'Hello']  # Heterogeneous List
+print(<span class="output-bold">heterogeneous_list</span>)  # Output: <span class="output-bold">[1, True, 5.6, (5+6j), 'Hello']</span>
+
+string_list = list('hello')  # From string
+print(<span class="output-bold">string_list</span>)  # Output: <span class="output-bold">['h', 'e', 'l', 'l', 'o']</span></code></pre>
+</section>
+
+<section>
+  <h2>Adding Items to a List</h2>
+  <pre><code>L = [1, 2, 3, 4, 5]
+L.append(True)
+print(L)  # Output: <span class="output-bold">[1, 2, 3, 4, 5, True]</span>
+
+L = [1, 2, 3, 4, 5]
+L.append([6, 7, 8])
+print(L)  # Output: <span class="output-bold">[1, 2, 3, 4, 5, [6, 7, 8]]</span>
+
+L = [1, 2, 3, 4, 5]
+L.extend([6, 7, 8])
+print(L)  # Output: <span class="output-bold">[1, 2, 3, 4, 5, 6, 7, 8]</span>
+
+L = [1, 2, 3, 4, 5]
+L.extend('delhi')
+print(L)  # Output: <span class="output-bold">[1, 2, 3, 4, 5, 'd', 'e', 'l', 'h', 'i']</span>
+
+L = [1, 2, 3, 4, 5]
+L.insert(1, 100)
+print(L)  # Output: <span class="output-bold">[1, 100, 2, 3, 4, 5]</span></code></pre>
+</section>
+
+<section>
+  <h2>Deleting Items from a List</h2>
+  <pre><code>L = [1, 2, 3, 4, 5]
+L.remove(5)
+print(L)  # Output: <span class="output-bold">[1, 2, 3, 4]</span>
+
+L = [1, 2, 3, 4, 5]
+L.pop()
+print(L)  # Output: <span class="output-bold">[1, 2, 3, 4]</span>
+
+L = [1, 2, 3, 4, 5]
+L.clear()
+print(L)  # Output: <span class="output-bold">[]</span>
+
+L = [1, 2, 3, 4, 5]
+del L[-1]
+print(L)  # Output: <span class="output-bold">[1, 2, 3, 4]</span>
+
+L = [1, 2, 3, 4, 5]
+del L[1:3]
+print(L)  # Output: <span class="output-bold">[1, 4, 5]</span></code></pre>
+</section>
+
+<section>
+  <h2>Operations on Lists</h2>
+  <pre><code># Concatenation
+list1 = [1, 2, 3]
+list2 = [4, 5, 6]
+added_list = list1 + list2
+print("Addition of lists:", <span class="output-bold">added_list</span>)
+
+# Subtraction
+list1 = [1, 2, 3, 4, 5]
+list2 = [2, 4]
+subtracted_list = [item for item in list1 if item not in list2]
+print("Subtraction of lists:", <span class="output-bold">subtracted_list</span>)
+
+# Repetition
+list1 = [1, 2]
+mult_list = list1 * 3
+print(<span class="output-bold">mult_list</span>)
+
+L1 = [1, 2, 3, 4, 5]
+L2 = [1, 2, 3, 4, [5, 6]]
+print(<span class="output-bold">5 not in L1</span>)
+print(<span class="output-bold">[5, 6] in L2</span>)
+
+L = [1, 2, 3, 1]
+L1 = [3, 2, 1]
+print(<span class="output-bold">L == L1</span>)
+</code></pre>
+</section>
+
+<section>
+  <h2>Common List Functions</h2>
+  <pre><code>L = [2, 1, 5, 7, 0]
+print("Length of L:", <span class="output-bold">len(L)</span>)
+print("Minimum value in L:", <span class="output-bold">min(L)</span>)
+print("Maximum value in L:", <span class="output-bold">max(L)</span>)
+print("desc order:", <span class="output-bold">sorted(L, reverse=True)</span>)
+
+L = [1, 2, 1, 3, 4, 1, 5]
+print("Count of 5 in L:", <span class="output-bold">L.count(5)</span>)
+
+L = [1, 2, 1, 3, 4, 1, 5]
+print(<span class="output-bold">L.index(1)</span>)
+
+L = [2, 1, 5, 7, 0]
+L.reverse()
+print("Reversed L:", <span class="output-bold">L</span>)
+</code></pre>
+</section>
+
+<section>
+  <h2>sort() vs sorted()</h2>
+  <pre><code>L = [2, 1, 5, 7, 0]
+print("Original L:", L)
+print(<span class="output-bold">sorted(L)</span>)             # Output: <span class="output-bold">[0, 1, 2, 5, 7]</span>
+print("L after sorted():", L)
+L.sort()
+print("L after sort():", <span class="output-bold">L</span>)  # Output: <span class="output-bold">[0, 1, 2, 5, 7]</span>
+</code></pre>
+</section>
+
+<section>
+  <h2>Copy the List (Shallow Copy)</h2>
+  <pre><code>print("Shallow copy of the list:")
+L = [2, 1, 5, 7, 0]
+print("Original L:", L)
+print("ID of original L:", id(L))
+L1 = L.copy()
+print("Copied L1:", <span class="output-bold">L1</span>)
+print("ID of copied L1:", id(L1))
+</code></pre>
+</section>
+
+<section>
+  <h2>List Comprehension Examples</h2>
+  <pre><code># Add 1 to 10 numbers to a list (loop & comprehension)
+L = []
+for i in range(1,11):
+  L.append(i)
+print(<span class="output-bold">L</span>)
+L = [i for i in range(1,11)]
+print(<span class="output-bold">L</span>)
+
+# Scalar multiplication on a vector
+v = [2,3,4]
+s = -3
+print(<span class="output-bold">[s*i for i in v]</span>)
+
+# Add squares
+L = [1,2,3,4,5]
+print(<span class="output-bold">[i**2 for i in L]</span>)
+
+# Print all numbers divisible by 5 in the range of 1 to 50
+print(<span class="output-bold">[i for i in range(1,51) if i%5 == 0]</span>)
+
+# Languages starting with 'p'
+languages = ['java','python','php','c','javascript']
+print(<span class="output-bold">[language for language in languages if language.startswith('p')]</span>)
+
+# Nested if
+basket = ['apple','guava','cherry','banana']
+my_fruits = ['apple','kiwi','grapes','banana']
+print(<span class="output-bold">[fruit for fruit in my_fruits if fruit in basket if fruit.startswith('a')]</span>)
+
+# (3,3) matrix (nested comprehension)
+print(<span class="output-bold">[[i*j for i in range(1,4)] for j in range(1,4)]</span>)
+
+# Cartesian products
+L1 = [1,2,3,4]
+L2 = [5,6,7,8]
+print(<span class="output-bold">[i*j for i in L1 for j in L2]</span>)
+</code></pre>
+</section>
+
+<section>
+  <h2>Loops on Lists</h2>
+  <pre><code># Itemwise
+L = [1,2,3,4]
+for i in L:
+  print(<span class="output-bold">i</span>)
+
+# Indexwise
+L = [1,2,3,4]
+for i in range(len(L)):
+  print(<span class="output-bold">L[i]</span>)
+</code></pre>
+</section>
+
+<section>
+  <h2>zip()</h2>
+  <p><code>zip()</code> pairs items from multiple iterables into tuples; stops at the shortest input.</p>
+  <pre><code>L1 = [1,2,3,4]
+L2 = [-1,-2,-3,-4]
+print(<span class="output-bold">list(zip(L1,L2))</span>)
+print(<span class="output-bold">[i+j for i,j in zip(L1,L2)]</span>)
+
+L = [1,2,print,type,input]
+print(<span class="output-bold">L</span>)
+</code></pre>
+</section>
+
+<section>
+  <h2>Disadvantages of Python Lists</h2>
+  <ul>
+    <li>Slow (compared to arrays for large data)</li>
+    <li>Can consume more memory</li>
+    <li>Risky usage if not careful (mutable)</li>
+  </ul>
+  <pre><code>a = [1,2,3]
+b = a.copy()
+print(<span class="output-bold">a</span>)
+print(<span class="output-bold">b</span>)
+a.append(4)
+print(<span class="output-bold">a</span>)
+print(<span class="output-bold">b</span>)
+# lists are mutable
+</code></pre>
+</section>
+
+<section>
+  <h2>Common List Programs</h2>
+  <pre><code># 1. Odd and even separation
+L = [1, 2, 3, 4, 5, 6]
+odd_numbers = [x for x in L if x % 2 != 0]
+even_numbers = [x for x in L if x % 2 == 0]
+print("Odd numbers:", <span class="output-bold">odd_numbers</span>)
+print("Even numbers:", <span class="output-bold">even_numbers</span>)
+
+# 2. Input list from user
+input_str = input("Enter a list of numbers (e.g., [1, 2, 3]): ")
+user_list = eval(input_str)
+print("User list:", <span class="output-bold">user_list</span>)
+
+# 3. Merge two lists without '+'
+L1 = [1,2,3,4]
+L2 = [5,6,7,8]
+L1.extend(L2)
+print(<span class="output-bold">L1</span>)
+
+# 4. Replace all 3s with 300
+L = [1, 2, 3, 4, 5, 3]
+old_item = 3
+new_item = 300
+L = [new_item if x == old_item else x for x in L]
+print("Updated list:", <span class="output-bold">L</span>)
+
+# 5. Flatten a 2D list
+def flatten_2d_list(lst):
+    return [item for sublist in lst for item in sublist]
+two_d_list = [[1, 2, 3], [4, 5], [6]]
+one_d_list = flatten_2d_list(two_d_list)
+print(<span class="output-bold">one_d_list</span>)
+
+# 6. Remove duplicates from a list
+def remove_duplicates(lst):
+    seen = set()
+    result = []
+    for item in lst:
+        if item not in seen:
+            result.append(item)
+            seen.add(item)
+    return result
+L = [1, 2, 1, 2, 3, 4, 5, 3, 4]
+L_no_duplicates = remove_duplicates(L)
+print(<span class="output-bold">L_no_duplicates</span>)
+
+# 7. Check if a list is in ascending order
+def is_ascending(lst):
+    return all(lst[i] <= lst[i + 1] for i in range(len(lst) - 1))
+L1 = [1, 2, 3, 4, 5]
+L2 = [1, 3, 2, 4, 5]
+print(<span class="output-bold">is_ascending(L1)</span>)
+print(<span class="output-bold">is_ascending(L2)</span>)
+</code></pre>
+</section>
+
+</body>
+</html>

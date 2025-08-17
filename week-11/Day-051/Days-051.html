@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Database Notes</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      padding: 30px;
+      line-height: 1.6;
+      color: #222;
+    }
+    h1, h2, h3 {
+      color: #2c3e50;
+    }
+    ul {
+      margin-left: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      background: #fff;
+    }
+    th, td {
+      border: 1px solid #999;
+      padding: 10px;
+      text-align: center;
+    }
+    th {
+      background-color: #eee;
+    }
+    code {
+      background-color: #e8e8e8;
+      padding: 2px 4px;
+      border-radius: 4px;
+    }
+    section {
+      background: white;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Database Fundamentals</h1>
+
+  <section>
+    <h2>1. WHAT ARE DATABASES</h2>
+    <p>A Database is a shared collection of logically related data and a description of these data, designed to meet the information needs of an organization</p>
+    <ul>
+      <li><strong>Data Storage:</strong> A database is used to store large amounts of structured data, making it easily accessible, searchable, and retrievable.</li>
+      <li><strong>Data Analysis:</strong> A database can be used to perform complex data analysis, generate reports, and provide insights into the data.</li>
+      <li><strong>Record Keeping:</strong> A database is often used to keep track of important records, such as financial transactions, customer information, and inventory levels.</li>
+      <li><strong>Web Applications:</strong> Databases are an essential component of many web applications, providing dynamic content and user management.</li>
+    </ul>
+
+    <h3>C.R.U.D.E in SQL</h3>
+    <p>It is an extension of the CRUD operations, which stand for:</p>
+    <ul>
+      <li><strong>C - Create →</strong> INSERT INTO (Add new records)</li>
+      <li><strong>R - Read →</strong> SELECT (Retrieve data)</li>
+      <li><strong>U - Update →</strong> UPDATE (Modify existing records)</li>
+      <li><strong>D - Delete →</strong> DELETE (Remove records)</li>
+      <li><strong>Execute →</strong> Running queries, stored procedures, or transactions.</li>
+      <li><strong>Export →</strong> Extracting data from the database (e.g., SELECT INTO, exporting CSV files, etc.)</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>2. PROPERTIES OF AN IDEAL DATABASE</h2>
+    <ul>
+      <li><strong>Integrity:</strong> Ensures accuracy, consistency, and reliability of data.
+        <ul>
+          <li>Enforced using constraints (e.g., PRIMARY KEY, FOREIGN KEY, CHECK).</li>
+          <li>Supports ACID properties (Atomicity, Consistency, Isolation, Durability).</li>
+        </ul>
+      </li>
+      <li><strong>Availability:</strong> Ensures data is accessible whenever needed, even during failures.
+        <ul>
+          <li>Achieved through replication, clustering, and failover mechanisms.</li>
+          <li>High availability databases minimize downtime.</li>
+        </ul>
+      </li>
+      <li><strong>Security:</strong> Protects data from unauthorized access, breaches, and corruption.
+        <ul>
+          <li>Implements authentication (user roles, passwords) and authorization (permissions, access controls).</li>
+          <li>Uses encryption, firewalls, and auditing mechanisms.</li>
+        </ul>
+      </li>
+      <li><strong>Independent of Application:</strong> 
+        <ul>
+          <li>The database should be decoupled from specific applications.</li>
+          <li>Supports multiple platforms and programming languages.</li>
+          <li>Allows changes in the database structure without affecting applications (schema evolution).</li>
+        </ul>
+      </li>
+      <li><strong>Concurrency:</strong> Allows multiple users to access and modify data simultaneously.
+        <ul>
+          <li>Uses locking mechanisms (pessimistic & optimistic locking) to prevent conflicts.</li>
+          <li>Ensures data consistency through transaction management and isolation levels.</li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>3. TYPES OF DATABASES</h2>
+    <ul>
+      <li><strong>Relational Databases:</strong> Use a relational model to organize data into tables with rows and columns.</li>
+      <li><strong>NoSQL Databases:</strong> Designed to handle large amounts of unstructured or semi-structured data. (MongoDB)</li>
+      <li><strong>Column Databases:</strong> Store data in columns rather than rows. (Amazon Redshift, Google Big Query)</li>
+      <li><strong>Graph Databases:</strong> Store and query graph-structured data. (Neo4j, Amazon Neptune)</li>
+      <li><strong>Key-value Databases:</strong> Store data as key-value pairs. (Redis, Amazon DynamoDB)</li>
+    </ul>
+    <p><strong>Which one should you use?</strong></p>
+    <p>Relational Databases: Also known as SQL databases, these databases use a relational model to organize data into tables with rows and columns.</p>
+  </section>
+
+  <section>
+    <h2>4. WHAT IS A DBMS</h2>
+    <p>A database management system (DBMS) is a software system that provides the interfaces and tools needed to store, organize, and manage data in a database. A DBMS acts as an intermediary between the database and the applications or users that access the data stored in the database.</p>
+  </section>
+
+  <section>
+    <h2>6. DATABASE KEYS</h2>
+    <p>A key in a database is an attribute or a set of attributes that uniquely identifies a tuple (row) in a table. Keys play a crucial role in ensuring the integrity and reliability of a database by enforcing unique constraints on the data and establishing relationships between tables.</p>
+    <ul>
+      <li><strong>Super Key:</strong> A Super key is a combination of columns that uniquely identifies any row within a relational database management system (RDBMS) table</li>
+      <li><strong>Candidate Key:</strong> A candidate key is a minimal Super key, meaning it has no redundant attributes.</li>
+      <li><strong>Primary Key:</strong> A primary key is a unique identifier for each tuple in a table. It cannot contain null values.</li>
+      <li><strong>Alternate Key:</strong> A candidate key that is not used as the primary key.</li>
+      <li><strong>Composite Key:</strong> A primary key made up of two or more attributes.</li>
+      <li><strong>Surrogate Key:</strong> [Definition missing in provided text]</li>
+      <li><strong>Foreign Key:</strong> A primary key from one table used to establish a relationship with another table.</li>
+    </ul>
+
+    <h3>Sample Table</h3>
+    <table>
+      <tr>
+        <th>Roll number</th>
+        <th>Name</th>
+        <th>Branch</th>
+        <th>Email</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>Nitish Singh</td>
+        <td>CSE</td>
+        <td>nitish@gmail.com</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Ankit Sharma</td>
+        <td>EEE</td>
+        <td>ankit@gmail.com</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Neha Verma</td>
+        <td>ME</td>
+        <td>neha@gmail.com</td>
+      </tr>
+    </table>
+
+    <table>
+      <tr>
+        <th>Key Combination</th>
+        <th>Super</th>
+        <th>Candidate</th>
+        <th>Primary</th>
+        <th>Alternative</th>
+        <th>Composite</th>
+        <th>Foreign</th>
+      </tr>
+      <tr><td>Email</td><td>✔</td><td>✔</td><td></td><td>✔</td><td></td><td></td></tr>
+      <tr><td>Roll no + email</td><td>✔</td><td></td><td></td><td></td><td>✔</td><td></td></tr>
+      <tr><td>Roll no + branch</td><td>✔</td><td></td><td></td><td></td><td>✔</td><td></td></tr>
+      <tr><td>Name + branch + email</td><td>✔</td><td></td><td></td><td></td><td>✔</td><td></td></tr>
+      <tr><td>Roll number + branch + name</td><td>✔</td><td></td><td></td><td></td><td>✔</td><td></td></tr>
+      <tr><td>Roll number + branch + name + email</td><td>✔</td><td></td><td></td><td></td><td>✔</td><td></td></tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>7. CARDINALITY OF RELATIONSHIPS</h2>
+    <p>Cardinality in database relationships refers to the number of occurrences of an entity in a relationship with another entity. Cardinality defines the number of instances of one entity that can be associated with a single instance of the related entity.</p>
+  </section>
+
+  <section>
+    <h2>8. DRAWBACKS OF DATABASES</h2>
+    <ul>
+      <li><strong>Complexity:</strong> Setting up and maintaining a database is complex and time-consuming</li>
+      <li><strong>Cost:</strong> High expenses are involved in database setup and maintenance, including hardware, software</li>
+      <li><strong>Scalability:</strong> Managing large and growing databases can lead to performance and scalability.</li>
+      <li><strong>Data Integrity:</strong> Ensuring accurate and consistent data is difficult, especially with multiple users updating it simultaneously.</li>
+      <li><strong>Security:</strong> Protecting databases from unauthorized access and cyber threats is a major challenge.</li>
+      <li><strong>Data Migration:</strong> Transferring or upgrading databases is often a complex and time-consuming process.</li>
+      <li><strong>Flexibility:</strong> Rigid database structures make adapting to new requirements or data types difficult.</li>
+    </ul>
+  </section>
+
+</body>
+</html>

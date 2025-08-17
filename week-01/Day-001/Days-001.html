@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DAY-01: Fundamentals of Python</title>
+
+  <style>
+    /* Reset margins */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* General styles */
+    body {
+      font-family: Arial, sans-serif;
+      background: #fdfdfd;
+      line-height: 1.6;
+      color: #2c3e50;
+      overflow-x: hidden; /* prevent horizontal scroll */
+    }
+
+    /* Center content with clean spacing */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 30px 20px;
+    }
+
+    h1, h2 {
+      color: #2c3e50;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    section {
+      margin-bottom: 40px;
+    }
+
+    /* Input/Output pair styling */
+    .pair {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 10px;
+      gap: 20px;
+    }
+
+    .input, .output {
+      padding: 10px;
+      white-space: pre-wrap;
+      border-radius: 5px;
+      flex: 1;
+      overflow-wrap: break-word;
+    }
+
+    .input {
+      background-color: #eef;
+      font-weight: bold;
+      border-left: 4px solid #007acc;
+    }
+
+    .output {
+      background-color: #f8f8f8;
+      font-style: italic;
+      color: #555;
+      border-left: 4px solid #aaa;
+    }
+
+    /* Responsive layout */
+    @media screen and (max-width: 768px) {
+      .pair {
+        flex-direction: column;
+      }
+    }
+
+    /* Navigation buttons */
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 40px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 6px;
+      color: white;
+      font-size: 16px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .prev {
+      background-color: #2196F3;
+    }
+    .prev:hover {
+      background-color: #1976D2;
+    }
+
+    .next {
+      background-color: #4CAF50;
+    }
+    .next:hover {
+      background-color: #388E3C;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>DAY-01: Python Fundamentals</h1>
+
+    <!-- 1. Input and Output -->
+    <section>
+      <h2><center>1. Input and Output</center></h2>
+      <p>
+        <strong>PYTHON INPUT : </strong> Python wants to take input from the user.<br>
+        <strong>PYTHON OUTPUT : </strong> We use the Print () Function to allow this output data to be sent to the Standard output device.
+      </p>
+
+      <h2>Notes</h2>
+      <ul>
+        <li>After all the values are printed, <code>end</code> is printed. If not specified, it defaults to a new line.</li>
+        <li>The <code>file</code> parameter is the object where the values are printed, and its default value is <code>sys.stdout</code> (screen).</li>
+        <li><b>Python is a case-sensitive language.</b></li>
+      </ul>
+
+      <div class="pair"><div class="input">print("Hello world")</div><div class="output">Hello world</div></div>
+      <div class="pair"><div class="input">print("bibek")</div><div class="output">bibek</div></div>
+      <div class="pair"><div class="input">print("1st program in python")</div><div class="output">1st program in python</div></div>
+      <div class="pair"><div class="input">print("india", "odisha", "ganjam")</div><div class="output">india odisha ganjam</div></div>
+      <div class="pair"><div class="input">print("india", "odisha", "ganjam", sep="-")</div><div class="output">india-odisha-ganjam</div></div>
+      <div class="pair"><div class="input">print("Hello", end=" ")\\nprint("world")</div><div class="output">Hello world</div></div>
+    </section>
+
+    <!-- 2. comment -->
+    <h2><center>2. Comments</center></h2>
+    <ul>
+      <li>Comments in Python are the lines in the code that are ignored by the interpreter during the execution of the program.</li>
+      <div class="pair"><div class="input">print("1st program in python") #1st program</div><div class="output">print("1st program in python")</div></div>
+      <b>#1st program is comment.</b>
+    </ul>
+
+    <!-- 3. Data Types -->
+    <section>
+      <h2>2. Data Types</h2>
+      <li>1. Every value in Python has a data type. since everything is an object in a Python program. Data types are actually classes and variables are instances (objects) of these classes.</li>
+      <li>2. We can use the type () a variable or a value function Class function to know the class belongs to and the is an instance () to check the objections belonging to a particular class. no variables declaration.</li>
+      <h2>Python Print Function - Data Type Examples</h2>
+
+      <div class="section-title">1. INTEGER</div>
+      <div class="pair"><div class="input">print(4)</div><div class="output">4</div></div>
+      <div class="pair"><div class="input">print(1e309)</div><div class="output">inf</div></div>
+
+      <div class="section-title">2. FLOAT / DECIMAL</div>
+      <div class="pair"><div class="input">print(4.9)</div><div class="output">4.9</div></div>
+
+      <div class="section-title">3. BOOLEAN</div>
+      <div class="pair"><div class="input">print(True)</div><div class="output">True</div></div>
+      <div class="pair"><div class="input">print(False)</div><div class="output">False</div></div>
+
+      <div class="section-title">4. COMPLEX</div>
+      <div class="pair"><div class="input">print(4+6j)</div><div class="output">4+6j</div></div>
+
+      <div class="section-title">5. STRING / TEXT</div>
+      <div class="pair"><div class="input">print("Odisha")</div><div class="output">Odisha</div></div>
+      <div class="pair"><div class="input">print('Odisha')</div><div class="output">Odisha</div></div>
+      <div class="pair"><div class="input">print('"Odisha"')</div><div class="output">"Odisha"</div></div>
+
+      <div class="section-title">6. LIST</div>
+      <div class="pair"><div class="input">print([9,0,7,7,4,7])</div><div class="output">[9, 0, 7, 7, 4, 7]</div></div>
+
+      <div class="section-title">7. TUPLE</div>
+      <div class="pair"><div class="input">print((9,0,7,7,4,7))</div><div class="output">(9, 0, 7, 7, 4, 7)</div></div>
+
+      <div class="section-title">8. SET</div>
+      <div class="pair"><div class="input">print({1,2,3,4,5})</div><div class="output">{1, 2, 3, 4, 5}</div></div>
+
+      <div class="section-title">9. DICTIONARY</div>
+      <div class="pair"><div class="input">print({"name":"bibek","age":"20","sex":"male"})</div>
+      <div class="output">{'name': 'bibek', 'age': '20', 'sex': 'male'}</div></div>
+    </section>
+
+        <!-- 4. Variables -->
+    <section>
+      <h2><center>4. Variable Assignment</center></h2>
+      <li>A variable is a container or location in memory used to store some data.</li>
+      <li>We don't need to declare the variable before using it. You can simply assign a value to a variable and it exists.</li>
+      <li>The rules of writing variables are the same as the rules of writing identifiers in Python.</li>
+      <li>We don't have to declare the type of a variable; Python handles it internally according to the value assigned.</li>
+
+      <div class="pair"><div class="input">a = 5<br>print(a)</div><div class="output">5</div></div>
+
+      <h3>NOTE:</h3>
+      <ul>
+        <li><strong>Dynamic typing:</strong> The type of a variable is determined at run time. Example: <code>a = 5</code></li>
+        <li><strong>Static typing:</strong> The type of a variable is determined at declaration time. Example: <code>int a = 5</code></li>
+        <li><strong>Dynamic binding:</strong> It is not possible to decide which piece of code will be executed because of a method call at compile time.</li>
+        <li><strong>Static binding:</strong> Binding that takes place at compile time is known as static binding. Example: <code>int a = 5</code></li>
+      </ul>
+      <div class="pair"><div class="input">name = "Bibek"<br>print(name)</div><div class="output">Bibek</div></div>
+      <div class="pair"><div class="input">a, b, c = 4, 5, 6<br>print(a)<br>print(b)<br>print(c)</div><div class="output">4<br>5<br>6</div></div>
+    </section>
+
+    <!-- 5. KEYWORD -->
+    <section>
+      <h2 style="text-align:center;">5. KEYWORD</h2>
+      <p>
+        Keyword constants are reserved words in Python, and you cannot use them as a variable name or any other identifier.
+        The total number of keywords in Python may vary depending on the Python version. In this example, we check the list
+        of keywords programmatically.
+      </p>
+
+      <!-- Keyword Example -->
+      <div class="pair" style="display:flex; gap:20px; margin-top:15px;">
+        <!-- Input Code -->
+        <div class="input" style="flex:1; background:#f4f4f4; padding:10px; border-radius:8px; font-family:monospace;">
+          <pre>
+import keyword
+print(keyword.kwlist)
+print('\nTotal number of keywords:', len(keyword.kwlist))
+          </pre>
+        </div>
+
+        <!-- Output Result -->
+        <div class="output" style="flex:1; background:#eef8ff; padding:10px; border-radius:8px; font-family:monospace;">
+          <pre>
+['False', 'None', 'True', 'and', 'as', 'assert', 'async', 'await', 
+'break', 'class', 'continue', 'def', 'del', 'elif', 'else', 'except', 
+'finally', 'for', 'from', 'global', 'if', 'import', 'in', 'is', 
+'lambda', 'nonlocal', 'not', 'or', 'pass', 'raise', 'return', 'try', 
+'while', 'with', 'yield']
+
+Total number of keywords: 36
+          </pre>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 style="text-align:center;">6. IDENTIFIERS</h2>
+      <li>A Python identifier is a name used to identify a variable, function, class, module, or other object.</li>
+      <li>An identifier starts with a letter (<code>A-Z</code>, <code>a-z</code>) or an underscore (<code>_</code>) followed by zero or more letters, underscores, or digits (<code>0</code> to <code>9</code>).</li>
+      <li>The following are naming conventions for Python identifiers:</li>
+      <li>Class names start with an uppercase letter. All other identifiers start with a lowercase letter.</li>
+      <li>Starting an identifier with a single leading underscore indicates that the identifier is <b>private</b>.</li>
+      <li>Starting an identifier with two leading underscores indicates a <b>strongly private</b> identifier.</li>
+      <li>If the identifier also ends with two trailing underscores (<code>__</code>), it is a <b>language-defined special name</b>.</li>
+
+      <div class="pair" style="display:flex; gap:20px; margin-top:15px;">
+        <!-- Input Code -->
+        <div class="input" style="flex:1; background:#f4f4f4; padding:10px; border-radius:8px; font-family:monospace;">
+          <pre>
+# Variable name 
+name = 'bibek'
+print(name)  # Output: bibek
+
+# Variable name '_'
+_ = 'bibek'
+print(_)  # Output: bibek
+
+# Variable name 'first_name'
+first_name = 'bibek'
+print(first_name)  # Output: bibek
+          </pre>
+        </div>
+
+        <!-- Output Result -->
+        <div class="output" style="flex:1; background:#eef8ff; padding:10px; border-radius:8px; font-family:monospace;">
+          <pre>
+bibek
+bibek
+bibek
+          </pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Type Conversion -->
+    <section>
+    <h2 style="text-align:center;">6.Type Conversion</h2>
+
+    <!-- Example 1 -->
+    <h3>Example 1: Converting during calculation</h3>
+    <div class="pair" style="display:flex; gap:20px; margin-top:10px;">
+        <div class="input" style="flex:1; background:#f4f4f4; padding:10px; border-radius:8px; font-family:monospace;">
+<pre>
+first_num = input("Enter the first number: ")  # Example: 5
+second_num = input("Enter the second number: ")  # Example: 10
+result = int(first_num) + int(second_num)  # 5 + 10 = 15
+print(result)
+</pre>
+        </div>
+        <div class="output" style="flex:1; background:#eef8ff; padding:10px; border-radius:8px; font-family:monospace;">
+<pre>
+Enter the first number: 5
+Enter the second number: 10
+15
+</pre>
+        </div>
+    </div>
+
+    <!-- Example 2 -->
+    <h3>Example 2: Converting during input</h3>
+    <div class="pair" style="display:flex; gap:20px; margin-top:10px;">
+        <div class="input" style="flex:1; background:#f4f4f4; padding:10px; border-radius:8px; font-family:monospace;">
+<pre>
+first_num = int(input("Enter the first number: "))  # Example: 5
+second_num = int(input("Enter the second number: "))  # Example: 10
+result = first_num + second_num  # 5 + 10 = 15
+print(result)
+</pre>
+        </div>
+        <div class="output" style="flex:1; background:#eef8ff; padding:10px; border-radius:8px; font-family:monospace;">
+<pre>
+Enter the first number: 5
+Enter the second number: 10
+15
+</pre>
+        </div>
+    </div>
+</section>
+
+
+    <section>
+    <h2 style="text-align:center;">9. LITERALS</h2>
+
+    <!-- 1. Numeric Literals -->
+    <h3>1. Numeric Literals</h3>
+    <div class="pair" style="display:flex; gap:20px; margin-top:10px;">
+        <div class="input" style="flex:1; background:#f4f4f4; padding:10px; border-radius:8px; font-family:monospace;">
+<pre>
+a = 0b1010  # Binary literal: 10 in decimal
+b = 100     # Decimal literal
+c = 0.310   # Decimal floating-point literal
+d = 0x12c   # Hexadecimal literal: 300 in decimal
+print(a, b, c, d)
+</pre>
+        </div>
+        <div class="output" style="flex:1; background:#eef8ff; padding:10px; border-radius:8px; font-family:monospace;">
+<pre>
+10 100 0.31 300
+</pre>
+        </div>
+    </div>
+
+    <!-- 2. Float Literal -->
+    <h3>2. Float Literal</h3>
+    <div class="pair" style="display:flex; gap:20px; margin-top:10px;">
+        <div class="input" style="flex:1; background:#f4f4f4; padding:10px; border-radius:8px; font-family:monospace;">
+<pre>
+Float_1 = 10.5          # Direct value
+Float_2 = 1.5e2         # Scientific notation: 150.0
+Float_3 = 1.5e-3        # Scientific notation: 0.0015
+print(Float_1, Float_2, Float_3)
+</pre>
+        </div>
+        <div class="output" style="flex:1; background:#eef8ff; padding:10px; border-radius:8px; font-family:monospace;">
+<pre>
+10.5 150.0 0.0015
+</pre>
+        </div>
+    </div>
+
+    <!-- 3. Complex Literal -->
+    <h3>3. Complex Literal</h3>
+    <div class="pair" style="display:flex; gap:20px; margin-top:10px;">
+        <div class="input" style="flex:1; background:#f4f4f4; padding:10px; border-radius:8px; font-family:monospace;">
+<pre>
+x = 3.14j
+print(x, x.imag, x.real)
+</pre>
+        </div>
+        <div class="output" style="flex:1; background:#eef8ff; padding:10px; border-radius:8px; font-family:monospace;">
+<pre>
+3.14j 3.14 0.0
+</pre>
+        </div>
+    </div>
+
+    <!-- 4. String Literal -->
+    <h3>4. String Literal</h3>
+    <div class="pair" style="display:flex; gap:20px; margin-top:10px;">
+        <div class="input" style="flex:1; background:#f4f4f4; padding:10px; border-radius:8px; font-family:monospace;">
+<pre>
+string = 'this is a python'
+string = "this is a python"
+char = "c"
+print(string)
+print(string)
+print(char)
+</pre>
+        </div>
+        <div class="output" style="flex:1; background:#eef8ff; padding:10px; border-radius:8px; font-family:monospace;">
+<pre>
+this is a python
+this is a python
+c
+</pre>
+        </div>
+    </div>
+
+    <!-- 5. Boolean Literal -->
+    <h3>5. Boolean Literal</h3>
+    <div class="pair" style="display:flex; gap:20px; margin-top:10px;">
+        <div class="input" style="flex:1; background:#f4f4f4; padding:10px; border-radius:8px; font-family:monospace;">
+<pre>
+a = True + 4    # True is 1
+b = False + 10  # False is 0
+print("a;", a)
+print("b;", b)
+</pre>
+        </div>
+        <div class="output" style="flex:1; background:#eef8ff; padding:10px; border-radius:8px; font-family:monospace;">
+<pre>
+a; 5
+b; 10
+</pre>
+        </div>
+    </div>
+
+    <!-- 6. None Literal -->
+    <h3>6. None Literal</h3>
+    <div class="pair" style="display:flex; gap:20px; margin-top:10px;">
+        <div class="input" style="flex:1; background:#f4f4f4; padding:10px; border-radius:8px; font-family:monospace;">
+<pre>
+a = None
+print(a)
+</pre>
+        </div>
+        <div class="output" style="flex:1; background:#eef8ff; padding:10px; border-radius:8px; font-family:monospace;">
+<pre>
+None
+</pre>
+        </div>
+    </div>
+
+    <!-- 7. Unicode Literal -->
+    <h3>7. Unicode Literal</h3>
+    <div class="pair" style="display:flex; gap:20px; margin-top:10px;">
+        <div class="input" style="flex:1; background:#f4f4f4; padding:10px; border-radius:8px; font-family:monospace;">
+<pre>
+unicode = u"\U0001f600\U0001F606\U0001F923"
+print(unicode)
+</pre>
+        </div>
+        <div class="output" style="flex:1; background:#eef8ff; padding:10px; border-radius:8px; font-family:monospace;">
+<pre>
+😀 😆 🤣
+</pre>
+        </div>
+    </div>
+</section>
+
+    <!-- Navigation -->
+    <div class="nav-buttons">
+      <a href="../Day-003/Days-003.html" class="btn prev">← Previous</a>
+      <a href="../Day-002/Days-002.html" class="btn next">Next →</a>
+    </div>
+  </div>
+</body>
+</html>

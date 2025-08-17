@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hypothesis Testing</title>
+    <style>
+        .hypothesis-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .main-title {
+            text-align: center;
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 30px;
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 15px;
+        }
+        
+        .section-title {
+            font-size: 1.8em;
+            font-weight: bold;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: #34495e;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .hypothesis-item {
+            margin-bottom: 25px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-left: 4px solid #3498db;
+            border-radius: 5px;
+        }
+        
+        .hypothesis-number {
+            font-weight: bold;
+            color: #2980b9;
+            font-size: 1.1em;
+        }
+        
+        .example {
+            background-color: #e8f5e8;
+            padding: 12px;
+            margin: 15px 0;
+            border-left: 4px solid #27ae60;
+            border-radius: 4px;
+            font-style: italic;
+        }
+        
+        .example-box {
+            background-color: #f0f8ff;
+            padding: 20px;
+            margin: 20px 0;
+            border: 2px solid #4169e1;
+            border-radius: 8px;
+        }
+        
+        .example-title {
+            font-weight: bold;
+            color: #4169e1;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+        }
+        
+        .solution-section {
+            background-color: #f9f9f9;
+            padding: 15px;
+            margin: 15px 0;
+            border-left: 4px solid #ff6b6b;
+            border-radius: 5px;
+        }
+        
+        .given-data {
+            background-color: #e6f3ff;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .formula-calculation {
+            background-color: #f1f2f6;
+            padding: 15px;
+            margin: 15px 0;
+            text-align: center;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            border: 1px solid #ddd;
+        }
+        
+        .important-points {
+            background-color: #fff3cd;
+            padding: 20px;
+            margin: 25px 0;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+        }
+        
+        .important-points h3 {
+            color: #856404;
+            margin-top: 0;
+            font-size: 1.4em;
+        }
+        
+        .steps-section {
+            background-color: #f1f2f6;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+        
+        .steps-section h3 {
+            color: #2c3e50;
+            margin-top: 0;
+            font-size: 1.4em;
+        }
+        
+        .error-types {
+            background-color: #ffeaea;
+            padding: 20px;
+            margin: 25px 0;
+            border: 1px solid #ffcccc;
+            border-radius: 8px;
+        }
+        
+        .error-types h3 {
+            color: #c0392b;
+            margin-top: 0;
+            font-size: 1.4em;
+        }
+        
+        .error-item {
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: #fff;
+            border-left: 3px solid #e74c3c;
+            border-radius: 3px;
+        }
+        
+        .test-types {
+            background-color: #f0f9ff;
+            padding: 20px;
+            margin: 25px 0;
+            border: 1px solid #b3d9ff;
+            border-radius: 8px;
+        }
+        
+        .test-types h3 {
+            color: #1565c0;
+            margin-top: 0;
+            font-size: 1.4em;
+        }
+        
+        .test-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #fff;
+            border-left: 4px solid #2196f3;
+            border-radius: 5px;
+        }
+        
+        .advantages-section {
+            background-color: #f1f8e9;
+            padding: 20px;
+            margin: 25px 0;
+            border: 1px solid #c8e6c9;
+            border-radius: 8px;
+        }
+        
+        .advantages-section h3 {
+            color: #2e7d32;
+            margin-top: 0;
+            font-size: 1.4em;
+        }
+        
+        .advantages-section h4 {
+            color: #388e3c;
+            font-size: 1.2em;
+            margin-top: 20px;
+        }
+        
+        .disadvantages-section {
+            background-color: #fff3e0;
+            padding: 20px;
+            margin: 25px 0;
+            border: 1px solid #ffcc02;
+            border-radius: 8px;
+        }
+        
+        .disadvantages-section h3 {
+            color: #f57f17;
+            margin-top: 0;
+            font-size: 1.4em;
+        }
+        
+        .disadvantages-section h4 {
+            color: #ff8f00;
+            font-size: 1.2em;
+            margin-top: 20px;
+        }
+        
+        .applications-section {
+            background-color: #f3e5f5;
+            padding: 20px;
+            margin: 25px 0;
+            border: 1px solid #ce93d8;
+            border-radius: 8px;
+        }
+        
+        .applications-section h3 {
+            color: #7b1fa2;
+            margin-top: 0;
+            font-size: 1.4em;
+        }
+        
+        .ml-section {
+            background-color: #e8f5e8;
+            padding: 20px;
+            margin: 25px 0;
+            border: 1px solid #a5d6a7;
+            border-radius: 8px;
+        }
+        
+        .ml-section h3 {
+            color: #2e7d32;
+            margin-top: 0;
+            font-size: 1.4em;
+        }
+        
+        ul, ol {
+            padding-left: 25px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .intro-text {
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            text-align: justify;
+        }
+        
+        @media (max-width: 768px) {
+            .hypothesis-content {
+                padding: 15px;
+            }
+            
+            .main-title {
+                font-size: 2em;
+            }
+            
+            .section-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hypothesis-content">
+        <h1 class="main-title">HYPOTHESIS TESTING</h1>
+        
+        <p class="intro-text">A statistical hypothesis test is a method of statistical inference used to decide whether the data at hand sufficiently supports a particular hypothesis. Hypothesis testing allows us to make probabilistic statements about population parameters.</p>
+        
+        <h2 class="section-title">NULL AND ALTERNATE HYPOTHESIS</h2>
+        
+        <div class="hypothesis-item">
+            <span class="hypothesis-number">1. Null hypothesis (H₀):</span>
+            <p>In simple terms, the null hypothesis is a statement that assumes there is no significant effect or relationship between the variables being studied. It serves as the starting point for hypothesis testing and represents the status quo or the assumption of no effect until proven otherwise. The purpose of hypothesis testing is to gather evidence (data) to either reject or fail to reject the null hypothesis in Favor of the alternative hypothesis, which claims there is a significant effect or relationship.</p>
+            
+            <div class="example">
+                <strong>Eg:</strong> Children who receive a new reading intervention will have scores different than students who do not receive the intervention.
+            </div>
+        </div>
+        
+        <div class="hypothesis-item">
+            <span class="hypothesis-number">2. Alternative hypothesis (H₁ or Hₐ):</span>
+            <p>The alternative hypothesis is a statement that contradicts the null hypothesis and claims there is a significant effect or relationship between the variables being studied. It represents the research hypothesis or the claim that the researcher wants to support through statistical analysis.</p>
+            
+            <div class="example">
+                <strong>Eg:</strong> Children who receive a new reading intervention will perform better than students who did not receive the intervention
+            </div>
+        </div>
+        
+        <div class="important-points">
+            <h3>Important Points</h3>
+            <ul>
+                <li>How to decide what will be the Null hypothesis and what will be the Alternate Hypothesis(Typically the Null hypothesis says nothing new is happening)</li>
+                <li>We try to gather evidence to reject the null hypothesis.</li>
+                <li>It's important to note that failing to reject the null hypothesis doesn't necessarily mean that the null hypothesis is true. it just means there isn't enough evidence to support the alternative hypothesis.</li>
+                <li>Hypothesis tests are similar to jury trials, in a sense. In a jury trial, H₀ is similar to the not-guilty verdict, and Hₐ is the guilty verdict. You assume in a jury trial that the defendant isn't guilty unless the prosecution can show beyond a reasonable doubt that he or she is guilty. If the jury says the evidence is beyond a reasonable doubt, they reject H₀, not guilty, in Favor of Hₐ, guilty.</li>
+            </ul>
+        </div>
+        
+        <h2 class="section-title">STEPS INVOLVED IN HYPOTHESIS TESTING</h2>
+        
+        <div class="steps-section">
+            <h3>Rejection Region Approach (STEPS)</h3>
+            <ol>
+                <li>Formulate a Null and Alternate hypothesis</li>
+                <li>Select a significance level(This is the probability of rejecting the null hypothesis when it is actually true, usually set at 0.05 or 0.01)</li>
+                <li>Check assumptions (example distribution).</li>
+                <li>Decide which test is appropriate(Z-test, T-test, Chi-square test, ANOVA).</li>
+                <li>State the relevant test statistic.</li>
+                <li>Conduct the test.</li>
+                <li>Reject or not reject the Null Hypothesis.</li>
+                <li>Interpret the result.</li>
+            </ol>
+        </div>
+        
+        <h2 class="section-title">PERFORMING A Z TEST</h2>
+        
+        <div class="example-box">
+            <div class="example-title">Example 1:</div>
+            <p>Suppose a company is evaluating the impact of a new training program on the productivity of its employees. The company has data on the average productivity of its employees before implementing the training program. The average productivity was 50 units per day with a known population standard deviation of 5 units. After implementing the training program, the company measures the productivity of a random sample of 30 employees. The sample has an average productivity of 53 units per day. The company wants to know if the new training program has significantly increased productivity.</p>
+            
+            <div class="solution-section">
+                <strong>Soln Given</strong>
+                <div class="given-data">
+                    μ=50, σ=5, n=30, x̄=53
+                </div>
+                
+                <div class="given-data">
+                    H₀: μ=50<br>
+                    Hₐ: μ>50<br>
+                    α=0.05 or 5%
+                </div>
+                
+                <p><strong>Assumption:</strong> normally distributed(CLT) and sigma is known</p>
+                
+                <div class="formula-calculation">
+                    Z = (x̄ - μ) / (σ/√n)<br>
+                    Z = (53 - 50) / (5/√30)<br>
+                    Z = 3 / (5/√30) = 3.28
+                </div>
+            </div>
+        </div>
+        
+        <div class="example-box">
+            <div class="example-title">Example 2:</div>
+            <p>Suppose a snack food company claims that its Lays wafer packets contain an average weight of 50 grams per packet. To verify this claim, a consumer watchdog organization decides to test a random sample of Lays wafer packets. The organization wants to determine whether the actual average weight differs significantly from the claimed 50 grams. The organization collects a random sample of 40 Lays wafer packets and measures their weights. They find that the sample has an average weight of 49 grams, with a known population standard deviation of 4 grams.</p>
+            
+            <div class="solution-section">
+                <strong>Soln Given</strong>
+                <div class="given-data">
+                    μ=50gm, σ=4gm, n=40, x̄=49
+                </div>
+                
+                <div class="given-data">
+                    H₀: μ=50<br>
+                    Hₐ: μ≠50<br>
+                    α=0.05
+                </div>
+                
+                <p><strong>Assumption:</strong> normally distributed(CLT) and sigma is known</p>
+                
+                <div class="formula-calculation">
+                    Z = (x̄ - μ) / (σ/√n)<br>
+                    Z = (49 - 50) / (4/√40)<br>
+                    Z = -1 / (4/√40) = -1.58
+                </div>
+            </div>
+        </div>
+        
+        <h2 class="section-title">REJECTION REGION</h2>
+        
+        <div class="error-types">
+            <h3>Type 1 vs Type 2 Error</h3>
+            <p>In hypothesis testing, two types of errors can occur when deciding the null hypothesis: Type I error and Type II error.</p>
+            
+            <div class="error-item">
+                <strong>Type-I (False Positive):</strong> Error occurs when the sample results, lead to the rejection of the null hypothesis when it is true.
+            </div>
+            
+            <div class="error-item">
+                <strong>Type-II (False Negative):</strong> Error occurs when based on the sample results, the null hypothesis is not rejected when it is false. This means that the researcher fails to detect a significant effect or relationship when one exists. The probability of committing a Type II error is denoted by β (beta). The trade-off between Type 1 and Type 2 errors
+            </div>
+        </div>
+        
+        <h2 class="section-title">ONE-SIDED VS TWO-SIDED TEST</h2>
+        
+        <div class="test-types">
+            <div class="test-item">
+                <h3>One-sided (one-tailed) test:</h3>
+                <p>A one-sided test is used when the researcher is interested in testing the effect in a specific direction (either greater than or less than the value specified in the null hypothesis). The alternative hypothesis in a one-sided test contains an inequality (either ">" or "<").</p>
+                
+                <div class="example">
+                    <strong>Example:</strong> A researcher wants to test whether a new medication increases the average recovery rate compared to the existing medication.
+                </div>
+            </div>
+            
+            <div class="test-item">
+                <h3>Two-sided (two-tailed) test:</h3>
+                <p>A two-sided test is used when the researcher is interested in testing the effect in both directions (i.e., whether the value specified in the null hypothesis is different, either greater or lesser). The alternative hypothesis in a two-sided test contains a "not equal to" sign (≠).</p>
+                
+                <div class="example">
+                    <strong>Example:</strong> A researcher wants to test whether a new medication has a different average recovery rate compared to the existing medication.
+                </div>
+            </div>
+        </div>
+        
+        <p>The main difference between them lies in the directionality of the alternative hypothesis and how the significance level is distributed in the critical regions.</p>
+        
+        <h3>Advantages and Disadvantages?</h3>
+        
+        <div class="advantages-section">
+            <h4>Two-tailed test (two-sided)</h4>
+            <h4>Advantages:</h4>
+            <ol>
+                <li><strong>Detects effects in both directions:</strong> Two-tailed tests can detect effects in both directions, which makes them suitable for situations where the direction of the effect is uncertain or when researchers want to test for any difference between the groups or variables.</li>
+                <li><strong>More conservative:</strong> Two-tailed tests are more conservative because the significance level (α) is split between both tails of the distribution. This reduces the risk of Type I errors in cases where the direction of the effect is uncertain.</li>
+            </ol>
+        </div>
+        
+        <div class="disadvantages-section">
+            <h4>Disadvantages:</h4>
+            <ol>
+                <li><strong>Less powerful:</strong> Two-tailed tests are generally less powerful than one-tailed tests because the significance level (α) is divided between both tails of the distribution. This means the test requires a larger effect size to reject the null hypothesis, which could lead to a higher risk of Type II errors (failing to reject the null hypothesis when it is false).</li>
+                <li><strong>Not appropriate for directional hypotheses:</strong> Two-tailed tests are not ideal for cases where the research question or hypothesis is directional, as they test for differences in both directions, which may not be of interest or relevance.</li>
+            </ol>
+        </div>
+        
+        <div class="advantages-section">
+            <h4>One-tailed test (one-sided)</h4>
+            <h4>Advantages:</h4>
+            <ol>
+                <li><strong>More powerful:</strong> One-tailed tests are generally more powerful than two-tailed tests, as the entire significance level (α) is allocated to one tail of the distribution. This means that the test is more likely to detect an effect in the specified direction, assuming the effect exists.</li>
+                <li><strong>Directional hypothesis:</strong> One-tailed tests are appropriate when there is a strong theoretical or practical reason to test for an effect in a specific direction.</li>
+            </ol>
+        </div>
+        
+        <div class="disadvantages-section">
+            <h4>Disadvantages:</h4>
+            <ol>
+                <li><strong>Missed effects:</strong> One-tailed tests can miss effects in the opposite direction of the specified alternative hypothesis. If an effect exists in the opposite direction, the test will not be able to detect it, which could lead to incorrect conclusions.</li>
+                <li><strong>Increased risk of Type I error:</strong> One-tailed tests can be more prone to Type I errors if the effect is actually in the opposite direction than the one specified in the alternative hypothesis.</li>
+            </ol>
+        </div>
+        
+        <h2 class="section-title">Where can be Hypothesis Testing Applied?</h2>
+        
+        <div class="applications-section">
+            <ol>
+                <li><strong>Testing the effectiveness of interventions or treatments:</strong> Hypothesis testing can be used to determine whether a new drug, therapy, or educational intervention has a significant effect compared to a control group or an existing treatment.</li>
+                <li><strong>Comparing means or proportions:</strong> Hypothesis testing can be used to compare means or proportions between two or more groups to determine if there's a significant difference. This can be applied to compare average customer satisfaction scores, conversion rates, or employee performance across different groups.</li>
+                <li><strong>Analysing relationships between variables:</strong> Hypothesis testing can be used to evaluate the association between variables, such as the correlation between age and income or the relationship between advertising spend and sales.</li>
+                <li><strong>Evaluating the goodness of fit:</strong> Hypothesis testing can help assess if a particular theoretical distribution (e.g., normal, binomial, or Poisson) is a good fit for the observed data.</li>
+                <li><strong>Testing the independence of categorical variables:</strong> Hypothesis testing can be used to determine if two categorical variables are independent or if there's a significant association between them. For example, it can be used to test if there's a relationship between the type of product and the likelihood of it being returned by a customer.</li>
+                <li><strong>A/B testing:</strong> In marketing, product development, and website design, hypothesis testing is often used to compare the performance of two different versions (A and B) to determine which one is more effective in terms of conversion rates, user engagement, or other metrics.</li>
+            </ol>
+        </div>
+        
+        <h2 class="section-title">Hypothesis Testing ML Applications</h2>
+        
+        <div class="ml-section">
+            <ul>
+                <li><strong>Model comparison:</strong> Hypothesis testing can be used to compare the performance of different machine learning models or algorithms on a given dataset. For example, you can use a paired t-test to compare the accuracy or error rate of two models on multiple cross-validation folds to determine if one model performs significantly better than the other.</li>
+                <li><strong>Feature selection:</strong> Hypothesis testing can help identify which features are significantly related to the target variable or contribute meaningfully to the model's performance. For example, you can use a t-test, chi-square test, or ANOVA to test the relationship between individual features and the target variable. Features with significant relationships can be selected for building the model, while non-significant features may be excluded.</li>
+                <li><strong>Hyperparameter tuning:</strong> Hypothesis testing can be used to evaluate the performance of a model trained with different hyperparameter settings. By comparing the performance of models with different hyperparameters, you can determine if one set of hyperparameters leads to significantly better performance.</li>
+                <li><strong>Assessing model assumptions:</strong> In some cases, machine learning models rely on certain statistical assumptions, such as linearity or normality of residuals in linear regression. Hypothesis testing can help assess whether these assumptions are met, allowing you to determine if the model is appropriate for the data.</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

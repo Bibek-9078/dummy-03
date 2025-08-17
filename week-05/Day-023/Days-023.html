@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>DAY-20: NumPy Tricks</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --primary-blue: #2947a9;
+      --accent-blue: #3498db;
+      --section-bg: #f8faff;
+      --code-bg: #f6f8fa;
+      --output-bg: #fffbe7;
+      --example-bg: #eafbf8;
+      --warning-bg: #fff6e5;
+      --border-radius: 8px;
+      --shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0; padding: 0;
+      background: #fcfdfd; 
+      color: #222;
+      line-height: 1.6;
+    }
+    .content {
+      max-width: 900px;
+      margin: 20px auto 40px auto;
+      padding: 20px 15px;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2.4em;
+      color: var(--primary-blue);
+      font-weight: 700;
+      margin-bottom: 30px;
+      border-bottom: 3px solid var(--accent-blue);
+      padding-bottom: 10px;
+      letter-spacing: 1px;
+    }
+    h2 {
+      color: var(--primary-blue);
+      margin-top: 40px;
+      margin-bottom: 18px;
+      text-transform: uppercase;
+      font-size: 1.5em;
+      border-left: 6px solid var(--accent-blue);
+      padding-left: 10px;
+    }
+    pre {
+      background: var(--code-bg);
+      border-radius: var(--border-radius);
+      padding: 15px 18px;
+      font-family: 'Fira Mono', Consolas, monospace;
+      font-size: 1em;
+      overflow-x: auto;
+      margin-bottom: 6px;
+      border: 1px solid #dee3ea;
+      white-space: pre-wrap;
+    }
+    .output {
+      background: var(--output-bg);
+      border-left: 5px solid #ffd600;
+      border-radius: var(--border-radius);
+      color: #845201;
+      margin-bottom: 20px;
+      padding: 12px 18px;
+      font-family: 'Fira Mono', Consolas, monospace;
+      font-size: 1em;
+      white-space: pre-wrap;
+    }
+    .warning {
+      background: var(--warning-bg);
+      border-left: 5px solid #ffa940;
+      border-radius: var(--border-radius);
+      padding: 14px 18px;
+      color: #845201;
+      margin: 25px 0;
+      font-weight: bold;
+    }
+    .exercise {
+      background: var(--example-bg);
+      border-left: 6px solid #43a047;
+      padding: 15px 18px;
+      border-radius: var(--border-radius);
+      margin: 30px 0 40px 0;
+    }
+    code {
+      font-size: 0.95em;
+      background-color: #eef3f9;
+      padding: 2px 5px;
+      border-radius: 3px;
+      font-family: 'Fira Mono', Consolas, monospace;
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <h1>DAY-20: NumPy Tricks</h1>
+
+    <h2>1. np.sort()</h2>
+    <pre><code>import numpy as np
+a = np.random.randint(1, 100, 15)
+print(a)
+b = np.random.randint(1, 100, 24).reshape(6, 4)
+print(b)
+
+print(np.sort(a)[::-1])         # Sort a descending
+print(np.sort(b, axis=0))       # Sort b ascending column-wise
+</code></pre>
+    <div class="output">
+a = array([ 3, 24, 98, 96,  1, 46, 64, 40,  6, 18, 49, 80, 40, 70, 21])<br>
+b = array([[99, 64, 62, 91],<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[30, 35, 85, 22],<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[72, 90, 61, 32],<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[91, 48, 26, 99],<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[34, 54, 23, 79],<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[37, 24, 88, 34]])<br><br>
+np.sort(a)[::-1]=<br>
+array([98, 96, 80, 70, 64, 49, 46, 40, 40, 24, 21, 18,  6,  3,  1])<br><br>
+np.sort(b,axis=0)=<br>
+array([[30, 24, 23, 22],<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[34, 35, 26, 32],<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[37, 48, 61, 34],<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[72, 54, 62, 79],<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[91, 64, 85, 91],<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[99, 90, 88, 99]])
+    </div>
+    
+    <h2>2. np.append()</h2>
+    <pre><code>np.append(a, 200)
+np.append(b, np.random.random((b.shape[0], 1)), axis=1)
+</code></pre>
+    <div class="output">
+array([  3,  24,  98,  96,   1,  46,  64,  40,   6,  18,  49,  80,  40,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;70,  21, 200])<br><br>
+array([[99.        , 64.        , 62.        , 91.        , 0.96137981],<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[30.        , 35.        , 85.        , 22.        , 0.45866205],<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[72.        , 90.        , 61.        , 32.        , 0.20519085],<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[91.        , 48.        , 26.        , 99.        , 0.98736427],<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[34.        , 54.        , 23.        , 79.        , 0.6368904 ],<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[37.        , 24.        , 88.        , 34.        , 0.61971829]])
+    </div>
+
+    <h2>3. np.concatenate()</h2>
+    <pre><code>c = np.arange(6).reshape(2, 3)
+d = np.arange(6, 12).reshape(2, 3)
+np.concatenate((c, d), axis=0)
+np.concatenate((c, d), axis=1)
+</code></pre>
+    <div class="output">
+c =<br>
+[[0 1 2]<br>
+ [3 4 5]]<br><br>
+d =<br>
+[[ 6  7  8]<br>
+ [ 9 10 11]]<br><br>
+Concatenate axis=0:<br>
+[[ 0  1  2]<br>
+ [ 3  4  5]<br>
+ [ 6  7  8]<br>
+ [ 9 10 11]]<br><br>
+Concatenate axis=1:<br>
+[[ 0  1  2  6  7  8]<br>
+ [ 3  4  5  9 10 11]]
+    </div>
+
+    <h2>4. np.unique()</h2>
+    <pre><code>e = np.array([1,1,2,2,3,3,4,4,5,5,6,6])
+np.unique(e)
+</code></pre>
+    <div class="output">
+array([1, 2, 3, 4, 5, 6])
+    </div>
+
+    <h2>5. np.expand_dims()</h2>
+    <pre><code>a.shape       # (15,)
+np.expand_dims(a, axis=0).shape
+np.expand_dims(a, axis=1)
+</code></pre>
+    <div class="output">
+(15,)<br>
+(1, 15)<br>
+array([[ 3],<br>
+       [24],<br>
+       [98],<br>
+       [96],<br>
+       [ 1],<br>
+       [46],<br>
+       [64],<br>
+       [40],<br>
+       [ 6],<br>
+       [18],<br>
+       [49],<br>
+       [80],<br>
+       [40],<br>
+       [70],<br>
+       [21]])
+    </div>
+
+    <h2>6. np.where()</h2>
+    <pre><code>np.where(a > 50)  # find indices with values > 50
+np.where(a > 50, 0, a)  # replace values > 50 with 0
+</code></pre>
+    <div class="output">
+Indices with values > 50:<br>
+(array([ 2,  3,  6, 11, 13], dtype=int64),)<br><br>
+New array:<br>
+array([ 3, 24,  0,  0,  1, 46,  0, 40,  6, 18, 49,  0, 40,  0, 21])
+    </div>
+
+    <h2>7. np.argmax()</h2>
+    <pre><code>np.where(a % 2 == 0, 0, a)  # keep odd numbers only, evens to 0
+np.argmax(a)  # index of max element in a
+np.argmax(b, axis=0)  # column-wise max indices in b
+np.argmax(b, axis=1)  # row-wise max indices in b
+</code></pre>
+    <div class="output">
+array([ 3,  0,  0,  0,  1,  0,  0,  0,  0,  0, 49,  0,  0,  0, 21])<br><br>
+Max index in a: 2<br>
+Max indices in b along axis=0: [0 2 5 3]<br>
+Max indices in b along axis=1: [0 2 1 3 3 2]
+    </div>
+
+    <h2>8. np.cumsum()</h2>
+    <pre><code>np.cumsum(a)
+np.cumsum(b, axis=1)
+np.cumsum(b)
+</code></pre>
+    <div class="output">
+cumsum(a):<br>
+array([  3,  27, 125, 221, 222, 268, 332, 372, 378, 396, 445, 525, 565, 635, 656])<br><br>
+cumsum(b, axis=1):<br>
+array([[ 99, 163, 225, 316],<br>
+       [ 30,  65, 150, 172],<br>
+       [ 72, 162, 223, 255],<br>
+       [ 91, 139, 165, 264],<br>
+       [ 34,  88, 111, 190],<br>
+       [ 37,  61, 149, 183]])<br><br>
+cumsum(b):<br>
+array([  99, 163, 225, 316, 346, 381, 466, 488, 560, 650, 711, 743, 834, 882, 908, 1007,<br>
+       1041, 1095, 1118, 1197, 1234, 1258, 1346, 1380])
+    </div>
+
+    <h2>9. np.percentile() & np.median()</h2>
+    <pre><code>np.percentile(a, 50)
+np.median(a)
+</code></pre>
+    <div class="output">
+40.0
+    </div>
+
+    <h2>10. np.histogram()</h2>
+    <pre><code>np.histogram(a, bins=[0, 50, 100])
+</code></pre>
+    <div class="output">
+(array([10,  5]), array([ 0, 50, 100]))
+    </div>
+
+    <h2>11. np.corrcoef()</h2>
+    <pre><code>salary = np.array([20000, 40000, 25000, 35000, 60000])
+experience = np.array([1, 3, 2, 4, 2])
+np.corrcoef(salary, experience)
+</code></pre>
+    <div class="output">
+array([[1.        , 0.25344572],<br>
+       [0.25344572, 1.        ]])
+    </div>
+
+    <h2>12. np.isin()</h2>
+    <pre><code>items = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+a[np.isin(a, items)]
+</code></pre>
+    <div class="output">
+array([40, 80, 40, 70])
+    </div>
+
+    <h2>13. np.flip()</h2>
+    <pre><code>np.flip(a)
+</code></pre>
+    <div class="output">
+array([21, 70, 40, 80, 49, 18,  6, 40, 64, 46,  1, 96, 98, 24,  3])
+    </div>
+
+    <h2>14. np.put() & np.delete()</h2>
+    <pre><code>a = np.array([110, 530, 98, 96, 1, 46, 64, 40, 6, 18, 49, 80, 40, 70, 21])
+np.put(a, [0, 1], [10, 20])   # replace 0th and 1st element
+np.delete(a, [0, 2, 4])       # delete elements at positions 0, 2, 4
+</code></pre>
+    <div class="output">
+array after put: [ 10  20  98  96   1  46  64  40   6  18  49  80  40  70  21]<br>
+array after delete: [530  96  46  64  40   6  18  49  80  40  70  21]
+    </div>
+
+    <h2>15. Set operations</h2>
+    <pre><code>m = np.array([1, 2, 3, 4, 5])
+n = np.array([3, 4, 5, 6, 7])
+np.union1d(m, n)
+np.intersect1d(m, n)
+np.setdiff1d(n, m)
+np.setxor1d(m, n)
+m[np.in1d(m, 1)]
+</code></pre>
+    <div class="output">
+union1d: array([1, 2, 3, 4, 5, 6, 7])<br>
+intersect1d: array([3, 4, 5])<br>
+setdiff1d: array([6, 7])<br>
+setxor1d: array([1, 2, 6, 7])<br>
+m[np.in1d(m, 1)]: array([1])
+    </div>
+
+    <h2>16. np.clip()</h2>
+    <pre><code>np.clip(a, a_min=25, a_max=75)
+</code></pre>
+    <div class="output">
+array([ 75,  75,  75,  75,  25,  46,  64,  40,  25,  25,  49,  75,  40,  70,  25])
+    </div>
+
+    <h2>Exercises</h2>
+
+    <div class="exercise">
+      <b>Q1:</b> Create a random 3x4 matrix with values between 0-100. Perform:<br>
+      i. Sort matrix with <code>np.sort()</code>.<br>
+      ii. Sort based on 2nd column.<br>
+      iii. Sort based on max value in each row.<br>
+      iv. Sort all elements and reshape based on element values.
+      <pre><code>arr = np.random.randint(0, 100, (4, 3))
+print(arr)
+# 1.
+print(np.sort(arr))
+# 2.
+print(arr[arr[:, 1].argsort()])
+# 3.
+print(np.array(sorted(arr, key=lambda x: max(x))))
+# 4.
+print(np.sort(arr, axis=None).reshape(4,3))
+</code></pre>
+    </div>
+
+    <div class="exercise">
+      <b>Q2:</b> Given marks array for 5 students in 4 subjects. Then:<br>
+      i. Add marks for an extra subject.<br>
+      ii. Add marks of 2 new students.<br>
+      iii. Add extra column for total marks per student.<br>
+      iv. Sort array (descending) by total marks and show top 2 rows.
+      <pre><code>marks = np.array([[13, 10,  9, 33],
+                  [63, 46, 90, 42],
+                  [39, 76, 13, 29],
+                  [82,  9, 29, 78],
+                  [67, 61, 59, 36]])
+extra_subject = np.array([41, 87, 72, 36, 92]).reshape(-1, 1)
+marks = np.concatenate([marks, extra_subject], axis=1)
+
+rec1 = np.array([77, 83, 98, 95, 89]).reshape(1, -1)
+rec2 = np.array([92, 71, 52, 61, 53]).reshape(1, -1)
+marks = np.concatenate([marks, rec1, rec2], axis=0)
+
+sum_of_stud = marks.sum(axis=1, keepdims=True)
+marks = np.concatenate([marks, sum_of_stud], axis=1)
+
+sorted_marks = np.array(sorted(marks, key=lambda x: x[-1], reverse=True))
+print(sorted_marks[:2])
+</code></pre>
+    </div>
+
+    <div class="exercise">
+      <b>Q3:</b> Find unique rows and columns of a 2D array.<br>
+      <pre><code>arr = np.array([[1, 2, 3, 3, 1, 1],
+                [0, 9, 1, 2, 8, 8],
+                [1, 2, 3, 8, 8, 8],
+                [1, 2, 3, 3, 1, 1]])
+print("Unique rows:")
+print(np.unique(arr, axis=0))
+print("Unique columns:")
+print(np.unique(arr, axis=1))
+</code></pre>
+    </div>
+
+    <div class="exercise">
+      <b>Q4:</b> Flip given 2D array along both axes.<br>
+      <pre><code>np.flip(arr, axis=[0, 1])
+</code></pre>
+    </div>
+
+    <div class="exercise">
+      <b>Q5:</b> Get row indices where any element > X.<br>
+      <pre><code>X = 6
+arr = np.array([[1, 2, 3, 4, 5],
+                [10, -3, 30, 4, 5],
+                [3, 2, 5, -4, 5],
+                [9, 7, 3, 6, 5]])
+rows_with_gt_X = np.where(np.any(arr > X, axis=1))
+print(rows_with_gt_X)
+</code></pre>
+    </div>
+
+    <div class="exercise">
+      <b>Q6:</b> Flatten array of arrays.<br>
+      <pre><code>arr1 = np.arange(3)
+arr2 = np.arange(3, 7)
+arr3 = np.arange(7, 10)
+flat = np.concatenate([arr1, arr2, arr3])
+print(flat)
+</code></pre>
+    </div>
+
+    <div class="exercise">
+      <b>Q7:</b> Remove min and max elements from an array.<br>
+      <pre><code>np.random.seed(400)
+arr = np.random.randint(100, 1000, 200).reshape((1, 200))
+max_idx = arr.argmax()
+min_idx = arr.argmin()
+arr = np.delete(arr, [max_idx, min_idx], axis=1)
+print(arr)
+</code></pre>
+    </div>
+
+    <div class="exercise">
+      <b>Q8:</b> Limit array values between 100 and 200, then sort and get cumulative sum.<br>
+      <pre><code>arr = np.random.randint(0, 2000, 500)
+clipped = np.clip(arr, 100, 200)
+cumsum = np.cumsum(np.sort(clipped))
+print(cumsum)
+</code></pre>
+    </div>
+
+    <div class="exercise">
+      <b>Q9:</b> Round elements to 3 decimals and compare percentiles.<br>
+      <pre><code>arr = np.random.random(100)
+arr = np.around(arr, decimals=3)
+print("0th percentile == min:", np.percentile(arr, 0) == arr.min())
+print("100th percentile == max:", np.percentile(arr, 100) == arr.max())
+print("Difference between 51st and 50th percentiles:", np.percentile(arr, 51) - np.percentile(arr, 50))
+</code></pre>
+    </div>
+
+  </div>
+</body>
+</html>

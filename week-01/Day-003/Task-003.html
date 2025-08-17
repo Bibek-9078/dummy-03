@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Python Tasks — Questions & Solutions (3)</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --card: #f8f9fa;
+      --muted: #555;
+      --accent: #007bff;
+      --glass: rgba(0, 0, 0, 0.03);
+    }
+    body {
+      margin: 0;
+      padding: 30px;
+      background-color: var(--bg);
+      font-family: Inter, ui-sans-serif, system-ui, Arial;
+      color: #000;
+    }
+    .wrap { max-width: 980px; margin: auto; }
+    header { text-align: center; margin-bottom: 24px; }
+    header h1 { font-size: 28px; margin-bottom: 5px; }
+    .task {
+      background: var(--card);
+      border-radius: 14px;
+      padding: 18px;
+      margin-bottom: 14px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.1);
+    }
+    .task h2 { color: var(--accent); font-size: 18px; margin-bottom: 10px; }
+    pre {
+      background: var(--glass);
+      padding: 12px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+    code {
+      font-family: ui-monospace, monospace;
+      font-size: 13px;
+    }
+    .output {
+      background: #f1f3f5;
+      border-radius: 8px;
+      padding: 10px;
+      margin-top: 8px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 6px;
+      color: white;
+      font-size: 16px;
+      text-decoration: none;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .prev { background-color: #2196F3; }
+    .prev:hover { background-color: #1976D2; }
+    .next { background-color: #4CAF50; }
+    .next:hover { background-color: #388E3C; }
+    .nav-buttons {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+<header><h1>Tasks — 03</h1></header>
+
+<!-- 1 -->
+<div class="task">
+<h2>1. Reverse Number Pattern</h2>
+<pre><code>rows = int(input('Enter the rows: '))
+for i in range(0, rows):
+    for j in range(rows - i, 0, -1):
+        print(j, end=' ')
+    print()</code></pre>
+<div class="output">Enter: 5  
+5 4 3 2 1  
+4 3 2 1  
+3 2 1  
+2 1  
+1</div>
+</div>
+
+<!-- 2 -->
+<div class="task">
+<h2>2. Star Pyramid Pattern</h2>
+<pre><code>rows = int(input('Enter the rows: '))
+for i in range(1, rows+1):
+    for j in range(0, i):
+        print('*', end=' ')
+    print()
+for i in range(1, rows):
+    for j in range(rows - i, 0, -1):
+        print('*', end=' ')
+    print()</code></pre>
+</div>
+
+<!-- 3 -->
+<div class="task">
+<h2>3. Right-aligned Triangle Pattern</h2>
+<pre><code>rows = 6
+for i in range(1, rows+1):
+    print(' ' * rows, end='')
+    print('* ' * i)
+    rows -= 1</code></pre>
+</div>
+
+<!-- 4 -->
+<div class="task">
+<h2>4. Reverse Count Number Triangle</h2>
+<pre><code>rows = 5
+for i in range(1, rows+1):
+    for j in range(i, 0, -1):
+        print(j, end=' ')
+    print()</code></pre>
+</div>
+
+<!-- 5 -->
+<div class="task">
+<h2>5. Sum of Series 1 + x²/2 + ... xⁿ/n</h2>
+<pre><code>x = 10
+n = 5
+sum = 1
+s = '1 + '
+for i in range(2, n+1):
+    sum += x**i / i
+    s += f"x^{i}/{i} +"
+print(s[:-1])
+print(sum)</code></pre>
+</div>
+
+<!-- 6 -->
+<div class="task">
+<h2>6. Natural Logarithm Series Approximation</h2>
+<pre><code>x = 10
+n = 5
+sum = 0
+s = ''
+for i in range(1, n+1):
+    sum += (1/i) * ((x-1)/x)**i
+    s += f"(1/{i})*((x-1)/x)^{i} +"
+print(s[:-1])
+print(sum)</code></pre>
+</div>
+
+<!-- 7 -->
+<div class="task">
+<h2>7. 2+22+222... Series Sum</h2>
+<pre><code>n = int(input('Enter terms: '))
+start = 2
+total = 0
+for i in range(n):
+    print(start, end='+' if i < n-1 else '\n')
+    total += start
+    start = start*10 + 2
+print(total)</code></pre>
+</div>
+
+<!-- 8 -->
+<div class="task">
+<h2>8. Unique Combinations of 1,2,3,4</h2>
+<pre><code>for i in range(1, 5):
+    for j in range(1, 5):
+        for k in range(1, 5):
+            for m in range(1, 5):
+                print(i, j, k, m)</code></pre>
+</div>
+
+<!-- 9 -->
+<div class="task">
+<h2>9. Decimal to Binary</h2>
+<pre><code>n = int(input('Enter number: '))
+binary = []
+while n > 0:
+    binary.append(n % 2)
+    n //= 2
+for i in binary[::-1]:
+    print(i, end='')</code></pre>
+</div>
+
+<!-- 10 -->
+<div class="task">
+<h2>10. LCM and HCF of Two Numbers</h2>
+<pre><code>x = int(input('Enter 1st number: '))
+y = int(input('Enter 2nd number: '))
+greater = x if x > y else y
+while True:
+    if greater % x == 0 and greater % y == 0:
+        lcm = greater
+        break
+    greater += 1
+print("LCM:", lcm)
+
+smaller = x if x < y else y
+for i in range(1, smaller+1):
+    if x % i == 0 and y % i == 0:
+        hcf = i
+print("HCF:", hcf)</code></pre>
+</div>
+
+<!-- 11 -->
+<div class="task">
+<h2>11. Create Short Form from String</h2>
+<pre><code>inp = 'Data science Mentorship Program'
+res = ''.join(word[0].upper() for word in inp.split())
+print(res)</code></pre>
+<div class="output">DSMP</div>
+</div>
+
+<!-- 12 -->
+<div class="task">
+<h2>12. Insert Second String into First String Middle</h2>
+<pre><code>s1 = input('Enter 1st string: ')
+s2 = input('Enter 2nd string: ')
+print(s1[:len(s1)//2] + s2 + s1[len(s1)//2:])</code></pre>
+</div>
+
+<!-- 13 -->
+<div class="task">
+<h2>13. Arrange Lowercase First then Uppercase</h2>
+<pre><code>s = 'PyNaTive'
+lower = ''.join([i for i in s if i.islower()])
+upper = ''.join([i for i in s if i.isupper()])
+print(lower + upper)</code></pre>
+</div>
+
+<!-- 14 -->
+<div class="task">
+<h2>14. Sum and Average of Digits in String</h2>
+<pre><code>s = 'hel123O4every093'
+sum_d = 0
+count = 0
+for i in s:
+    if i.isdigit():
+        sum_d += int(i)
+        count += 1
+print('Sum:', sum_d)
+print('Avg:', sum_d / count)
+print('Count:', count)</code></pre>
+</div>
+
+<!-- 15 -->
+<div class="task">
+<h2>15. Remove All Except Integers from String</h2>
+<pre><code>s = 'I am 25 years and 10 months old'
+res = ''.join([i for i in s if i.isdigit()])
+print(res)</code></pre>
+</div>
+
+<!-- 16 -->
+<div class="task">
+<h2>16. Check Symmetrical String</h2>
+<pre><code>s = input('Enter string: ')
+if len(s) % 2 == 0:
+    s1 = s[:len(s)//2]
+    s2 = s[len(s)//2:]
+else:
+    s1 = s[:len(s)//2]
+    s2 = s[len(s)//2 + 1:]
+print("symmetrical" if s1 == s2 else "not symmetrical")</code></pre>
+</div>
+
+<!-- 17 -->
+<div class="task">
+<h2>17. Reverse Words in String</h2>
+<pre><code>s = 'code practice quiz geeks'
+words = s.split()
+print(' '.join(words[::-1]))</code></pre>
+</div>
+
+<!-- 18 -->
+<div class="task">
+<h2>18. Find Uncommon Words from Two Strings</h2>
+<pre><code>A = "apple banana mango"
+B = "banana fruits mango"
+L = []
+for i in A.split():
+    if i not in B and i not in L:
+        L.append(i)
+for j in B.split():
+    if j not in A and j not in L:
+        L.append(j)
+print(L)</code></pre>
+</div>
+
+<!-- 19 -->
+<div class="task">
+<h2>19. Word Location in String</h2>
+<pre><code>s = 'We can learn data science through campusx mentorship program.'
+word = 'campusx'
+pos = 0
+for i in s.split():
+    pos += 1
+    if i == word:
+        break
+print("Location:", pos)</code></pre>
+</div>
+
+<!-- 20 -->
+<div class="task">
+<h2>20. Remove Duplicate Characters from String</h2>
+<pre><code>s = 'aaaabbbbbccccdddeeeeffff'
+res = ''
+for i in s:
+    if i not in res:
+        res += i
+print(res)</code></pre>
+</div>
+
+</div>
+<div class="nav-buttons">
+  <a href="../Day-006/Tasks-02.html" class="btn prev">← Previous</a>
+  <a href="../Day-008/Tasks-04.html" class="btn next">Next →</a>
+</div>
+</body>
+</html>

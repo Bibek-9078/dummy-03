@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Probability in Machine Learning</title>
+    <style>
+        .probability-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .main-title {
+            text-align: center;
+            font-size: 2.8em;
+            font-weight: bold;
+            margin-bottom: 30px;
+            color: #8e44ad;
+            border-bottom: 4px solid #9b59b6;
+            padding-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .section-title {
+            font-size: 1.9em;
+            font-weight: bold;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-left: 5px solid #3498db;
+            padding-left: 15px;
+        }
+        
+        .subsection-title {
+            font-size: 1.4em;
+            font-weight: bold;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: #e67e22;
+        }
+        
+        .terminology-section {
+            background-color: #ecf0f1;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .terminology-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .term-number {
+            font-weight: bold;
+            color: #2980b9;
+            font-size: 1.1em;
+        }
+        
+        .example-box {
+            background-color: #e8f6f3;
+            padding: 20px;
+            margin: 20px 0;
+            border: 2px solid #16a085;
+            border-radius: 8px;
+        }
+        
+        .example-title {
+            font-weight: bold;
+            color: #16a085;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+        
+        .event-types {
+            background-color: #fdf2e9;
+            padding: 20px;
+            margin: 25px 0;
+            border: 1px solid #f39c12;
+            border-radius: 8px;
+        }
+        
+        .event-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #fff;
+            border-left: 4px solid #f39c12;
+            border-radius: 5px;
+        }
+        
+        .probability-section {
+            background-color: #eaf2f8;
+            padding: 20px;
+            margin: 25px 0;
+            border: 1px solid #3498db;
+            border-radius: 8px;
+        }
+        
+        .formula-box {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            margin: 15px 0;
+            text-align: center;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+        
+        .solution-box {
+            background-color: #f8f9fa;
+            padding: 15px;
+            margin: 15px 0;
+            border-left: 4px solid #e74c3c;
+            border-radius: 5px;
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .data-table th, .data-table td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+        
+        .data-table th {
+            background-color: #9b59b6;
+            color: white;
+            font-weight: bold;
+            font-size: 1em;
+        }
+        
+        .data-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        .data-table tr:hover {
+            background-color: #e8f4fd;
+        }
+        
+        .distribution-table {
+            background-color: #fff5f5;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid #fc8181;
+            border-radius: 8px;
+        }
+        
+        .venn-section {
+            background-color: #f0fff4;
+            padding: 20px;
+            margin: 25px 0;
+            border: 1px solid #68d391;
+            border-radius: 8px;
+        }
+        
+        .conditional-section {
+            background-color: #fffaf0;
+            padding: 20px;
+            margin: 25px 0;
+            border: 1px solid #fbd38d;
+            border-radius: 8px;
+        }
+        
+        .joint-probability-section {
+            background-color: #f0f4ff;
+            padding: 20px;
+            margin: 25px 0;
+            border: 1px solid #818cf8;
+            border-radius: 8px;
+        }
+        
+        .marginal-section {
+            background-color: #fef3ff;
+            padding: 20px;
+            margin: 25px 0;
+            border: 1px solid #d8b4fe;
+            border-radius: 8px;
+        }
+        
+        .bayes-section {
+            background-color: #f7fafc;
+            padding: 20px;
+            margin: 25px 0;
+            border: 2px solid #4299e1;
+            border-radius: 8px;
+        }
+        
+        .highlight-box {
+            background-color: #fff3cd;
+            padding: 15px;
+            margin: 15px 0;
+            border: 1px solid #ffeaa7;
+            border-radius: 5px;
+            border-left: 4px solid #f39c12;
+        }
+        
+        .problem-example {
+            background-color: #fef5e7;
+            padding: 15px;
+            margin: 15px 0;
+            border-left: 4px solid #f39c12;
+            border-radius: 5px;
+            font-style: italic;
+        }
+        
+        .conditional-problem {
+            background-color: #fff8dc;
+            padding: 15px;
+            margin: 15px 0;
+            border-left: 4px solid #daa520;
+            border-radius: 5px;
+        }
+        
+        .intuition-section {
+            background-color: #f0f8ff;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid #87ceeb;
+            border-radius: 8px;
+        }
+        
+        .comparison-table {
+            margin: 20px 0;
+        }
+        
+        .comparison-table th {
+            background-color: #4a5568;
+        }
+        
+        .independence-section {
+            background-color: #f5f7fa;
+            padding: 20px;
+            margin: 25px 0;
+            border: 1px solid #cbd5e0;
+            border-radius: 8px;
+        }
+        
+        .independence-detailed {
+            background-color: #f0f8ff;
+            padding: 20px;
+            margin: 25px 0;
+            border: 2px solid #4169e1;
+            border-radius: 8px;
+        }
+        
+        .event-type-item {
+            margin-bottom: 25px;
+            padding: 15px;
+            background-color: #fff;
+            border-left: 4px solid #3498db;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .mathematical-proof {
+            background-color: #f8f9fa;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+        }
+        
+        ul, ol {
+            padding-left: 25px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .intro-text {
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            text-align: justify;
+            color: #555;
+        }
+        
+        @media (max-width: 768px) {
+            .probability-content {
+                padding: 15px;
+            }
+            
+            .main-title {
+                font-size: 2.2em;
+            }
+            
+            .section-title {
+                font-size: 1.6em;
+            }
+            
+            .data-table {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="probability-content">
+        <h1 class="main-title">PROBABILITY IN MACHINE LEARNING</h1>
+        
+        <h2 class="section-title">Terminology</h2>
+        
+        <div class="terminology-section">
+            <div class="terminology-item">
+                <span class="term-number">1. Random Experiment:</span>
+                <p>An experiment is called a random experiment if it satisfies the following two conditions:</p>
+                <ul>
+                    <li>(i) It has more than one possible outcome.</li>
+                    <li>(ii) It is not possible to predict the outcome in advance.</li>
+                </ul>
+                <p><strong>E.g:</strong> tossing a coin</p>
+            </div>
+            
+            <div class="terminology-item">
+                <span class="term-number">2. Trial:</span>
+                <p>Trial refers to a single execution of a random experiment. Each trial produces an outcome.</p>
+            </div>
+            
+            <div class="terminology-item">
+                <span class="term-number">3. Outcome:</span>
+                <p>Outcome refers to a single possible result of a trial.</p>
+            </div>
+            
+            <div class="terminology-item">
+                <span class="term-number">4. Sample Space:</span>
+                <p>Sample Space of a random experiment is the set of all possible outcomes that can occur. Generally, one random experiment will have one set of sample space.</p>
+            </div>
+            
+            <div class="terminology-item">
+                <span class="term-number">5. Event:</span>
+                <p>An event is a specific set of outcomes from a random experiment or process. Essentially, it's a subset of the sample space. An event can include a single outcome, or it can include multiple outcomes. One random experiment can have multiple events.</p>
+            </div>
+        </div>
+        
+        <div class="example-box">
+            <div class="example-title">Example 1: Rolling a dice?</div>
+            <ul>
+                <li><strong>1. Random Experiment:</strong> Rolling a dice</li>
+                <li><strong>2. Trial:</strong> Rolling a die once</li>
+                <li><strong>3. Outcome:</strong> {3}</li>
+                <li><strong>4. Sample Space:</strong> {1,2,3,4,5,6}</li>
+                <li><strong>5. Event:</strong> getting a number >4 = {5,6}</li>
+            </ul>
+        </div>
+        
+        <div class="example-box">
+            <div class="example-title">Example 2: Tossing a coin twice?</div>
+            <ul>
+                <li><strong>1. Random Experiment:</strong> Tossing a coin</li>
+                <li><strong>2. Trial:</strong> Tossing with twice</li>
+                <li><strong>3. Outcome:</strong> {H,T}</li>
+                <li><strong>4. Sample Space:</strong> {(H,H),(H,T),(T,H),(T,T)}</li>
+                <li><strong>5. Event:</strong> Getting two head = {(H,H)}</li>
+            </ul>
+        </div>
+        
+        <h2 class="section-title">TYPES OF EVENTS</h2>
+        
+        <div class="event-types">
+            <div class="event-item">
+                <strong>1. Simple Event:</strong> Also known as an elementary event, a simple event is an event that consists of exactly one outcome. For example, when rolling a fair six-sided die, getting a 3 is a simple event.
+            </div>
+            
+            <div class="event-item">
+                <strong>2. Compound Event:</strong> A compound event consists of two or more simple events. For example, when rolling a die, the event "rolling an odd number" is a compound event because it consists of three simple events: rolling a 1, rolling a 3, or rolling a 5.
+            </div>
+            
+            <div class="event-item">
+                <strong>3. Independent Events:</strong> Two events are independent if the occurrence of one event does not affect the probability of the occurrence of the other event. For example, if you flip a coin and roll a die, the outcome of the coin flip does not affect the outcome of the die roll.
+            </div>
+            
+            <div class="event-item">
+                <strong>4. Dependent Events:</strong> Events are dependent if the occurrence of one event does affect the probability of the occurrence of the other event. For example, if you draw two cards from a deck without replacement, the outcome of the first draw affects the outcome of the second draw because there are fewer cards left in the deck.
+            </div>
+            
+            <div class="event-item">
+                <strong>5. Mutually Exclusive Events:</strong> Two events are mutually exclusive (or disjoint) if they cannot both occur at the same time. For example, when rolling a die, the events "roll a 2" and "roll a 4" are mutually exclusive because a single roll of the die cannot result in both a 2 and a 4.
+            </div>
+            
+            <div class="event-item">
+                <strong>6. Exhaustive Events:</strong> A set of events is exhaustive if at least one of the events must occur when the experiment is performed. For example, when rolling a die, the events "roll an even number" and "roll an odd number" are exhaustive because one or the other must occur on any roll.
+            </div>
+            
+            <div class="event-item">
+                <strong>7. Impossible Event and Certain Event</strong>
+            </div>
+        </div>
+        
+        <h2 class="section-title">What is Probability</h2>
+        
+        <div class="probability-section">
+            <p>In simplest terms, probability is a measure of the likelihood that a particular event will occur. It is a fundamental concept in statistics and is used to make predictions and informed decisions in a wide range of disciplines, including science, engineering, medicine, economics, and social sciences.</p>
+            
+            <p><strong>Probability is usually expressed as a number between 0 and 1, inclusive:</strong></p>
+            <ul>
+                <li>A probability of 0 means that an event will not happen.</li>
+                <li>A probability of 1 means that an event will certainly happen.</li>
+                <li>A probability of 0.5 means that an event will happen half the time (or that it is as likely to happen as not to happen).</li>
+            </ul>
+        </div>
+        
+        <h2 class="section-title">Empirical Probability Vs Theoretical Probability</h2>
+        
+        <div class="probability-section">
+            <h3 class="subsection-title">Empirical Probability:</h3>
+            <p>Empirical probability, also known as experimental probability, is a probability measure that is based on observed data, rather than theoretical assumptions. It's calculated as the ratio of the number of times a particular event occurs to the total number of trials.</p>
+            
+            <div class="problem-example">
+                <strong>A.</strong> Suppose that, in our 100 tosses, we get heads 55 times and tails 45 times. What is the empirical probability of getting a head?<br>
+                <div class="solution-box">
+                    <strong>Soln:</strong> H=55, trial=100, P(H) = 55/100 = 0.55
+                </div>
+            </div>
+            
+            <div class="problem-example">
+                <strong>B.</strong> Let's say you have a bag with 50 marbles. Out of these 50 marbles, 20 are red, 15 are blue, and 15 are green. You start to draw marbles one at a time, replacing the marble back into the bag after each draw. After 200 draws, you find that you've drawn a red marble 80 times, a blue marble 70 times, and a green marble 50 times. What is the empirical probability of getting a red marble?<br>
+                <div class="solution-box">
+                    <strong>Soln:</strong> P(red marble) = 80/200 = 0.4
+                </div>
+            </div>
+            
+            <h3 class="subsection-title">Theoretical Probability:</h3>
+            <p>Theoretical (or classical) probability is used when each outcome in a sample space is equally likely to occur. If we denote an event of interest as Event A, we calculate the theoretical probability of that event as:</p>
+            
+            <div class="formula-box">
+                Theoretical Probability of Event A = Number of favorable outcomes / Total number of possible outcomes
+            </div>
+            
+            <div class="problem-example">
+                <strong>A.</strong> Consider a scenario of tossing a fair coin 3 times. Find the probability of getting exactly 2 heads.
+            </div>
+            
+            <div class="problem-example">
+                <strong>B.</strong> Consider a scenario of rolling 2 dice. What is the probability of getting a sum = 7?
+            </div>
+        </div>
+        
+        <h2 class="section-title">Random Variable</h2>
+        
+        <div class="probability-section">
+            <p>In the context of probability theory, a random variable is a function that maps the outcomes of a random process (known as the sample space) to a set of real numbers.</p>
+            
+            <ul>
+                <li><strong>Input:</strong> The input to the function is an outcome from the sample space of a random process.</li>
+                <li><strong>Output:</strong> The output of the function is a real number that we assign to each possible outcome.</li>
+            </ul>
+            
+            <div class="highlight-box">
+                <ul>
+                    <li>The transformation from input to output in the function of a random variable is determined by how we choose to define the random variable.</li>
+                    <li>The choice of how to define a random variable often depends on the specific aspects of the random process (or event) that you're interested in studying.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <h2 class="section-title">Probability Distribution of a Random Variable</h2>
+        
+        <div class="distribution-table">
+            <p>A probability distribution is a list of all of the possible outcomes of a random variable along with their corresponding probability values.</p>
+            
+            <h3 class="subsection-title">COIN TOSS</h3>
+            <table class="data-table">
+                <tr>
+                    <th>COIN TOSS</th>
+                    <th>1(H)</th>
+                    <th>0(TAIL)</th>
+                </tr>
+                <tr>
+                    <td><strong>PROBABILITY</strong></td>
+                    <td>1/2</td>
+                    <td>1/2</td>
+                </tr>
+            </table>
+            
+            <h3 class="subsection-title">ONE DICE ROLL</h3>
+            <table class="data-table">
+                <tr>
+                    <th>DICE ROLL</th>
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>4</th>
+                    <th>5</th>
+                    <th>6</th>
+                </tr>
+                <tr>
+                    <td><strong>PROBABILITY</strong></td>
+                    <td>1/6</td>
+                    <td>1/6</td>
+                    <td>1/6</td>
+                    <td>1/6</td>
+                    <td>1/6</td>
+                    <td>1/6</td>
+                </tr>
+            </table>
+            
+            <h3 class="subsection-title">Two dice roll</h3>
+            <table class="data-table">
+                <tr>
+                    <th>Sum</th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>4</th>
+                    <th>5</th>
+                    <th>6</th>
+                    <th>7</th>
+                    <th>8</th>
+                    <th>9</th>
+                    <th>10</th>
+                    <th>11</th>
+                    <th>12</th>
+                </tr>
+                <tr>
+                    <td><strong>Probability</strong></td>
+                    <td>1/36</td>
+                    <td>2/36</td>
+                    <td>3/36</td>
+                    <td>4/36</td>
+                    <td>5/36</td>
+                    <td>6/36</td>
+                    <td>5/36</td>
+                    <td>4/36</td>
+                    <td>3/36</td>
+                    <td>2/36</td>
+                    <td>1/36</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="highlight-box">
+            <h3 class="subsection-title">Problem with Distribution?</h3>
+            <p>In many scenarios, the number of outcomes can be much larger, and hence a table would be tedious to write down. Worse still, the number of possible outcomes could be infinite, in which case, good luck writing a table for that.</p>
+        </div>
+        
+        <h2 class="section-title">Mean of a Random Variable</h2>
+        
+        <div class="probability-section">
+            <p>The mean of a random variable often called the expected value, is essentially the average outcome of a random process that is repeated many times. More technically, it's a weighted average of the possible outcomes of the random variable, where each outcome is weighted by its probability of occurrence.</p>
+        </div>
+        
+        <h2 class="section-title">VENN DIAGRAMS IN PROBABILITY</h2>
+        
+        <div class="venn-section">
+            <div class="formula-box">
+                P(E) = 1
+            </div>
+            
+            <div class="formula-box">
+                P(A∪B) = P(A) + P(B) - P(A∩B)
+            </div>
+        </div>
+        
+        <h2 class="section-title">CONTINGENCY TABLES IN PROBABILITY</h2>
+        
+        <h3 class="section-title">Joint Probability</h3>
+        
+        <div class="joint-probability-section">
+            <p>Let's say we have two random variables X and Y. The joint probability of X and Y, denoted as P(X = x, Y = y), is the probability that X takes the value x and Y takes the value y at the same time.</p>
+            
+            <ul>
+                <li>Let X be a random variable associated with the Pclass of a passenger</li>
+                <li>Let Y be a random variable associated with the survival status of a passenger</li>
+            </ul>
+        </div>
+        
+        <h3 class="section-title">Marginal/Sample/Unconditional Probability</h3>
+        
+        <div class="marginal-section">
+            <p>Marginal probability refers to the probability of an event occurring irrespective of the outcome of some other event. When dealing with random variables, the marginal probability of a random variable is simply the probability of that variable taking a certain value, regardless of the values of other variables.</p>
+            
+            <ul>
+                <li>Let X be a random variable associated with the Pclass of a passenger.</li>
+                <li>Let Y be a random variable associated with the survival status of a passenger.</li>
+            </ul>
+        </div>
+        
+        <h2 class="section-title">Conditional Probability</h2>
+        
+        <div class="conditional-section">
+            <p>Conditional probability is a measure of the probability of an event occurring, given that another event has already occurred. If the event of interest is A and event B has already occurred, the conditional probability of A given B is usually written as P(A|B).</p>
+            
+            <div class="conditional-problem">
+                <strong>1.</strong> Three unbiased coins are tossed. What is the conditional probability that at least two coins show heads, given that at least one coin shows heads?<br><br>
+                Sample space = {HHH,HHT,HTH,THH,HTT,THT,TTH,TTT}<br>
+                A = at least 2 head<br>
+                B = at least 1 head outcome = {HHH,HHT,HTH,THH,HTT,THT,TTH}
+            </div>
+            
+            <div class="conditional-problem">
+                <strong>2.</strong> Two fair six-sided dice are rolled. What is the conditional probability that the sum of the numbers rolled is 7, given that the first die shows an odd number?
+            </div>
+            
+            <div class="conditional-problem">
+                <strong>3.</strong> Two fair six-sided dice are rolled, denoted as D1 and D2. What is the conditional probability that D1 equals 2, given that the sum of D1 and D2 is less than or equal to 5?
+            </div>
+            
+            <div class="formula-box">
+                Formula for Conditional Probability: P(A|B) = P(A∩B) / P(B)
+            </div>
+            
+            <div class="intuition-section">
+                <h3 class="subsection-title">Intuition behind the Conditional Probability Formula</h3>
+                <ul>
+                    <li>The intuition behind the formula for conditional probability, P(A | B) = P(A ∩ B) / P(B), is based on the concept of reducing our sample space.</li>
+                    <li>The denominator, P(B), is the probability of event B occurring. When we say we want to know the probability of A given B, we're effectively saying that B has occurred and therefore B is our new "universe" or sample space. So we're not considering cases when B didn't occur anymore, and we're normalizing by the probability of B.</li>
+                    <li>The numerator, P(A ∩ B), is the joint probability of A and B, meaning both A and B occur. So in the context of our new universe where B has occurred, P(A ∩ B) represents the cases where A also occurs.</li>
+                    <li>By dividing the joint probability P(A ∩ B) by the probability of B (P(B)), we effectively find the proportion of times that A occurs given that B has occurred.</li>
+                    <li>In summary, the conditional probability of A given B is just the joint probability of A and B happening (A and B together in the "universe" where everything happens), normalized by the probability of B (the new "universe" where only B happens).</li>
+                </ul>
+            </div>
+        </div>
+        
+        <h2 class="section-title">Independent Vs Mutually Exclusive Events</h2>
+        
+        <div class="independence-detailed">
+            <div class="event-type-item">
+                <h3 class="subsection-title">Independent Events:</h3>
+                <p>Independent events are events where the occurrence of one event does not affect the occurrence of another.</p>
+                <p><strong>Examples:</strong></p>
+                <ul>
+                    <li>1. Flipping a coin and rolling a die</li>
+                    <li>2. Drawing a card with replacement</li>
+                </ul>
+            </div>
+            
+            <div class="event-type-item">
+                <h3 class="subsection-title">Dependent Events:</h3>
+                <p>Dependent events are events where the occurrence of one event does affect the occurrence of another.</p>
+                <p><strong>Examples:</strong></p>
+                <ul>
+                    <li>1. Drawing a card without replacement</li>
+                </ul>
+            </div>
+            
+            <div class="event-type-item">
+                <h3 class="subsection-title">Mutually Exclusive Events:</h3>
+                <p>Mutually exclusive events are events that cannot both occur at the same time. In other words, if one event occurs, the other cannot.</p>
+                <p><strong>Examples:</strong></p>
+                <ul>
+                    <li>1. Flipping a coin (getting heads or tails)</li>
+                    <li>2. Rolling a die (getting a specific number)</li>
+                </ul>
+            </div>
+            
+            <table class="data-table comparison-table">
+                <tr>
+                    <th></th>
+                    <th>If statistically independent</th>
+                    <th>If mutually exclusive</th>
+                </tr>
+                <tr>
+                    <td><strong>P(A|B)</strong></td>
+                    <td>P(A)</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td><strong>P(B|A)</strong></td>
+                    <td>P(B)</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td><strong>P(A∩B)</strong></td>
+                    <td>P(A) × P(B)</td>
+                    <td>0</td>
+                </tr>
+            </table>
+        </div>
+        
+        <h2 class="section-title">Bayes Theorem</h2>
+        
+        <div class="bayes-section">
+            <p>Bayes' Theorem is a fundamental concept in the field of probability and statistics that describes how to update the probabilities of hypotheses when given evidence. It's used in a wide variety of fields, including machine learning, statistics, and game theory.</p>
+            
+            <p>The theorem is named after Thomas Bayes, who introduced an early version of the rule in his work on probability theory. Bayes' Theorem provides a way to revise existing predictions or theories (update probabilities) given new evidence.</p>
+            
+            <div class="formula-box">
+                P(A|B) = [P(B|A) × P(A)] / P(B)
+            </div>
+            
+            <div class="mathematical-proof">
+                <h3 class="subsection-title">Mathematical Proof</h3>
+                
+                <div class="highlight-box">
+                    <p><strong>From conditional probability definition:</strong></p>
+                    <p>P(A|B) = P(A∩B)/P(B) ⟹ P(A|B) × P(B) = P(A∩B)</p>
+                    <p>P(B|A) = P(A∩B)/P(A) ⟹ P(B|A) × P(A) = P(A∩B)</p>
+                    
+                    <p><strong>Since both equal P(A∩B):</strong></p>
+                    <p>P(A|B) × P(B) = P(B|A) × P(A)</p>
+                    
+                    <p><strong>Therefore:</strong></p>
+                    <p>P(A|B) = [P(B|A) × P(A)] / P(B)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
