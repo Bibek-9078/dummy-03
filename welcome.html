@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Welcome — Your Site</title>
+  <meta name="description" content="A clean, modern welcome page you can drop into any project."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===============
+       Base & Resets
+       =============== */
+    :root {
+      --bg: #0b1020;            /* page background */
+      --surface: #12172a;       /* cards/nav */
+      --text: #e8eaf6;          /* main text */
+      --muted: #b7c0d8;         /* secondary text */
+      --brand: #6aa2ff;         /* primary brand */
+      --brand-2: #8a5cff;       /* accent */
+      --success: #50d2a3;
+      --warning: #ffd166;
+      --danger: #ff6a88;
+      --ring: 0 0 0 6px color-mix(in oklab, var(--brand) 18%, transparent);
+      --radius: 18px;
+      --shadow: 0 10px 30px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.05);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: radial-gradient(1200px 600px at 10% -10%, #1c2442 15%, transparent 50%),
+                  radial-gradient(1000px 800px at 110% 10%, #201445 10%, transparent 50%),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img, svg { display: block; max-width: 100%; height: auto; }
+    .container { width: min(1100px, 92%); margin-inline: auto; }
+
+    /* ===============
+       Header / Nav
+       =============== */
+    header {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: saturate(120%) blur(8px);
+      background: color-mix(in oklab, var(--bg) 70%, transparent);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 0;
+    }
+    .brand { display: flex; gap: 12px; align-items: center; font-weight: 800; letter-spacing: .2px; }
+    .brand .logo {
+      width: 36px; height: 36px; border-radius: 12px; display: grid; place-items: center;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      box-shadow: var(--shadow);
+    }
+    .brand span { font-size: 1.05rem; }
+
+    /* mobile nav toggle (CSS-only) */
+    #nav-toggle { display: none; }
+    .nav-links { display: flex; gap: 18px; align-items: center; }
+    .nav-links a { color: var(--muted); font-weight: 500; padding: 8px 12px; border-radius: 10px; }
+    .nav-links a:hover { color: var(--text); background: rgba(255,255,255,.06); }
+
+    .hamb { display: none; gap: 8px; align-items: center; }
+    .hamb .bars { width: 26px; height: 18px; position: relative; }
+    .hamb .bars::before, .hamb .bars::after, .hamb .bars span {
+      content: ""; position: absolute; left: 0; right: 0; height: 2px; background: var(--text); border-radius: 2px;
+    }
+    .hamb .bars::before { top: 0; }
+    .hamb .bars::after { bottom: 0; }
+    .hamb .bars span { top: 8px; }
+
+    @media (max-width: 860px) {
+      .hamb { display: flex; }
+      .nav-links { position: fixed; inset: 64px 14px auto; background: var(--surface); border: 1px solid rgba(255,255,255,.08); border-radius: var(--radius); padding: 14px; display: grid; gap: 6px; box-shadow: var(--shadow); transform: scale(.98) translateY(-10px); opacity: 0; pointer-events: none; transition: .2s ease; }
+      #nav-toggle:checked ~ .nav-links { transform: none; opacity: 1; pointer-events: auto; }
+    }
+
+    /* ===============
+       Hero Section
+       =============== */
+    .hero { position: relative; padding: 80px 0 36px; overflow: hidden; }
+    .pill {
+      display: inline-flex; gap: 8px; align-items: center; padding: 8px 12px; border-radius: 100px; font-size: .9rem; color: var(--text);
+      background: linear-gradient(90deg, color-mix(in oklab, var(--brand) 25%, transparent), color-mix(in oklab, var(--brand-2) 25%, transparent));
+      border: 1px solid rgba(255,255,255,.12);
+    }
+    .hero h1 { font-size: clamp(2rem, 4vw + 1rem, 3.4rem); line-height: 1.1; margin: 16px 0 14px; letter-spacing: .3px; }
+    .hero p { color: var(--muted); font-size: clamp(1rem, .6vw + .9rem, 1.15rem); max-width: 60ch; }
+
+    .cta-row { display: flex; gap: 12px; margin-top: 22px; flex-wrap: wrap; }
+    .btn { display:inline-flex; align-items:center; gap:10px; padding:12px 16px; border-radius: 14px; font-weight: 600; border: 1px solid rgba(255,255,255,.12); transition: .2s ease; }
+    .btn.primary { background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #0c1022; border-color: transparent; box-shadow: 0 10px 30px rgba(106,162,255,.35); }
+    .btn.primary:hover { filter: brightness(1.05); transform: translateY(-1px); }
+    .btn.ghost { background: rgba(255,255,255,.06); color: var(--text); }
+    .btn.ghost:hover { background: rgba(255,255,255,.1); }
+
+    .hero-art {
+      position: absolute; right: -120px; top: -60px; width: 620px; aspect-ratio: 1/1; pointer-events:none; opacity:.35; filter: drop-shadow(0 10px 30px rgba(0,0,0,.35));
+      background:
+        radial-gradient(180px 220px at 36% 30%, color-mix(in oklab, var(--brand) 75%, white 8%), transparent 60%),
+        radial-gradient(280px 200px at 70% 65%, color-mix(in oklab, var(--brand-2) 75%, white 8%), transparent 60%),
+        conic-gradient(from 140deg at 55% 45%, rgba(255,255,255,.15), rgba(255,255,255,0) 60%);
+      border-radius: 40% 60% 55% 45% / 45% 40% 60% 55%;
+      animation: float 14s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%,100% { transform: translateY(0) rotate(0.5deg); }
+      50% { transform: translateY(-8px) rotate(-.5deg); }
+    }
+    @media (max-width: 980px) {
+      .hero-art { display: none; }
+    }
+
+    /* ===============
+       Feature Cards
+       =============== */
+    .features { padding: 34px 0 10px; display: grid; gap: 16px; grid-template-columns: repeat(12, 1fr); }
+    .card {
+      grid-column: span 4; min-height: 180px; background: linear-gradient(180deg, color-mix(in oklab, var(--surface) 85%, transparent), color-mix(in oklab, var(--surface) 100%, black 6%));
+      border: 1px solid rgba(255,255,255,.08); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow);
+      position: relative; overflow: hidden; isolation: isolate;
+    }
+    .card::after { content: ""; position: absolute; inset: 0; background: radial-gradient(400px 180px at 110% -10%, color-mix(in oklab, var(--brand) 20%, transparent), transparent 60%); z-index: -1; }
+    .card h3 { margin: 6px 0 8px; font-size: 1.1rem; }
+    .card p { color: var(--muted); font-size: .98rem; }
+    .card .tag { display: inline-block; font-size: .75rem; color: #0c1022; background: var(--warning); padding: 4px 10px; border-radius: 999px; font-weight: 700; letter-spacing: .2px; }
+
+    @media (max-width: 1000px) {
+      .card { grid-column: span 6; }
+    }
+    @media (max-width: 640px) {
+      .card { grid-column: span 12; }
+      .features { gap: 12px; }
+    }
+
+    /* ===============
+       CTA / Footer
+       =============== */
+    .cta {
+      margin: 24px 0 60px; padding: 22px; border-radius: calc(var(--radius) + 6px);
+      background: linear-gradient(120deg, color-mix(in oklab, var(--brand) 22%, transparent), color-mix(in oklab, var(--brand-2) 22%, transparent));
+      border: 1px solid rgba(255,255,255,.14); box-shadow: var(--shadow);
+      display: grid; gap: 10px; align-items: center; grid-template-columns: 1fr auto; 
+    }
+    .cta p { margin: 0; color: #0c1022; font-weight: 600; }
+    .cta .btn { border-color: rgba(0,0,0,.08); }
+    @media (max-width: 640px) { .cta { grid-template-columns: 1fr; gap: 14px; } }
+
+    footer { color: var(--muted); border-top: 1px solid rgba(255,255,255,.06); padding: 22px 0 40px; }
+    .foot-grid { display: grid; gap: 12px; grid-template-columns: 1fr auto; align-items: center; }
+    .foot-links { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    /* ===============
+       Utility
+       =============== */
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M12 2L20 6V14L12 22L4 14V6L12 2Z" fill="white" opacity=".92"/>
+            <path d="M12 2L20 6L12 10L4 6L12 2Z" fill="#0c1022" opacity=".7"/>
+          </svg>
+        </div>
+        <span>Your Brand</span>
+      </div>
+
+      <!-- Mobile toggle -->
+      <label for="nav-toggle" class="hamb" aria-label="Toggle navigation" role="button" tabindex="0">
+        <span class="sr-only">Toggle navigation</span>
+        <div class="bars"><span></span></div>
+      </label>
+      <input type="checkbox" id="nav-toggle" aria-hidden="true" />
+
+      <!-- Links -->
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="#features">Home</a>
+        <a href="#about">Curriculum</a>
+        <a href="#contact">Case Studies</a>
+        <a href="#contact">Tools</a>
+        <a href="C:\Users\bibek\Downloads\dummy-03\index.html" class="btn ghost">Get Started</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <span class="pill" id="about">✨ New here? You’re in the right place.</span>
+      <h1>Welcome to your new<br/> clean & modern landing page</h1>
+      <p>
+        This starter is fast, responsive, and easy to customize. Swap colors, change text, or copy it straight into your project. No build tools, no frameworks—just HTML & CSS.
+      </p>
+      <div class="cta-row">
+        <a href="#get-started" class="btn primary">Explore the Demo</a>
+        <a href="#features" class="btn ghost">See Features</a>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true"></div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="container">
+    <div class="features">
+      <article class="card">
+        <span class="tag">Responsive</span>
+        <h3>Looks great on any screen</h3>
+        <p>Fluid layout, modern type, and accessible contrast. Resize the window and it simply adapts—no extra work needed.</p>
+      </article>
+
+      <article class="card">
+        <span class="tag" style="background: var(--success);">Lightweight</span>
+        <h3>Pure HTML & CSS</h3>
+        <p>Zero dependencies. Drop this file into your site and go. You can split the CSS into a separate file whenever you like.</p>
+      </article>
+
+      <article class="card">
+        <span class="tag" style="background: var(--danger);">Customizable</span>
+        <h3>Easy to rebrand</h3>
+        <p>Change the <code>:root</code> color variables once and the whole theme updates. Swap the logo text to your own brand.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Call-to-Action -->
+  <section id="get-started" class="container">
+    <div class="cta">
+      <p>Ready to make it yours? Start by changing the brand name and colors in <strong>:root</strong>.</p>
+      <a class="btn primary" href="#contact">Get Started</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container foot-grid">
+      <small>© <span id="year"></span> Your Brand. All rights reserved.</small>
+      <div class="foot-links" id="contact">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="mailto:hello@example.com">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Tiny inline script just to set the year (optional) -->
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

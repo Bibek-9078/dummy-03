@@ -1,9 +1,207 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Days-026</title>
+  <meta charset="UTF-8">
+  <title>Day 17 – Pandas Series</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --primary-blue: #2947a9;
+      --accent-blue: #3498db;
+      --section-bg: #f8faff;
+      --code-bg: #f6f8fa;
+      --output-bg: #fffbe7;
+      --border-radius: 8px;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0; padding: 0;
+      background: #fcfdfd; color: #222;
+    }
+    .content {
+      max-width: 950px;
+      margin: 0 auto;
+      padding: 32px 16px;
+    }
+    .title {
+      text-align: center;
+      font-size: 2.2em;
+      font-weight: bold;
+      color: var(--primary-blue);
+      margin-bottom: 26px;
+      border-bottom: 3px solid var(--accent-blue);
+      padding-bottom: 14px;
+      letter-spacing: 1.2px;
+    }
+    .section {
+      background: var(--section-bg);
+      padding: 20px;
+      border-radius: var(--border-radius);
+      margin-bottom: 28px;
+      border-left: 5px solid var(--accent-blue);
+    }
+    .section h2 {
+      font-size: 1.3em;
+      font-weight: bold;
+      margin-top: 0;
+      margin-bottom: 15px;
+      color: #223377;
+    }
+    pre, code {
+      font-family: 'Fira Mono', 'Consolas', monospace;
+      font-size: 0.95em;
+      line-height: 1.5;
+    }
+    pre {
+      background: var(--code-bg);
+      border-radius: 6px;
+      padding: 12px 14px;
+      border: 1px solid #e6e9ed;
+      margin: 14px 0 8px 0;
+      overflow-x: auto;
+    }
+    .output {
+      background: var(--output-bg);
+      border-left: 5px solid #ffd600;
+      border-radius: 6px;
+      color: #663c00;
+      margin: 4px 0 18px 0;
+      padding: 10px 15px;
+      font-family: 'Fira Mono', 'Consolas', monospace;
+      font-size: 0.95em;
+      white-space: pre-wrap;
+    }
+    a { color: #2563eb; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+  </style>
 </head>
 <body>
-<h1>Day 026</h1>
+  <div class="content">
+    <div class="title">DAY-17: Pandas Series</div>
+
+    <div class="section">
+      <h2>What is Pandas?</h2>
+      <p>Pandas is a fast, powerful, flexible and easy to use open source data analysis and manipulation tool, built on top of the Python programming language.</p>
+      <p><a href="https://pandas.pydata.org/about/index.html" target="_blank">Official Documentation</a></p>
+    </div>
+
+    <div class="section">
+      <h2>Pandas Series</h2>
+      <p>A Pandas Series is like a column in a table. It is a 1-D array holding data of any type.</p>
+    </div>
+
+    <div class="section">
+      <h2>Importing Pandas</h2>
+      <pre><code>import numpy as np
+import pandas as pd</code></pre>
+      <div class="output"># No output, libraries imported successfully</div>
+    </div>
+
+    <div class="section">
+      <h2>Series from Lists</h2>
+      <pre><code>country = ['India','Pakistan','USA','Nepal','Srilanka']
+pd.Series(country)</code></pre>
+      <div class="output">0       India
+1    Pakistan
+2        USA
+3      Nepal
+4    Srilanka
+dtype: object</div>
+
+      <pre><code>runs = [13,24,56,78,100]
+runs_ser = pd.Series(runs)
+runs_ser</code></pre>
+      <div class="output">0     13
+1     24
+2     56
+3     78
+4    100
+dtype: int64</div>
+
+      <pre><code>marks = [67,57,89,100]
+subjects = ['maths','english','science','hindi']
+pd.Series(marks,index=subjects)</code></pre>
+      <div class="output">maths       67
+english     57
+science     89
+hindi      100
+dtype: int64</div>
+    </div>
+
+    <div class="section">
+      <h2>Series from Dict</h2>
+      <pre><code>marks = {
+    'maths':67,
+    'english':57,
+    'science':89,
+    'hindi':100
+}
+marks_series = pd.Series(marks,name='Nitish ke marks')
+marks_series</code></pre>
+      <div class="output">maths       67
+english     57
+science     89
+hindi      100
+Name: Nitish ke marks, dtype: int64</div>
+    </div>
+
+    <div class="section">
+      <h2>Series Attributes</h2>
+      <pre><code>marks_series.size</code></pre>
+      <div class="output">4</div>
+
+      <pre><code>marks_series.dtype</code></pre>
+      <div class="output">int64</div>
+
+      <pre><code>marks_series.is_unique</code></pre>
+      <div class="output">True</div>
+    </div>
+
+    <div class="section">
+      <h2>Indexing</h2>
+      <pre><code>x = pd.Series([12,13,14,35,46,57,58,79,9])
+x[-1]</code></pre>
+      <div class="output">9</div>
+    </div>
+
+    <div class="section">
+      <h2>Editing Series</h2>
+      <pre><code>marks_series['english'] = 100
+marks_series</code></pre>
+      <div class="output">maths       67
+english    100
+science     89
+hindi      100
+Name: Nitish ke marks, dtype: int64</div>
+    </div>
+
+    <div class="section">
+      <h2>Boolean Indexing</h2>
+      <pre><code># Find number of 50s & 100s scored by Kohli
+vk[vk >= 50].size</code></pre>
+      <div class="output">37</div>
+    </div>
+
+    <div class="section">
+      <h2>Handling Missing Values</h2>
+      <pre><code>temp = pd.Series([1,2,3,np.nan,5,6,np.nan,8,np.nan,10])
+temp.isnull().sum()</code></pre>
+      <div class="output">3</div>
+
+      <pre><code>temp.fillna(temp.mean())</code></pre>
+      <div class="output">0     1.0
+1     2.0
+2     3.0
+3     5.0
+4     5.0
+5     6.0
+6     5.0
+7     8.0
+8     5.0
+9    10.0
+dtype: float64</div>
+    </div>
+
+  </div>
 </body>
 </html>

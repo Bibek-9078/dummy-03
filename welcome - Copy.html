@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learning Hub — Home</title>
+  <style>
+    :root {
+      --primary: #ff9800;
+      --dark: #222;
+      --light: #f9f9f9;
+      --text: #333;
+    }
+
+    /* --- Reset --- */
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+    body { line-height: 1.6; background: var(--light); color: var(--text); }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* --- Header --- */
+    header {
+      background: var(--dark);
+      color: #fff;
+      padding: 15px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav ul { display: flex; gap: 20px; }
+    nav a { color: #fff; font-weight: bold; transition: 0.3s; }
+    nav a:hover { color: var(--primary); }
+
+    /* --- Hero --- */
+    .hero {
+      background: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)),
+        url("https://picsum.photos/id/1015/1200/400") center/cover;
+      color: white; text-align: center; padding: 80px 20px;
+    }
+    .hero h2 { font-size: 36px; margin-bottom: 15px; }
+    .hero p { font-size: 18px; margin-bottom: 20px; }
+
+    /* --- Buttons --- */
+    .btn {
+      background: var(--primary);
+      padding: 12px 25px;
+      color: white;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: .3s;
+      display: inline-block;
+    }
+    .btn:hover { background: #e68900; }
+
+    /* --- Section Base --- */
+    section { padding: 40px 50px; text-align: center; }
+    h3 { margin-bottom: 20px; font-size: 28px; }
+
+    /* --- Highlights --- */
+    .highlights ul { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+    .card {
+      background: white; padding: 20px; border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1); width: 250px;
+    }
+
+    /* --- Courses & Job Prep --- */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px; max-width: 1200px; margin: 0 auto;
+    }
+    .course {
+      display: flex; gap: 15px; align-items: flex-start;
+      background: white; padding: 15px; border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1); transition: .3s;
+    }
+    .course:hover { transform: translateY(-5px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+    .course img { width: 45px; height: 45px; object-fit: contain; }
+    .course h4 { margin-bottom: 6px; font-size: 16px; font-weight: 600; }
+
+    /* --- Roadmaps --- */
+    .roadmap {
+      background: white; padding: 15px; margin: 10px auto;
+      max-width: 600px; border-left: 5px solid var(--primary); border-radius: 5px;
+    }
+
+    /* --- CTA --- */
+    .cta { background: var(--dark); color: white; padding: 50px 20px; }
+    .cta h3 { margin-bottom: 15px; }
+
+    /* --- Footer --- */
+    footer {
+      background: #111; color: #ddd; text-align: center;
+      padding: 20px; font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>Learning Hub</h1>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li><li><a href="#">Courses</a></li>
+        <li><a href="#">Roadmaps</a></li><li><a href="#">Blog</a></li>
+        <li><a href="#">About</a></li><li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h2>Master Python, Excel & Data Skills</h2>
+    <p>Step-by-step tutorials, real projects, and structured roadmaps for your career growth.</p>
+    <a href="#" class="btn">Start Learning</a>
+  </section>
+
+  <!-- Highlights -->
+  <section class="highlights">
+    <h3>Why Choose Us?</h3>
+    <ul>
+      <li class="card">✔ Free step-by-step tutorials</li>
+      <li class="card">✔ Beginner to Advanced Roadmaps</li>
+      <li class="card">✔ Hands-on Projects & Exercises</li>
+      <li class="card">✔ Clean & Practical Notes</li>
+    </ul>
+  </section>
+
+  <!-- Featured Courses -->
+  <section>
+    <h3>Featured Courses</h3>
+    <div class="grid">
+      <div class="course"><img src="Logo/python.png"><div><h4>Python Programming</h4><p>From basics to OOP & projects.</p></div></div>
+      <div class="course"><img src="Logo/java.png"><div><h4>Java Programming</h4><p>Learn Java with real-world apps.</p></div></div>
+      <div class="course"><img src="Logo/web.png"><div><h4>Web Development</h4><p>HTML, CSS & JavaScript from scratch.</p></div></div>
+      <div class="course"><img src="Logo/sql.png"><div><h4>SQL & Databases</h4><p>Manage and query databases effectively.</p></div></div>
+      <div class="course"><img src="Logo/excel.png"><div><h4>Excel</h4><p>Data analysis and reporting with Excel.</p></div></div>
+      <div class="course"><img src="Logo/powerbi.png"><div><h4>Power BI</h4><p>Build interactive dashboards & reports.</p></div></div>
+      <div class="course"><img src="Logo/ml.png"><div><h4>Machine Learning</h4><p>Hands-on ML with Python & Scikit-Learn.</p></div></div>
+      <div class="course"><img src="Logo/datascience.png"><div><h4>Data Science</h4><p>Complete data science lifecycle learning.</p></div></div>
+    </div>
+  </section>
+
+  <!-- Job Prep -->
+  <section>
+    <h3>Job Preparation</h3>
+    <div class="grid">
+      <div class="course"><img src="Logo/interview.png"><div><h4>Interview Prep</h4><p>200 most important interview questions.</p></div></div>
+      <div class="course"><img src="Logo/profile.png"><div><h4>Profile Building</h4><p>Resume building & LinkedIn branding.</p></div></div>
+    </div>
+  </section>
+
+  <!-- Roadmaps -->
+  <section>
+    <h3>Learning Roadmaps</h3>
+    <div class="roadmap">🎯 Python in 30 Days</div>
+    <div class="roadmap">🎯 Excel Mastery Roadmap</div>
+    <div class="roadmap">🎯 Power BI DAX in 10 Days</div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <h3>Start your learning journey today — It’s free!</h3>
+    <a href="#" class="btn">Join Now</a>
+  </section>
+
+  <!-- Footer -->
+  <footer><p>© 2025 Learning Hub | All Rights Reserved</p></footer>
+</body>
+</html>
